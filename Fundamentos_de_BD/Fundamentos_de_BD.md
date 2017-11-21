@@ -237,8 +237,8 @@ Avio         |    X  |     1:1   |  1:M |    1:M     |   1:M  |     1:M    |   X
 Aerolinea    |   1:M |      X    |  1:M |    1:M     |   1:M  |     1:M    |   X  |   X    |    1:M     |
 Ruta         |   X   |     1:M   |   X  |    X       |    X   |     1:M    |  1:1 |   1:1  |    X       |
 Tripulante   |   X   |     1:1   |   X  |     X      |    X   |      X     |  X   |   X    |    X       |
-Pilo         |   1:M |     1:1   |  1:M |     X      |    X   |      X     |  X   |   X    |    X       |
-Aeropuerto   |   1:M |     1:M   |  1:M |     X      |    X   |      X     |  1:1 |   X    |    1:M     |
+Piloto       |   1:M |     1:1   |  1:M |     X      |    X   |      X     |  X   |   X    |    X       |
+Aeropuerto   |   1:M |     1:M   |  1:M |     X      |    X   |      X     |  1:1 |   1:1  |    1:M     |
 Pais         |   X   |     X     |  0:M |     X      |    X   |      0:M   |   X  |   1:M  |     X      |
 Ciudad       |   X   |     X     |  0:M |     X      |    X   |      0:M   |  1:1 |    X   |     X      |
 Pasajero     |   X   |     1:M   |  1:M |     X      |    X   |      1:M   |   X  |    X   |     X      |
@@ -249,6 +249,9 @@ Pasajero     |   X   |     1:M   |  1:M |     X      |    X   |      1:M   |   X
 ### Metodología básica de 9 pasos con Barker (Paso 3)
 
 Entidades y Relaciones en el diagrama conceptual
+
+![Entidad-Relacion](https://github.com/macknilan/Cuaderno/blob/master/Fundamentos_de_BD/img/di_er_fun_bd_platzi.png "E-R")
+
 
 
 ### Metodología de Diseño (Corrección de paso 2 y 3)
