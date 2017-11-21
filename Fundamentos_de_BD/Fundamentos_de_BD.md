@@ -216,7 +216,7 @@ Siempre que queramos obtener una fila de la forma más rápida posible, debemos 
 - **Capa Lógica**: El modelo Entidad-Relación para poder procesar las relaciones “muchos a muchos” las va a partir en entidades que se llaman: Entidades Débiles.
 - **Capa Física**: Este modelo va a ser el paso del modelo lógico hacia la representación que ya va a tener la Base de Datos. En esta capa, ya cada uno de los datos empieza a entrar en las clasificaciones según su tipo de dato.
 
-![Capas de abstraccion del modelo Entidad-Relacion](/img/Capas_de_abstraccion_del_modelo_Entidad_Relacion.jpg "E-R")
+![Capas de abstraccion del modelo Entidad-Relacion](../img/Capas_de_abstraccion_del_modelo_Entidad_Relacion.jpg "E-R")
 
 
 ### Metodología básica de 9 pasos con Barker (Paso 1)
@@ -243,10 +243,14 @@ Pais         |   X   |     X     |  0:M |     X      |    X   |      0:M   |   X
 Ciudad       |   X   |     X     |  0:M |     X      |    X   |      0:M   |  1:1 |    X   |     X      |
 Pasajero     |   X   |     1:M   |  1:M |     X      |    X   |      1:M   |   X  |    X   |     X      |
 
-Las que estan en diagonal no se relacionan, _regularmente_
+**NOTA** Las que estan en diagonal no se relacionan, _regularmente_
 
 
 ### Metodología básica de 9 pasos con Barker (Paso 3)
+
+Entidades y Relaciones en el diagrama conceptual
+
+
 ### Metodología de Diseño (Corrección de paso 2 y 3)
 ### Metodología de Diseño (Paso 4)
 ### Metodología de Diseño (Solución del paso 4)
