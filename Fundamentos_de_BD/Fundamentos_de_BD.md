@@ -272,7 +272,7 @@ Ciudad       | :x:   |   :x:     |  :x: |   :x:      |  :x:   |      0:M   |  1:
 Pasajero     | :x:   |     1:M   |  :x: |   :x:      |  :x:   |      :x:   | :x:  |  :x:   |   :x::black_small_square:      |
 
 
-![Diagrama Entidad-Relacion](https://github.com/macknilan/Cuaderno/blob/master/di_er_fun_bd_platzi_1.png "E-R")
+![Diagrama Entidad-Relacion](https://github.com/macknilan/Cuaderno/blob/master/Fundamentos_de_BD/img/di_er_fun_bd_platzi_1.png "E-R")
 
 
 ### Metodología de Diseño (Paso 4)
