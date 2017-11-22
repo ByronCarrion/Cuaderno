@@ -233,15 +233,15 @@ Entidades en PLURAL.
 
    ---       | Avion | Aerolinea | Ruta | Tripulante | Piloto | Aeropuerto | Pais | Ciudad | Pasajero 
 -----        | ----- | -----     | -----| -----      | -----  | -----      | -----| -----  | -----      |
-Avio         |    X  |     1:1   |  1:M |    1:M     |   1:M  |     1:M    |   X  |    X   |    1:M     |
-Aerolinea    |   1:M |      X    |  1:M |    1:M     |   1:M  |     1:M    |   X  |   X    |    1:M     |
-Ruta         |   X   |     1:M   |   X  |    X       |    X   |     1:M    |  1:1 |   1:1  |    X       |
-Tripulante   |   X   |     1:1   |   X  |     X      |    X   |      X     |  X   |   X    |    X       |
-Piloto       |   1:M |     1:1   |  1:M |     X      |    X   |      X     |  X   |   X    |    X       |
-Aeropuerto   |   1:M |     1:M   |  1:M |     X      |    X   |      X     |  1:1 |   1:1  |    1:M     |
-Pais         |   X   |     X     |  0:M |     X      |    X   |      0:M   |   X  |   1:M  |     X      |
-Ciudad       |   X   |     X     |  0:M |     X      |    X   |      0:M   |  1:1 |    X   |     X      |
-Pasajero     |   X   |     1:M   |  1:M |     X      |    X   |      1:M   |   X  |    X   |     X      |
+Avio         |  :x:  |     1:1   |  1:M |    1:M     |   1:M  |     1:M    | :x:  |  :x:   |    1:M     |
+Aerolinea    |   1:M |    :x:    |  1:M |    1:M     |   1:M  |     1:M    | :x:  | :x:    |    1:M     |
+Ruta         | :x:   |     1:M   | :x:  |  :x:       |  :x:   |     1:M    |  1:1 |   1:1  |  :x:       |
+Tripulante   | :x:   |     1:1   | :x:  |   :x:      |  :x:   |    :x:     |:x:   | :x:    |  :x:       |
+Piloto       |   1:M |     1:1   |  1:M |   :x:      |  :x:   |    :x:     |:x:   | :x:    |  :x:       |
+Aeropuerto   |   1:M |     1:M   |  1:M |   :x:      |  :x:   |    :x:     |  1:1 |   1:1  |    1:M     |
+Pais         | :x:   |   :x:     |  0:M |   :x:      |  :x:   |      0:M   | :x:  |   1:M  |   :x:      |
+Ciudad       | :x:   |   :x:     |  0:M |   :x:      |  :x:   |      0:M   |  1:1 |  :x:   |   :x:      |
+Pasajero     | :x:   |     1:M   |  1:M |   :x:      |  :x:   |      1:M   | :x:  |  :x:   |   :x:      |
 
 **NOTA** Las que estan en diagonal no se relacionan, _regularmente_
 
@@ -253,8 +253,11 @@ Entidades y Relaciones en el diagrama conceptual
 ![Entidad-Relacion](https://github.com/macknilan/Cuaderno/blob/master/Fundamentos_de_BD/img/di_er_fun_bd_platzi.png "E-R")
 
 
-
 ### Metodología de Diseño (Corrección de paso 2 y 3)
+
+Se tienen que buscar que las relariones sean equivalentes/complementarias.
+
+
 ### Metodología de Diseño (Paso 4)
 ### Metodología de Diseño (Solución del paso 4)
 ### Metodología de Diseño (Pasos 5, 6 y 7)
