@@ -233,15 +233,15 @@ Entidades en PLURAL.
 
    ---       | Avion | Aerolinea | Ruta | Tripulante | Piloto | Aeropuerto | Pais | Ciudad | Pasajero 
 -----        | ----- | -----     | -----| -----      | -----  | -----      | -----| -----  | -----      |
-Avio         |  :x: :black_small_square:  |     1:1   |  1:M |    1:M     |   1:M  |     1:M    | :x: :black_small_square:  |  :x: :black_small_square:   |    1:M     |
-Aerolinea    |   1:M |    :x: :black_small_square:    |  1:M |    1:M     |   1:M  |     1:M    | :x: :black_small_square:  | :x: :black_small_square:    |    1:M     |
-Ruta         | :x: :black_small_square:   |     1:M   | :x: :black_small_square:  |  :x: :black_small_square:       |  :x: :black_small_square:   |     1:M    |  1:1 |   1:1  |  :x: :black_small_square:       |
-Tripulante   | :x: :black_small_square:   |     1:1   | :x: :black_small_square:  |   :x: :black_small_square:      |  :x: :black_small_square:   |    :x: :black_small_square:     |:x: :black_small_square:   | :x: :black_small_square:    |  :x: :black_small_square:       |
-Piloto       |   1:M |     1:1   |  1:M |   :x: :black_small_square:      |  :x: :black_small_square:   |    :x: :black_small_square:     |:x: :black_small_square:   | :x: :black_small_square:    |  :x: :black_small_square:       |
-Aeropuerto   |   1:M |     1:M   |  1:M |   :x: :black_small_square:      |  :x: :black_small_square:   |    :x: :black_small_square:     |  1:1 |   1:1  |    1:M     |
-Pais         | :x: :black_small_square:   |   :x: :black_small_square:     |  0:M |   :x: :black_small_square:      |  :x: :black_small_square:   |      0:M   | :x: :black_small_square:  |   1:M  |   :x: :black_small_square:      |
-Ciudad       | :x: :black_small_square:   |   :x: :black_small_square:     |  0:M |   :x: :black_small_square:      |  :x: :black_small_square:   |      0:M   |  1:1 |  :x: :black_small_square:   |   :x: :black_small_square:      |
-Pasajero     | :x: :black_small_square:   |     1:M   |  1:M |   :x: :black_small_square:      |  :x: :black_small_square:   |      1:M   | :x: :black_small_square:  |  :x: :black_small_square:   |   :x: :black_small_square:      |
+Avio         |  :x: :black_small_square:  |     1:1   |  1:M |    1:M     |   1:M  |     1:M    | :x:  |  :x:   |    1:M     |
+Aerolinea    |   1:M |    :x: :black_small_square:    |  1:M |    1:M     |   1:M  |     1:M    | :x:  | :x:    |    1:M     |
+Ruta         | :x:   |     1:M   | :x: :black_small_square:  |  :x:       |  :x:   |     1:M    |  1:1 |   1:1  |  :x:       |
+Tripulante   | :x:   |     1:1   | :x:  |   :x: :black_small_square:      |  :x:   |    :x:     |:x:   | :x:    |  :x:       |
+Piloto       |   1:M |     1:1   |  1:M |   :x:      |  :x: :black_small_square:   :black_small_square: |    :x:     |:x:   | :x:    |  :x:       |
+Aeropuerto   |   1:M |     1:M   |  1:M |   :x:      |  :x:   |    :x: :black_small_square:     |  1:1 |   1:1  |    1:M     |
+Pais         | :x:   |   :x:     |  0:M |   :x:      |  :x:   |      0:M   | :x: :black_small_square:  |   1:M  |   :x:      |
+Ciudad       | :x:   |   :x:     |  0:M |   :x:      |  :x:   |      0:M   |  1:1 |  :x: :black_small_square:   |   :x:      |
+Pasajero     | :x:   |     1:M   |  1:M |   :x:      |  :x:   |      1:M   | :x:  |  :x:   |   :x:  :black_small_square:     |
 
 **NOTA** Las que estan en diagonal no se relacionan, _regularmente_
 
