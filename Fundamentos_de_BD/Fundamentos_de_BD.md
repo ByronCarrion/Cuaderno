@@ -255,19 +255,21 @@ Entidades y Relaciones en el diagrama conceptual
 
 ### Metodología de Diseño (Corrección de paso 2 y 3)
 
-Se tienen que buscar que las relariones sean equivalentes/complementarias NO deben de ser iguales
+Se tienen que buscar que las relariones sean equivalentes/complementarias NO deben de ser iguales.
+La relacion debe de ser en dos sentidos, al menos de 0:1.
+
 
    ---       | Avion | Aerolinea | Ruta | Tripulante | Piloto | Aeropuerto | Pais | Ciudad | Pasajero 
 -----        | ----- | -----     | -----| -----      | -----  | -----      | -----| -----  | -----      |
-Avion        |  :x:  |     1:1   |  1:M |    1:M     |   1:M  |     1:M    | :x:  |  :x:   |    1:M     |
-Aerolinea    |   1:M +     :x:   |  1:M |    1:M     |   1:M  |     1:M    | :x:  | :x:    |    1:M     |
-Ruta         | :x:   |     1:M   | :x:  |  :x:       |  :x:   |     1:M    |  1:1 |   1:1  |  :x:       |
+Avion        |  :x:  |     1:1   |  :x: |    :x:     |   1:M  |     1:M    | :x:  |  :x:   |    :x:     |
+Aerolinea    |   1:M |     :x:   |  1:M |    1:M     |   1:M  |     1:M    | :x:  | :x:    |    1:M     |
+Ruta         | :x:   |     1:M   | :x:  |  :x:       |  :x:   |     1:M    |  :x: |   :x:  |  :x:       |
 Tripulante   | :x:   |     1:1   | :x:  |   :x:      |  :x:   |    :x:     |:x:   | :x:    |  :x:       |
-Piloto       |   1:M |     1:1   |  1:M |   :x:      |  :x:   |    :x:     |:x:   | :x:    |  :x:       |
-Aeropuerto   |   1:M |     1:M   |  1:M |   :x:      |  :x:   |    :x:     |  1:1 |   1:1  |    1:M     |
-Pais         | :x:   |   :x:     |  0:M |   :x:      |  :x:   |      0:M   | :x:  |   1:M  |   :x:      |
-Ciudad       | :x:   |   :x:     |  0:M |   :x:      |  :x:   |      0:M   |  1:1 |  :x:   |   :x:      |
-Pasajero     | :x:   |     1:M   |  1:M |   :x:      |  :x:   |      1:M   | :x:  |  :x:   |   :x:      |
+Piloto       |   1:M |     1:1   |  :x: |   :x:      |  :x:   |    :x:     |:x:   | :x:    |  :x:       |
+Aeropuerto   |   1:M |     1:M   |  1:M |   :x:      |  :x:   |    :x:     |  :x: |   1:1  |    :x:     |
+Pais         | :x:   |   :x:     |  :x: |   :x:      |  :x:   |      :x:   | :x:  |   1:M  |   :x:      |
+Ciudad       | :x:   |   :x:     |  :x: |   :x:      |  :x:   |      0:M   |  1:1 |  :x:   |   :x:      |
+Pasajero     | :x:   |     1:M   |  :x: |   :x:      |  :x:   |      :x:   | :x:  |  :x:   |   :x:      |
 
 
 ### Metodología de Diseño (Paso 4)
