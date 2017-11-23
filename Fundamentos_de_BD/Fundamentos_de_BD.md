@@ -276,6 +276,22 @@ Pasajero     | :x:   |     1:M   |  :x: |   :x:      |  :x:   |      :x:   | :x:
 
 
 ### Metodología de Diseño (Paso 4)
+
+**Paso 4**: Asignar atributos a las entidades.
+
+Para hacer un buen ejercicio hay que pensar en:
+- ¿Que atributos voy a necesitar?
+- ¿Cual va a ser la codificación que voy a utilizar?
+- ¿Como los voy a trabajar dependiendo del tipo de dato?
+
+Hasta este punto no nos vamos a fijar en que motor de base de datos vamos a correr.
+El **tipo de dato** va a ser **obligatorio** o no **obligatorio**, dando la posibilidad de que sea nulo o no nulo (**Null o Not Null en SQL**).
+Vamos a tener **un identificador único** de cada tabla, una **llave primaria**. Mínimo una por tabla.
+Para hacer mas **fácil** las consultas hay que tener una **nomenclatura** para cada tabla (como AV_ para avión) y así poder referirnos a los atributos que se repiten en varias tablas (como nombre).
+Hay que **revisar el tipo de dato** que vamos a usar, los identificadores se pueden trabajar como serial, así la misma base de datos se va a encargar de que el valor de ese **identificador sea único e irrepetible.**
+Definimos la **obligatoriedad** de los datos, las **llaves primarias tienen que ser obligatorias**.
+
+
 ### Metodología de Diseño (Solución del paso 4)
 ### Metodología de Diseño (Pasos 5, 6 y 7)
 ### Metodología de Diseño (Paso 8)
