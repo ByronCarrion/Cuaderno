@@ -384,12 +384,12 @@ __Pasajero__
 
 ####5. Generar un diagrama conceptual (entidades, relaciones y atributos).
 Las relaciones siempre van en **dos sentidos**:
-A->B
-B->A
-Identificadores:
-```#``` --> PK (Pimary Key)
-```*```(asterisco) --> Obligatorio
-```O```(circulo) --> Opcional
+- A->B
+- B->A
+- Identificadores:
+- ```#``` --> PK (Pimary Key)
+- ```*```(asterisco) --> Obligatorio
+- ```O```(circulo) --> Opcional
 
 ####6. Modelo lógico.
 
