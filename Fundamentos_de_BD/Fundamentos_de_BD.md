@@ -292,9 +292,125 @@ Hay que **revisar el tipo de dato** que vamos a usar, los identificadores se pue
 Definimos la **obligatoriedad** de los datos, las **llaves primarias tienen que ser obligatorias**.
 
 
-### Metodología de Diseño (Solución del paso 4)
-### Metodología de Diseño (Pasos 5, 6 y 7)
-### Metodología de Diseño (Paso 8)
+### Metodología de Diseño (Solución del paso 4): Terminando de Aseignar Atributos a las Entidades
+
+__Avion__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|AV_ID|serial|:x:|:x:
+|AV_matricula|varchar(8)|:x:|:x:
+|AV_placa|Varchar(6)|:x:|
+|AV_nom|Varchar(15)|:x:|
+|AV_tipo|Varchar(20)|:x:|
+|AV_marca|Varchar(30)||
+
+__Aerolinea__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|AE_ID|serial|:x:|:x:
+|AE_nombre|varchar(20)|:x:|
+|AE_fechainicio|timestamp||
+
+__Ruta__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|RU_ID|serial|:x:|:x:
+|RU_millas|Number(5,2)|:x:|
+|RU_frecuanciaMes|Number(3)||
+
+__Tripulante__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|TP_ID|serial|:x:|:x:
+|TP_pasaporte|Varchar(15)|:x:|
+|TP_nombre|Varchar(30)|:x:|
+|TP_fechaNac|timestamp||
+|TP_fechaInicio|timestamp||
+|TP_alergias|Varchar(120)|:x:|
+
+__Piloto__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|PI_ID|:x:|:x:|:x:
+|PI_pasaporte|Varchar(15)|:x:|:x:
+|PI_permisoNavega|Varchar(20)|:x:|:x:
+|PI_nombre|Varchar(40)|:x:|
+|PI_fechaNac|timestamp||
+|PI_fechaInicio|timestamp||
+|PI_alergias|Varchar(120)|:x:|
+
+__Aeropuerto__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|AP_ID|serial|:x:|:x:
+|AP_nombre|Varchar(40)|:x:|
+|AP_numeroPistas|Number(2)|:x:|
+|AP_capacidadPasajeros|Number(5)||
+|AP_fechainicio|timestamp||
+
+__Pais__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|PA_ID|serial|:x:|:x:
+|PA_nombre|Varchar(30)|:x:|
+
+__Ciudad__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|CI_ID|serial|:x:|:x:
+|CI_nombre|Varchar(30)|:x:|
+|CI_tipoClima|Varchar(50)|:x:|
+
+__Pasajero__
+
+|Atributo|Tipo|Obligatorio|PK
+|--------|----|-----------|
+|PS_ID|serial|:x:|:x:
+|PS_nombre|Varchar(30)|:x:|
+|PS_pasaporte|Varchar(15)||
+|PS_contactoEmergencia|Varchar(40)|:x:|
+
+
+
+### Metodología de Diseño (Pasos 5, 6 y 7):
+
+####5. Generar un diagrama conceptual (entidades, relaciones y atributos).
+Las relaciones siempre van en **dos sentidos**:
+A->B
+B->A
+Identificadores:
+```#``` --> PK (Pimary Key)
+```*```(asterisco) --> Obligatorio
+```O```(circulo) --> Opcional
+
+####6. Modelo lógico.
+
+Las relaciones se hacen por medio de **entidades débiles**, entre las entidades relacionadas, esto es porque no podemos generar muchas **llaves foráneas** en ambas entidades (fuertes).
+En estas entidades debiles se usan **ambas llaves primarias** de las entidades (fuertes) que tenían relación.
+En las entidades debiles no debería haber tipos de **datos seriales**, estas tendrían que ser **integer**, ya que las entidades debiles no tienen forma de tener consistencia con esa serialidad.
+
+
+####7. Identificar nuevos atributos que generan nuestras entidades débiles.
+
+En las entidades nuevas (ó tablas nuevas), se pueden generar nuevos atributos, que solo se pueden manegar en las nuevas entidades, y que **no son sencillos de manejar en una relación de muchos a muchos.**
+
+## Metodología de Diseño (Paso 8): Construir el Diagrama del Modelo Físico
+
+![Diagrama Entidad-Relacion](https://github.com/macknilan/Cuaderno/blob/master/Fundamentos_de_BD/img/metodologia_de_diseno_paso_8_construir_el_diagrama_del_modelo_fisico.jpg "Paso 8")
+
+Las lineas de las relaciones van a ser **lineas rectas** y **no lineas rectas**, la relación **uno a muchos vamos** a crear una linea con un sentido que **termina en cabeza de flecha**. Las lineas **1 a 1 o 0 a 1** se mantienen como antes.
+Las llaves foráneas en **entidades debiles** refieren o **apuntan** hacia su **llave primaria** en entidades fuertes.
+En el modelo fisico hay que poner el tipo de dato de acuerdo a la base de datos en la que vamos a trabajar.
+Los motores de base de datos tienen diferentes implementaciones de los tipos de datos, hay que revisar a que se traducen dependiendo de la base de datos.
+
 ### Metodología de Diseño (Paso 9)
 ### Reto con el paso 4 de la Metodología de Diseño
 
