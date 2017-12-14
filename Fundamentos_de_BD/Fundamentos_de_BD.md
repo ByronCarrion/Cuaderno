@@ -382,7 +382,7 @@ __Pasajero__
 
 ### Metodología de Diseño (Pasos 5, 6 y 7):
 
-####5. Generar un diagrama conceptual (entidades, relaciones y atributos).
+#### 5. Generar un diagrama conceptual (entidades, relaciones y atributos).
 Las relaciones siempre van en **dos sentidos**:
 - A->B
 - B->A
