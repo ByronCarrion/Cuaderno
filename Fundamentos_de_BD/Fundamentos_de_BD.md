@@ -386,19 +386,19 @@ __Pasajero__
 Las relaciones siempre van en **dos sentidos**:
 - A->B
 - B->A
-- Identificadores:
-- ```#``` --> PK (Pimary Key)
-- ```*```(asterisco) --> Obligatorio
-- ```O```(circulo) --> Opcional
+- **Identificadores**:
+    - ```#``` --> PK (Pimary Key)
+    - ```*```(asterisco) --> Obligatorio
+    - ```O```(circulo) --> Opcional
 
-####6. Modelo lógico.
+#### 6. Modelo lógico.
 
 Las relaciones se hacen por medio de **entidades débiles**, entre las entidades relacionadas, esto es porque no podemos generar muchas **llaves foráneas** en ambas entidades (fuertes).
 En estas entidades debiles se usan **ambas llaves primarias** de las entidades (fuertes) que tenían relación.
 En las entidades debiles no debería haber tipos de **datos seriales**, estas tendrían que ser **integer**, ya que las entidades debiles no tienen forma de tener consistencia con esa serialidad.
 
 
-####7. Identificar nuevos atributos que generan nuestras entidades débiles.
+#### 7. Identificar nuevos atributos que generan nuestras entidades débiles.
 
 En las entidades nuevas (ó tablas nuevas), se pueden generar nuevos atributos, que solo se pueden manegar en las nuevas entidades, y que **no son sencillos de manejar en una relación de muchos a muchos.**
 
