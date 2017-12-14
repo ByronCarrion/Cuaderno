@@ -406,9 +406,11 @@ En las entidades nuevas (ó tablas nuevas), se pueden generar nuevos atributos, 
 
 ![Diagrama Entidad-Relacion](https://github.com/macknilan/Cuaderno/blob/master/Fundamentos_de_BD/img/metodologia_de_diseno_paso_8_construir_el_diagrama_del_modelo_fisico.jpg "Paso 8")
 
-Las lineas de las relaciones van a ser **lineas rectas** y **no lineas rectas**, la relación **uno a muchos vamos** a crear una linea con un sentido que **termina en cabeza de flecha**. Las lineas **1 a 1 o 0 a 1** se mantienen como antes.
+Las lineas de las relaciones van a ser **lineas rectas** y **no lineas curvas**, en la relación **uno a muchos** vamos a crear una linea con un sentido que **termina en cabeza de flecha**. Las lineas **1 a 1** ó **0 a 1** se mantienen como antes.
 Las llaves foráneas en **entidades debiles** refieren o **apuntan** hacia su **llave primaria** en entidades fuertes.
+
 En el modelo fisico hay que poner el tipo de dato de acuerdo a la base de datos en la que vamos a trabajar.
+
 Los motores de base de datos tienen diferentes implementaciones de los tipos de datos, hay que revisar a que se traducen dependiendo de la base de datos.
 
 ### Metodología de Diseño (Paso 9)
