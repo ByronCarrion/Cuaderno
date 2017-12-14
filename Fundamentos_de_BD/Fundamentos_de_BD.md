@@ -296,19 +296,19 @@ Definimos la **obligatoriedad** de los datos, las **llaves primarias tienen que 
 
 __Avion__
 
-|Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
-|AV_ID|serial|:x:|:x:
-|AV_matricula|varchar(8)|:x:|:x:
-|AV_placa|Varchar(6)|:x:|
-|AV_nom|Varchar(15)|:x:|
-|AV_tipo|Varchar(20)|:x:|
-|AV_marca|Varchar(30)||
+Atributo|Tipo|Obligatorio|PK
+--------|----|-----------|---|
+AV_ID|serial|:x:|:x:
+AV_matricula|varchar(8)|:x:|:x:
+AV_placa|Varchar(6)|:x:|
+AV_nom|Varchar(15)|:x:|
+AV_tipo|Varchar(20)|:x:|
+AV_marca|Varchar(30)||
 
 __Aerolinea__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |AE_ID|serial|:x:|:x:
 |AE_nombre|varchar(20)|:x:|
 |AE_fechainicio|timestamp||
@@ -316,7 +316,7 @@ __Aerolinea__
 __Ruta__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |RU_ID|serial|:x:|:x:
 |RU_millas|Number(5,2)|:x:|
 |RU_frecuanciaMes|Number(3)||
@@ -324,7 +324,7 @@ __Ruta__
 __Tripulante__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |TP_ID|serial|:x:|:x:
 |TP_pasaporte|Varchar(15)|:x:|
 |TP_nombre|Varchar(30)|:x:|
@@ -335,7 +335,7 @@ __Tripulante__
 __Piloto__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |PI_ID|:x:|:x:|:x:
 |PI_pasaporte|Varchar(15)|:x:|:x:
 |PI_permisoNavega|Varchar(20)|:x:|:x:
@@ -347,7 +347,7 @@ __Piloto__
 __Aeropuerto__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |AP_ID|serial|:x:|:x:
 |AP_nombre|Varchar(40)|:x:|
 |AP_numeroPistas|Number(2)|:x:|
@@ -357,14 +357,14 @@ __Aeropuerto__
 __Pais__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |PA_ID|serial|:x:|:x:
 |PA_nombre|Varchar(30)|:x:|
 
 __Ciudad__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |CI_ID|serial|:x:|:x:
 |CI_nombre|Varchar(30)|:x:|
 |CI_tipoClima|Varchar(50)|:x:|
@@ -372,7 +372,7 @@ __Ciudad__
 __Pasajero__
 
 |Atributo|Tipo|Obligatorio|PK
-|--------|----|-----------|
+--------|----|-----------|---|
 |PS_ID|serial|:x:|:x:
 |PS_nombre|Varchar(30)|:x:|
 |PS_pasaporte|Varchar(15)||
