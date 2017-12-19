@@ -64,12 +64,43 @@ $ docker info
 $ docker version
 ```
 
+## DOCKER ENGINE
+![](img/docker_engine.jpg "DOKER ENGINE")
+
+
+## Contenedores e imagenes
++ Imagenes
+    + Plantilla de sólo lectura para crear nuestros contenedores.
+    + Creadas por nosotros u otros usuarios de la cumunidad.
+    + Se puden guardar en registro interno o público.
++ Contendores
+    + Aplicación aislada.
+    + Contiene todo lo necesario para ejecutar nuestra aplicación.
+    + Basados en una o más imagenes.
+
+![](img/docker_cont_e_imgs.jpg "Contenedores e imagenes")
+
+
 Para saber que imágenes locales tenemos con docker
 ```
 $ docker images
 ```
 
 ![eje. ](img/docker001.jpg "captura de campaña")
+
+
+## Ciclo de vida de los contenedores
+• Ciclo de vida básico
+    – Se crea el contenedor a partir de una imagen
+    – Se ejecuta un proceso determinado en el contenedor
+    – El proceso finaliza y el contenedor se detiene
+    – Se destruye el contenedor
+• Ciclo de vida avanzado
+    – Se crea el contenedor a partir de una imagen
+    – Se ejecuta un proceso determinado en el contenedor
+    – Realizar acciones dentro del contenedor
+    – **Detener el contenedor**
+    – **Lanzar el contenedor nuevamente**
 
 
 Para instalar o correr una imagen que se encuentra instalada y si no lo esta se descarga de hub.docker.com que el sitio de docker de imágenes publicas por ejemplo la imagen de **hello-world**
@@ -96,12 +127,10 @@ __NOTA: Para buscar imagenes de docker con la linea de comandos:__
 ```
 $ docker search <NOMBRE_DE_LA_IMAGEN>
 ```
-
 ejem.
 ```
 $ docker pull ubuntu:14:04
 ```
-
 ## Creando nuestro primer contenedor
  • Utilizando el comando
 ```
@@ -226,15 +255,283 @@ $docker ps --help
 $ docker ps -h
 ```
 
-## ELIMINAR/BORRAR IMAGENES & CONTENEDORES
+### Eliminar/borrar imagenes & contenedores
 SINTAXIS IMAGENES
 ```
 $ docker rmi [OPTIONS] IMAGE [IMAGE...]
 ```
 
 Name, shorthand | Default | Description
+---------------|---------------|---------------|
 --force, -f | FALSE | Force removal of the image
 --no-prune | FALSE | Do not delete untagged parents
+
+
+LISTAR
+```
+$ docker ps -a
+```
+ELIMINAR
+```
+$ docker rmi <image ó hash>
+```
+Eliminar imagenes que se quedan colgadas
+
+LISTAR
+```
+$ docker images -f dangling=true
+```
+ELIMINAR
+```
+$ docker rmi $(docker images -f dangling=true -q)
+```
+Eliminar imagenes de acuerdo a algun patron
+
+LISTAR
+```
+$ docker ps -a | grep "pattern"
+$ docker ps -a | grep "pattern"
+```
+ELIMINAR
+```
+$ docker images | grep "pattern" | awk '{primt $1}' | xargs docker rm
+```
+ELiminar todas las imagenes
+
+LISTAR
+```
+$ docker images -a
+```
+ELIMINAR
+```
+$ docker rmi $(docker images -a -q)
+```
+
+### Eliminar contenedores e imagenes al mismo tiempo
+```
+$ docker rm $(docker ps -aq) && docker rmi $(docker images -q)
+```
+
+### Sintaxis contenedores
+```
+$ docker rm [OPTIONS] CONTAINER [CONTAINER...]
+```
+Para eliminar un contenedor especifico
+```
+$ docker rm [ID_or_Name] [ID_or_Name]
+```
+
+Para eliminar un contenedor después de crearlo. Se crea y cuando acaba su función para la cual fue creado se elimina
+```
+$ docker run --rm [image_name]
+```
+Puede localizar contenedores utilizando `docker ps -a` y filtrarlos por su estado: `created, restarting, running, paused, o exited`. 
+Para revisar la lista de contenedores salidos, utilice el indicador `-f` para filtrar en función del estado. 
+Cuando haya verificado que desea eliminar esos contenedores, utilice `-q` para pasar los identificadores al comando `docker rm`
+
+LISTAR
+```
+$ docker ps -a -f status=exited
+```
+ELIMINAR
+```
+$ docker rm $(docker ps -a -f status=exited -q)
+```
+(otra forma de filtrado)
+
+LISTAR
+```
+$ docker ps -a -f status=exited -f status=created
+```
+ELIMINAR
+```
+$ docker rm $(docker ps -a -f stauts=exited -f status=created -q)
+```
+
+Eliminar contenedores dependiendo de un patron
+LISTAR
+```
+$ docker ps -a | grep "pattern"
+```
+
+ELIMINAR
+```
+$ docker ps -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
+```
+
+### Detener y eliminar todos los contenedores
+LISTAR
+```
+$ docker ps -a
+```
+ELIMINAR
+```
+$ docker stop $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
+```
+
+Ejemplo para hacer **ping** desde un contenedor
+```
+$ docker run ubuntu:14.04 ping -c 10 www.google.com
+```
+
+## Ejecutando contenedores de fondo
+- Correr de fondo **(background)** o como **demonio**
+- Utiliza la bandera `-b`
+- Para poder ver el "output" utilizar el comando `docker logs [id contendor]/[nombre contenedor]`
+
+Ejemplo para hacer ping desde un contenedor ejecutarlo como **demonio ó contenedor de fondo**
+```
+$ docker run -d ubuntu:14.04 ping -c 10 www.google.com
+```
+
+### Para ver los log de un contenedor
+Se tiene que ejecutar el comando **cuando un contenedor se encuentra activo**
+```
+$ docker loogs [CONTAINER_ID]
+```
+Para poder ver en **tiempo real el log** de un contenedor se añade una bandera
+```
+$ docker logs -f [CONTAINER_ID]
+```
+
+## Un caso practico
+- Ejecutar un servidor de aplicaciones (tomcat)
+- La bandera `-P` expone los puertos utilizados por el contenedor
+
+## Vincularse a un contenedor
+- Vincularse a un contenedor, traera dicho contenedor al frente
+- El output del proceso 1 será mostrado por la pantalla
+- Utilizar **docker attach** y especifica el **nombre / ID** del contenedor
+- **Cuidado** SÍ se preciona **CTRL+C** vinculado a un contenedor, el mismo se detendra de mandera inmediata
+
+## Docker exec
++ docker exec habilita a ejecutar procesos adicionales dentro del contenedor.
++ Generalmente se utiliza para acceder dentro de una terminal dentro de un contenedor en ejecucion.
+```
+$ docker exec -i -t [CONTENEDOR_ID] [comando]
+```
++ Al salir del contenedor no finaliza el contaniner.
+
+## Acciones sobre un contenedor.
+- `docker stop` y `docker kill` detienen un contenedor en ejecución.}
+- `docker start` se utiliza para un contenedor en estado **STOPED** o __KILLED__.
+- La bandera `-a` en `docker start` se utiliza para ejecutarse automaticamente al contenedor.
+
+Pausa un contenedor
+```
+$ docker pause [CONTAINER_ID]
+$ docker unpause [CONTAINER_ID]
+```
+
+## Inspeccionando un contenedor
+El comando `docker inspect` se utiliza para acceder a información util de un contenedor.
+```
+$ docker inpect [CONTAINER_ID]
+```
+eje.
+```
+$docker inspect [CONTAINER_ID] | grep macadress
+```
+![](img/docker003.jpg "doker inspect")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
