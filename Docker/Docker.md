@@ -678,7 +678,7 @@ Para modificar el parametro de nivel de **debug** se tiene que modificar la vari
 # PARAMETROS PARA AGREGAR ARCHIVO DE AMBIENTE DE TRABAJO
 # SE MANDA DONDE ESTA EL ARCHIVO PARA SISTEMAS service "/etc/default/docker"
 EnvironmentFile=-/etc/default/docker # SI NO ESTA ESTA LINEA SE AGREGA
-ExecStart=/usr/bin/dockerd -H fd:// $OPTIONS
+ExecStart=/usr/bin/docker -H fd:// $OPTIONS
 ...
 ```
 Se tiene que reiniciar docker para que tome los cambios, para ver que cambio la forma **debug**
@@ -765,7 +765,7 @@ Para que no se tenga que escribir en todas las ocasiones el comando `-H tcp://0.
 $ export DOCKER_HOST="-H tcp://0.0.0.0:2375"
 ```
 
-## DOCKERSFILES
+## DOCKERFILES
 - Provee una forma más efectiva de generar imágenes en vez de utilizar `docker commit`
 - Se integra de manera automática en el flujo de desarrollo y de integración continua
 - Las instrucciones más utilizadas son `FROM` y `RUN`
