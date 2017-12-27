@@ -655,7 +655,7 @@ Para activar `debug` y el nivel del `debug` se hace de la siguiente manera:
 ```
 Posteriormente se tiene que reiniciar el demonio de docker
 
-#### Para el systema **upstart** 
+#### Para el **system upstart** 
 Se tiene que crear la variable en el archivo de la siguiente ruta que es predeterminada para
 todos los sistemas
 ```
