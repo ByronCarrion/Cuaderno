@@ -1437,7 +1437,8 @@ Se crea contenedor **No2**
 ```
 $ docker run -it --link [NOMBRE_DE_CONTENEDOR] --net=mi_red debian bash
 ```
-De esta manera los dos contenedores estarán en la misma red. **PERO AHORA SE CONECTAN POR MEDIO DE "DNS INTERNO" QUE ESTA EN EL ARCHIVO** `# cat /etc/resolv.conf`
+De esta manera los dos contenedores estarán en la misma red. **PERO AHORA SE CONECTAN POR MEDIO DE "DNS INTERNO" QUE ESTA EN EL ARCHIVO** 
+```# cat /etc/resolv.conf```
 
 ![](img/docker013.jpg "Visualizando nuestra res docker")
 
@@ -1605,18 +1606,18 @@ testhost
 - Docker Compose al rescate
 
 :link:
-[Docker compose github - Define and run multi-container applications with Docker](https://github.com/docker/compose)
-[Instalar docker-compose](https://github.com/docker/compose/releases)
-[Full documentation is available on](https://github.com/docker/compose/releases)
-[Referencia y lineamientos del archivo "docker-compose.yml"](https://docs.docker.com/compose/compose-file/#compose-file-structure-and-examples)
-[Como se compone un archivo ".yml"](https://docs.docker.com/compose/compose-file)
+- [Docker compose github - Define and run multi-container applications with Docker](https://github.com/docker/compose)
+- [Instalar docker-compose](https://github.com/docker/compose/releases)
+- [Full documentation is available on](https://github.com/docker/compose/releases)
+- [Referencia y lineamientos del archivo "docker-compose.yml"](https://docs.docker.com/compose/compose-file/#compose-file-structure-and-examples)
+- [Como se compone un archivo ".yml"](https://docs.docker.com/compose/compose-file)
 
 ![](img/docker_compose_01.jpg "Docker compose")
 
 - `docker-compose.yml` define los servicios que componen la aplicación
 - Cada servicio contiene las instrucciones para construir y ejecutar el contenedor
 
-![](img/docker19.jpg "Docker compose")
+![](img/docker019.jpg "Docker compose")
 
 - Utilizar `docker-compose up` para iniciar nuestra aplicación
 - El comando `up`:
