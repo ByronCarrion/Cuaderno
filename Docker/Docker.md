@@ -678,7 +678,7 @@ Para modificar el parametro de nivel de **debug** se tiene que modificar la vari
 # PARAMETROS PARA AGREGAR ARCHIVO DE AMBIENTE DE TRABAJO
 # SE MANDA DONDE ESTA EL ARCHIVO PARA SISTEMAS service "/etc/default/docker"
 EnvironmentFile=-/etc/default/docker # SI NO ESTA ESTA LINEA SE AGREGA
-ExecStart=/usr/bin/**dockerd** -H fd:// $OPTIONS
+ExecStart=/usr/bin/dockerd -H fd:// $OPTIONS
 ...
 ```
 Se tiene que reiniciar docker para que tome los cambios, para ver que cambio la forma **debug**
