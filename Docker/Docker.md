@@ -106,12 +106,12 @@ $ docker images
 
 
 ## Ciclo de vida de los contenedores
-• Ciclo de vida básico
++ Ciclo de vida básico
     – Se crea el contenedor a partir de una imagen
     – Se ejecuta un proceso determinado en el contenedor
     – El proceso finaliza y el contenedor se detiene
     – Se destruye el contenedor
-• Ciclo de vida avanzado
++ Ciclo de vida avanzado
     – Se crea el contenedor a partir de una imagen
     – Se ejecuta un proceso determinado en el contenedor
     – Realizar acciones dentro del contenedor
