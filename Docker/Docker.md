@@ -107,16 +107,16 @@ $ docker images
 
 ## Ciclo de vida de los contenedores
 + Ciclo de vida básico
-    – Se crea el contenedor a partir de una imagen
-    – Se ejecuta un proceso determinado en el contenedor
-    – El proceso finaliza y el contenedor se detiene
-    – Se destruye el contenedor
+    - Se crea el contenedor a partir de una imagen
+    - Se ejecuta un proceso determinado en el contenedor
+    - El proceso finaliza y el contenedor se detiene
+    - Se destruye el contenedor
 + Ciclo de vida avanzado
-    – Se crea el contenedor a partir de una imagen
-    – Se ejecuta un proceso determinado en el contenedor
-    – Realizar acciones dentro del contenedor
-    – **Detener el contenedor**
-    – **Lanzar el contenedor nuevamente**
+    - Se crea el contenedor a partir de una imagen
+    - Se ejecuta un proceso determinado en el contenedor
+    - Realizar acciones dentro del contenedor
+    - **Detener el contenedor**
+    - **Lanzar el contenedor nuevamente**
 
 
 Para instalar o correr una imagen que se encuentra instalada y si no lo esta se descarga de hub.docker.com que el sitio de docker de imágenes publicas por ejemplo la imagen de **hello-world**
