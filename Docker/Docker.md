@@ -554,11 +554,11 @@ systemctl status docker
 
 _Links de referencia_->
 :link:
-[#custom-docker-daemon-options](https://docs.docker.com/engine/admin/systemd/#custom-docker-daemon-options)
-[dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/)
-[#httphttps-proxy](https://docs.docker.com/engine/admin/systemd/#httphttps-proxy)
-[#daemon-socket-option](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-socket-option)
-[#troubleshoot-the-daemon](https://docs.docker.com/engine/admin/#troubleshoot-the-daemon)
+1. [#custom-docker-daemon-options](https://docs.docker.com/engine/admin/systemd/#custom-docker-daemon-options)
+2. [dockerd](https://docs.docker.com/engine/reference/commandline/dockerd/)
+3. [#httphttps-proxy](https://docs.docker.com/engine/admin/systemd/#httphttps-proxy)
+4. [#daemon-socket-option](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-socket-option)
+5. [#troubleshoot-the-daemon](https://docs.docker.com/engine/admin/#troubleshoot-the-daemon)
 
 #### Se tiene que crear en la siguiente ruta el archivo **daemon.json**
 ```
