@@ -112,7 +112,7 @@ $ git merge origin/upstream
 $ git push origin master
 ```
 
-###- Tags
+### Tags
 ```
 - git pull = git fetch + git merge
 ```
@@ -232,19 +232,7 @@ git config --global alias.slog "log --graph --abbrev-commit --decorate --date=re
 ![Git Fetch + Git Merge](img/mapa_dedloiment.jpg "Git Fetch + Git Merge")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-### To set your identity:
+#### To set your identity:
 ```
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
@@ -254,6 +242,7 @@ git config --global user.email johndoe@example.com
 ```
 git config --global core.editor emacs
 ```
+
 ### To enable color:
 ```
 git config --global color.ui true
