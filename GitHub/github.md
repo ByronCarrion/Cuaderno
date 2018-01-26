@@ -203,6 +203,8 @@ git config --global alias.superlog "log --graph --abbrev-commit --decorate --dat
 ## GIT SUPER-LOG - ALIAS
 
 - :link: [Alias](https://git.wiki.kernel.org/index.php/Aliases)
+- :link: [Alias stackoverflow.com question](https://stackoverflow.com/questions/23925998/alias-to-create-aliases#23928098)
+
 
 En linux los alias creados son se almacenan en al archivo `~.gitconfig` 
 ```
