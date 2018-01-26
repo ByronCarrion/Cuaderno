@@ -1,5 +1,5 @@
 
-#Git & GitHub
+# Git & GitHub
 
 ![GitHub](img/Octocat.png "GitHub")
 
@@ -141,33 +141,34 @@ You can initialize this repository with code from a Subversion, Mercurial, or TF
 
 ## Git Workflow – Iteración Básica
 
-Empezar a rastrear la carpeta del proyecto, iniciar un repositorio:
+### Empezar a rastrear la carpeta del proyecto, iniciar un repositorio:
 ```
 git init
 ```
 
-Mostrar el punto donde nos encontramos en la iteración, qué archivos podemos guardar o ver el estado:
+### Mostrar el punto donde nos encontramos en la iteración, qué archivos podemos guardar o ver el estado:
 ```
 git status
 ```
 
-Agregar archivos al área de preparación (Staging):
+### Agregar archivos al área de preparación (Staging):
 ```
 git add favicon.ico
 
 git status
 ```
-Agregar todos los archivos a Staging Area:
+
+### Agregar todos los archivos a Staging Area:
 ```
 git add –A
 ```
 
-Primer commit:
+### Primer commit:
 ```
 git commit –m "Creación inicial del proyecto. Assets, Imágenes"
 ```
 
-Modificar el código y hacer un segundo Commit:
+### Modificar el código y hacer un segundo Commit:
 ```
 Modificar index.html
 
@@ -178,7 +179,7 @@ git add index.html
 git commit –m "Título y descripción agregadas."
 ```
 
-Verificar los cambios realizados:
+### Verificar los cambios realizados:
 ```
 git log
 
@@ -189,12 +190,12 @@ git log --oneline --graph
 git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' –all
 ```
 
-Asignar un Alias a un comando largo de Git:
+### Asignar un Alias a un comando largo de Git:
 ```
 git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 ```
 
-Cuando se hizo el ejemplo en el video sobre el alias superlog, se fue la palabra 'git' por eso no funciono, así me funciono a mi:
+### Cuando se hizo el ejemplo en el video sobre el alias superlog, se fue la palabra 'git' por eso no funciono, así me funciono a mi:
 ```
 git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 ```
