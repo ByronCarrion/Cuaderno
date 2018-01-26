@@ -200,9 +200,28 @@ git config --global alias.superlog "log --graph --abbrev-commit --decorate --dat
 ```
 git config --global alias.superlog "log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 ```
-## GIT SUPER-LOG
+## GIT SUPER-LOG - ALIAS
+
+- :link: [Alias](https://git.wiki.kernel.org/index.php/Aliases)
+
+En linux los alias creados son se almacenan en al archivo `~.gitconfig` 
+```
+[alias]
+    st = status
+    ci = commit -v
+```
+Formato para hacer "alias"
+```
+git config --global alias.<alias> <git-command>
+```
+
+Cuando se usa **oh-my-zsh** se instala un plug-in de github el cual se encuentra en la ruta
+```
+.oh-my-zsh/plugins/git/git.plugin.zsh
+```
 
 :heavy_exclamation_mark: **NOTA**: :heavy_exclamation_mark: Se cambio el nombre de git superlog -> git slog Para que se sea más rapido escriirlo :heavy_exclamation_mark:
+
 ```
 git config --global alias.slog "log --graph --abbrev-commit --decorate --date=default --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'" --all
 ```
