@@ -532,7 +532,7 @@ Usage: dockerd COMMAND
 
 ### CONFIGURACION DEL ARCHIVO DE DOCKER
 
-[Control and configure Docker with systemd](https://docs.docker.com/engine/admin/systemd/, "Control and configure Docker with systemd"):link:
+[Control and configure Docker with systemd](https://docs.docker.com/engine/admin/systemd/, "Control and configure Docker with systemd") :link:
 
 #### Realizar la configuración del archivo de docker ejecutar
 ```
@@ -695,7 +695,7 @@ Se tiene que reiniciar docker para que tome los cambios, para ver que cambio la 
 - Habilitar el modo de DEBUG
 - Cambiar el registro por defecto
 - Configuraciones de seguridad (TLS)
-    - Referencia completa [Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/):link:
+    - Referencia completa [Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/) :link:
 
 ## Logs del demonio de Docker
 + Especificar el parámetro `--log-level` en cualquiera de sus variantes **(DOCKER_OPTS / interactiva)**
@@ -972,7 +972,7 @@ link -> [Docker reference](https://docs.docker.com/engine/reference/builder/) :l
 - Los comandos docker export y docker import
     - Las imágenes en Docker hub pueden ser públicas o privadas
 
-:link:[Docker Hub](https://hub.docker.com)
+:link: [Docker Hub](https://hub.docker.com)
 
 ## Etiquetando las imágenes
 - Utilizado para renombrar imágenes locales antes de compartirlas en un repositorio
@@ -1186,7 +1186,7 @@ $ echo subjectAltName = IP:192.168.1.20,IP:127.0.0.1 > extfile.cnf
 ```
 + **PASO DOS** -> Firmar la clave del servidor con la autoridad autorizante - **Firmar la clave pública con nuestra CA**
 
-:link:[Link Protect the Docker daemon socket](https://docs.docker.com/engine/security/https/)
+:link: [Link Protect the Docker daemon socket](https://docs.docker.com/engine/security/https/)
 __________________________________
 `Since TLS connections can be made via IP address as well as DNS name, the IP addresses need to be specified when creating the certificate. 
 For example, to allow connections using 10.10.10.20 and 127.0.0.1:`
