@@ -215,6 +215,11 @@ Formato para hacer "alias"
 git config --global alias.<alias> <git-command>
 ```
 
+Formato para remover un alias
+```
+$ git config --global --unset alias.<NOMBRE-DEL-ALIAS>
+```
+
 Cuando se usa **oh-my-zsh** se instala un plug-in de github el cual se encuentra en la ruta
 ```
 .oh-my-zsh/plugins/git/git.plugin.zsh
