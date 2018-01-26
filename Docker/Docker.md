@@ -806,7 +806,7 @@ $ docker build -t [NOMBRE_DE_LA_IMAGEN:NOMBRE_DE_TAG][RUTA_DE_DONDE_SE_ENCUENTRA
 - Si la condición anterior se cumple, docker utiliza la cache en vez de ejecutar el paso nuevamente.
 - Docker utuiliza comparación de estrings exactas para checar con la cache.
     - Simplemente cambiando el orden de las instrucciones la cache se invalida.
-- Para deshabilitar la cache manuelmente se pude utilizar la bandera `-- no-cache`
+- Para deshabilitar la cache manuelmente se pude utilizar la bandera `--no-cache`
 ```
 $ docker build --no-cache -t imagen .
 ```
@@ -865,7 +865,7 @@ CMD ["ping", "-c", "10", "www.google.com"]
 - También posee forma de **EXEC** y **Shell**
 - El contenedor funciona a modo de ejecutable
 
-El comando ENTRYPOINT sirve para poder usar comandos de forma interactiva y se puden ocupar en conjunto con el comando **CMD**
+El comando `ENTRYPOINT` sirve para poder usar comandos de forma interactiva y se puden ocupar en conjunto con el comando **CMD**
 y se tienen que poner en el **formato EXEC** "_si no, no funciona._"
 ```
 FROM ubuntu
@@ -1643,10 +1643,7 @@ testhost
 
 
 
-
-
-
-
+ 
 
 
 
