@@ -123,7 +123,7 @@ Para subir los cambios al repositorio -> git push origin master
 
 *…or create a new repository on the command line*
 ```
-echo "# Muebleria-Landing-Page" >> README.md
+echo "# xxxxxxxxx-xxxxxxx-xxxxxxx" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
