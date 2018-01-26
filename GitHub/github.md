@@ -3,12 +3,12 @@
 
 ![GitHub](img/Octocat.png "GitHub")
 
-- :link:[git](https://github.com/git/git)
-- :link:[git](https://git-scm.com/)
-- :link:[gitimmersion.com](http://gitimmersion.com/index.html)
-- :link:[learngitbranching](https://learngitbranching.js.org/)
-- :link:[GitHub Guides](https://guides.github.com/)
-- :link:[github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet)
+- :link: [git](https://github.com/git/git)
+- :link: [git](https://git-scm.com/)
+- :link: [gitimmersion.com](http://gitimmersion.com/index.html)
+- :link: [learngitbranching](https://learngitbranching.js.org/)
+- :link: [GitHub Guides](https://guides.github.com/)
+- :link: [github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet)
 
 
 ### Instalación
