@@ -9,6 +9,7 @@
 - :link: [learngitbranching](https://learngitbranching.js.org/)
 - :link: [GitHub Guides](https://guides.github.com/)
 - :link: [github-cheat-sheet](https://github.com/tiimgreen/github-cheat-sheet)
+- :link: [EMOJI CHEAT SHEET](https://www.webpagefx.com/tools/emoji-cheat-sheet/)
 
 
 ### Instalación
