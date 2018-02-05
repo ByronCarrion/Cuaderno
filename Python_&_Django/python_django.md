@@ -93,8 +93,7 @@ export PROJECT_HOME=$HOME/[NOMBRE_DE_USUARIO]
 source /usr/local/bin/virtualenvwrapper.sh (esto es para las distribuciones debian y ubuntu)
 ```
 
-Salvar y cerrar el editor
-Salir y volver a acceder
+Salvar y cerrar el editor / Salir y volver a acceder
 ```
 $ exit
 ```
