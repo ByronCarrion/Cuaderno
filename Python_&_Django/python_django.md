@@ -191,8 +191,8 @@ workon: list or change working virtualenvs
 
 ## Estructura de django para crear proyectos
 
-1. - Crear una carpeta con el nombre de la carpeta del proyecto con la primera letra en mayúsculas.
-2. - `$ mkvirtualenv <Nombre del ambiente virtual>` (Esto es para crear en una sola carpeta las carpetas bin, include, lib, local) y la carpeta la crea en `/home/rodolfo/.virtualenvs/<NOMBRE DE LA CARPETA CREADA>
+*1.* Crear una carpeta con el nombre de la carpeta del proyecto con la primera letra en mayúsculas.
+*2.* `$ mkvirtualenv <Nombre del ambiente virtual>` (Esto es para crear en una sola carpeta las carpetas bin, include, lib, local) y la carpeta la crea en `/home/rodolfo/.virtualenvs/<NOMBRE DE LA CARPETA CREADA>`
 
 - Para instalar django (estando dentro del ambiente virtual),
 
@@ -200,7 +200,7 @@ workon: list or change working virtualenvs
 pip install django
 ```
 
-### 3. Crear un proyecto en django
+*3.* Crear un proyecto en django
 ```
 $django-admin.py startproject [NombreDeTuProyecto]
 ```
