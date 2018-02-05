@@ -18,22 +18,22 @@ $ sudo apt-get install python-pip python3-pip python3-dev python-dev build-essen
 $ pip install -r requirements.txt
 ```
 
-# Actualizar el índice local de paquetes
+### Actualizar el índice local de paquetes
 ```
 $ sudo apt-get update
 ```
 
-# Actualizar todos los paquetes que puedan ser actualizados
+### Actualizar todos los paquetes que puedan ser actualizados
 ```
 $ sudo apt-get dist-upgrade
 ```
 
-# Remover los paquetes que no sean necesarios
+### Remover los paquetes que no sean necesarios
 ```
 $ sudo apt-get autoremove
 ```
 
-# Reiniciar la maquina (solo necesario para algunas actualizaciones)
+### Reiniciar la maquina (solo necesario para algunas actualizaciones)
 ```
 $ sudo reboot
 ```
