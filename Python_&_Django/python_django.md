@@ -1098,11 +1098,11 @@ Posterior se tiene que eliminar de la carpeta `/home/` la carpeta con el nombre 
 >-G, --groups -> Al grupo al que se añadirá.  
 -a, --append -> Añadir el usuario al grupo suplementario y solo se usa con "-G"
 
-Guide to **adduser** - **useradd**
+[Guide to **adduser** - **useradd**](https://www.tecmint.com/add-users-in-linux/)
 
 3. Instalar un **FireWall** -> UFW (Uncomplicated Firewall)
 
-Link extra -> UFW Essentials: Common Firewall Rules and Commands
+Link extra -> [UFW Essentials: Common Firewall Rules and Commands](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands)
 
 #### Para instalar UFW
 ```
