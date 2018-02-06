@@ -1095,30 +1095,30 @@ Posterior se tiene que eliminar de la carpeta `/home/` la carpeta con el nombre 
 # usermod -aG sudo [NOMBRE_DE_USUARIO]
 ```
 
->* -G, --groups -> Al grupo al que se añadirá.
->* -a, --append -> Añadir el usuario al grupo suplementario y solo se usa con "-G"
+>-G, --groups -> Al grupo al que se añadirá.  
+-a, --append -> Añadir el usuario al grupo suplementario y solo se usa con "-G"
 
-Guide to "adduser" - "useradd"
+Guide to **adduser** - **useradd**
 
-3. Instalar un "FireWall" -> UFW (Uncomplicated Firewall)
+3. Instalar un **FireWall** -> UFW (Uncomplicated Firewall)
 
 Link extra -> UFW Essentials: Common Firewall Rules and Commands
 
 #### Para instalar UFW
-
+```
 $ sudo apt-get install ufw
+```
 
 #### Para usar UFW con IPV6 - LAS CONFIGURACIONES PARA IPV4 FUNCIONAN PARA IPV6
 
-Si el servidor Ubuntu tiene habilitado IPv6, asegurarse de que UFW esté configurado para admitir IPv6 para que
-administre reglas de firewall para IPv6 además de IPv4.
-Para hacer esto, abra la configuración de UFW con su editor favorito
+Si el servidor Ubuntu tiene habilitado IPv6, asegurarse de que UFW esté configurado para admitir IPv6 para que  
+administre reglas de firewall para IPv6 además de IPv4.  
+Para hacer esto, abra la configuración de UFW con su editor favorito  
 
+
+`/etc/default/ufw excerpt`
 ```
-/etc/default/ufw excerpt
-...
 IPV6=yes
-...
 ```
 
 #### Revisar el status y las reglas, de forma predeterminada UFW esta deshabilitado
@@ -1258,22 +1258,19 @@ sudo ufw allow from 15.15.15.0/24 to any port 22
 ```
 
 #### Si desea crear una regla de firewall que solo se aplique a una interfaz de red específica,
-puede hacer especificando "**allow in on**" seguido del nombre de la interfaz de red.
-
-Es posible que desee buscar sus interfaces de red antes de continuar.
+puede hacer especificando "**allow in on**" seguido del nombre de la interfaz de red.  
+Es posible que desee buscar sus interfaces de red antes de continuar.  
 
 ```
 ip addr
 ```
-```
 
 Output Excerpt:
-
-...
+```
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state
-...
+
 3: eth1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default
-...
+
 ```
 
 Se tiene que identificar la red la interfas de la red publica, y despues se podria habilitar el servicio HTTP
@@ -1293,9 +1290,8 @@ sudo ufw allow in on eth1 to any port 3306
 ```
 
 ### Denegar conexiones
-De menera predeterminada UFW niega peticiones, pero si se requiere enfatizar o denegar especificas conexiones de uan IP especifica o subred
-
-Para denegar, se pueden ocupar las reglas antes mencionadas, solo lo que se necesita hacer es cambiar "alow" por "deny"
+De menera predeterminada UFW niega peticiones, pero si se requiere enfatizar o denegar especificas conexiones de uan IP especifica o subred  
+Para denegar, se pueden ocupar las reglas antes mencionadas, solo lo que se necesita hacer es cambiar "alow" por "deny"  
 
 #### Denegar conexiones HTTP
 
