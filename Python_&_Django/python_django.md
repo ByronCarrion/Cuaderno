@@ -1270,7 +1270,6 @@ Output Excerpt:
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state
 
 3: eth1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default
-
 ```
 
 Se tiene que identificar la red la interfas de la red publica, y despues se podria habilitar el servicio HTTP
