@@ -1341,6 +1341,6 @@ sudo ufw delete allow http
 
 #### REINICIAR EL SERVICIO ufw
 Si ya tiene las reglas de UFW configuradas pero decide que desea comenzar de nuevo, puede usar el comando de reinicio
-
 ```
 sudo ufw reset
+```
