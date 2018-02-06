@@ -1034,9 +1034,10 @@ A las llaves creadas se les cambian los permisos para que solo sean de solo lect
 ```
 
 >4 es para "lectura"
->2 es para "escritura"
->1 es para "ejecución"
->0 es para "denegar permiso"
+2 es para "escritura"
+1 es para "ejecución"
+0 es para "denegar permiso"
+
 ```
 chmod [DIGITIGO-DUEÑO][DIGITO-GRUPO][DIGITO-RESTO] <ARCHIVO>
 ```
