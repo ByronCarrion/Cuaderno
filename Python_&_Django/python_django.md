@@ -242,13 +242,15 @@ Esto se hace para poder crear la BD inicial del proyecto y despues se tiene que 
 $ python manage.py createsuperuser
 ```
 
-*NOTA*: Se tiene que crear un usuario (mack/rodolfo) y la contraseña tiene que cimplir con los requerimientos NUEVOS de seguridad (Django mack/rodolfo 2017)
+*NOTA*: Se tiene que crear un usuario  y la contraseña tiene que cimplir con los requerimientos NUEVOS de seguridad.
 
-Para correr el proyecto se ejecuta entramos a http://localhost:8000/admin  - http://127.0.0.1:8000/admin y entramos con el usuario y contraseña anterior puestas
+Para correr el proyecto se ejecuta entramos a `http://localhost:8000/admin  - http://127.0.0.1:8000/admin` y entramos con el usuario y contraseña anterior puestas
+```
 $ python manage.py runserver
+```
 
-NOTA: ejecutando el siguiente comando nos muestra todas las opciones que podemos realizar cuando esta correctamente instalado
-
+*NOTA:* ejecutando el siguiente comando nos muestra todas las opciones que podemos realizar cuando esta correctamente instalado
+```
 ./manage.py
 Type 'manage.py help <subcommand>' for help on a specific subcommand.
 
@@ -293,19 +295,25 @@ Available subcommands:
   collectstatic
   findstatic
   runserver
+  ```
 
-Para ejecutar el shell de python ->
+Para ejecutar el shell de python
+```
 $ python manage.py shell
-- Con el shell de python se puede hacer CRUD en la B.D. Para revisar los datos que se modificaron a la tabla -> $
+```
+- Con el shell de python se puede hacer CRUD en la B.D. Para revisar los datos que se modificaron a la tabla -> `$`
 
-### 4.-Crear (app) aplicación en django para un proyecto ->
+4 Crear (app) aplicación en django para un proyecto
+```
 $ python manage.py startapp [NombreDeLaApp] (POR CONVENCIÓN LAS APPS/MODULOS SE CREA SU NOMBRE EN PLURAL)
+```
 
 ## Administrador de django
 ### Cambiar/crear Nuevo Usuario en Django
-
-$ ./manage.py changepassword # POR DEFAULT TOMA EL DE SISTEMA, EN CASO DE NO EXISTIR EL USUARIO Y DE PREFERENCIA SE DEBE DE CREAR UNO NUEVO
-$ ./manage.py createsuperuser # LAS PREGUNTAS SIGUIENTES SE CONTESTAN CORRECTAMENTE
+```
+$ ./manage.py createsuperuser `# LAS PREGUNTAS SIGUIENTES SE CONTESTAN CORRECTAMENTE`
+$ ./manage.py changepassword `# POR DEFAULT TOMA EL DE SISTEMA, EN CASO DE NO EXISTIR EL USUARIO Y DE PREFERENCIA SE DEBE DE CREAR UNO NUEVO`
+```
 
 ### Configuraciones para modificar/mejorar el administrador de django
 
