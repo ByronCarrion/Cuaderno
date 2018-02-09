@@ -71,6 +71,30 @@ canWatchStartWars7(nameSacha, ageSacha)
 canWatchStartWars7(nameSantiago, ageSantiago, true)
 ```
 
+```javascript
+const startWars7 = 'Start Wars: El despertar de la fuerza',
+    pgStartWars7 = 13,
+    nameSacha = 'Sacha',
+    ageSacha = 26,
+    nameSantiago = 'Santiago';
+let ageSantiago = 12
+
+const canWatchStartWars7(name, age, isWhitAdult = false) => {
+    if (age >= pgStartWars7 ){
+        alert(`${name} puede pasar a ver ${startWars7} `)
+    } else if (isWhitAdult) {
+        alert(` ${name} puede pasar a ver ${startWars7}.
+         Aunque su edad es ${age}, se cuentra acompañad@ por un adulto `)
+    } else {
+        alert(` ${name} no puede pasar a ver ${startWars7}.
+        tiene ${age} años y necesita tener ${pgStartWars7} `)
+    }
+}
+
+canWatchStartWars7(nameSacha, ageSacha)
+canWatchStartWars7(nameSantiago, ageSantiago, true)
+```
+
 
 ```javascript
 function platzom(str) {
