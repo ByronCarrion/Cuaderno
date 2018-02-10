@@ -227,6 +227,44 @@ if(gokuSigueVivo())
 ```
 
 ```javascript
+> const nacimiento = new Date(1979, 10, 16)
+> nacimiento
+< Fri Nov 16 1979 00:00:00 GMT-0600 (CST)
+> const hoy = new Date()
+> hoy
+< Sat Feb 10 2018 14:55:32 GMT-0600 (CST)
+> const tiempo = hoy -nacimiento
+> tiempo
+< 1206716132069
+> const tiempoSegundos = tiempo/1000
+> tiempoSegundos
+< 1206716132.069
+> const tiempoMin = tiempoSegundos/60
+> tiempoMin
+< 20111935.534483332
+> const tiempoHoras = tiempoMin/60
+> tiempoHoras
+< 335198.9255747222
+> const proximo = new Date(hoy.getFullYear(),nacimiento.getMonth(),nacimiento.getDate())
+> proximo
+< Fri Nov 16 2018 00:00:00 GMT-0600 (CST)
+> const diasSemana1 = [
+    "Domingo",
+    "Lunes",
+    "Martes",
+    "Miercoles",
+    "Jueves",
+    "Viernes",
+    "Sabado",
+ ]
+> console.log(diasSemana1[proximo.getDay()])
+  Viernes
+
+
+```
+
+
+```javascript
 const p1 = {
     x: 0,
     y: 4
