@@ -79,7 +79,7 @@ const startWars7 = 'Start Wars: El despertar de la fuerza',
     nameSantiago = 'Santiago';
 let ageSantiago = 12
 
-const canWatchStartWars7(name, age, isWhitAdult = false) => {
+const canWatchStartWars7 = (name, age, isWhitAdult = false) => {
     if (age >= pgStartWars7 ){
         alert(`${name} puede pasar a ver ${startWars7} `)
     } else if (isWhitAdult) {
