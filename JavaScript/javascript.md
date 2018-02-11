@@ -259,9 +259,44 @@ if(gokuSigueVivo())
  ]
 > console.log(diasSemana1[proximo.getDay()])
   Viernes
-
-
 ```
+```javascript
+let hoy = new Date();
+let diasSemana = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
+const MESES = ['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre', 'Diciembre',]
+
+console.log(`Operacion realizada el dia ${hoy.getDate()} de 
+            ${MESES[hoy.getMonth()]} de ${hoy.getFullYear()}`);
+
+// Operacion realizada el dia 11 de Enero de 2018
+
+const nacimiento = new Date(1979, 11, 16);
+
+console.log(`Fecha de nacimiento: Dia ${nacimiento.getDate()} 
+            del mes ${MESES[nacimiento.getMonth()]} del año ${nacimiento.getFullYear()}`);
+
+// Fecha de nacimiento: Dia 16 del mes Noviembre del año 1979
+
+const tiempo = hoy.getTime() - nacimiento.getTime();
+console.log(`Tiempo ->: ${tiempo}`);
+
+const tiempoDias = tiempo/1000/60/60/24;
+console.log(`Tiempo en dias -> ${tiempoDias} `);
+
+const tiempoAnos = Math.floor(tiempoDias/365);
+console.log(`tiempoAnos -> ${tiempoAnos}`);
+
+const tiempoMeses = Math.floor((tiempoDias - (tiempoAnos * 365)) /31);
+console.log(`tiempoMeses -> ${tiempoMeses}`);
+
+const dias = Math.floor(tiempoDias - (tiempoAnos * 365) - (tiempoMeses * 31));
+console.log(`dias -> ${dias}`);
+
+console.log(`Han pasado ${tiempoDias} años ${tiempoMeses} meses dias ${dias} desde mi nacimiento`)
+// Han pasado 13937.549797256945 años 2 meses dias 5 desde mi nacimiento
+
+``
+
 
 
 ```javascript
