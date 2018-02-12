@@ -7,12 +7,14 @@ console.log(`El area de un triangulo de base 5 y altura 7 es: ${5 *7 / 2}`)
 
 
 ```javascript
+// CALCULAR LABASE DE UN TRIANGULO
 let base = 5
 let height = 7
 console.log(`El area de un triangulo de base ${base} y ${height}  es: ${base * height / 2}`)
 ```
 
 ```javascript
+// CALCULAR LABASE DE UN TRIANGULO
     let base = 5
     let height = 7
     function triangleArea(base, height){
@@ -24,6 +26,7 @@ console.log(`El area de un triangulo de base ${base} y ${height}  es: ${base * h
 
 
 ```javascript
+// CALCULAR LABASE DE UN TRIANGULO
 let base = 5
 let height = 7
 let triangleArea = (base, height) => base * height / 2
@@ -34,6 +37,7 @@ console.log(`El area de un triangulo de base ${base} y ${height}  es: ${triangle
 
 
 ```javascript
+// CALCULAR LABASE DE UN TRIANGULO
 let base = 5
 let height = 7
 const triangleArea = (base, height) => { //ARROW FUNTIONS
@@ -46,6 +50,7 @@ console.log(`El area de un triangulo de base ${base} y ${height}  es: ${triangle
 
 
 ```javascript
+// RESTRICCION POR EDAD
 const startWars7 = 'Start Wars: El despertar de la fuerza'
 const pgStartWars7 = 13
 
@@ -72,6 +77,7 @@ canWatchStartWars7(nameSantiago, ageSantiago, true)
 ```
 
 ```javascript
+// RESTRICCION POR EDAD
 const startWars7 = 'Start Wars: El despertar de la fuerza',
     pgStartWars7 = 13,
     nameSacha = 'Sacha',
@@ -97,6 +103,7 @@ canWatchStartWars7(nameSantiago, ageSantiago, true)
 
 
 ```javascript
+// MANEJO DE STRINGS
 function platzom(str) {
     let translation = str
 
@@ -150,6 +157,7 @@ console.log(platzom("sometemos")) //SoMeTeMoS
 ```
 
 ```javascript
+// PROMEDIO CORRIDO POR SEMANA
 // math.floor//rendondea hacia abajo 3.9 = 3
 // math.ceil//redondea para arriba 3.1 = 4
 // math.round// redondea dependiendo 3.1 = 3, 3.5 = 4
@@ -183,6 +191,7 @@ console.log(` En promedio ${nombre} corrio ${promedioKms.toFixed(2)} kms `)
 ```
 
 ```javascript
+//CALCULAR GOLPES ENTRE GOKU SV SUPERMAN Y CALCULAR QUIEN GANA
 let vidaGoku = 100;
 let vidaSuperman = 100;
 
@@ -227,6 +236,7 @@ if(gokuSigueVivo())
 ```
 
 ```javascript
+// CALCULAR LA FECHA DE NACIMIENTO
 > const nacimiento = new Date(1979, 10, 16)
 > nacimiento
 < Fri Nov 16 1979 00:00:00 GMT-0600 (CST)
@@ -261,6 +271,7 @@ if(gokuSigueVivo())
   Viernes
 ```
 ```javascript
+// CALCULAR LA FECHA DE NACIMIENTO
 let hoy = new Date();
 let diasSemana = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo']
 const MESES = ['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre', 'Diciembre',]
@@ -295,11 +306,10 @@ console.log(`dias -> ${dias}`);
 console.log(`Han pasado ${tiempoDias} años ${tiempoMeses} meses dias ${dias} desde mi nacimiento`)
 // Han pasado 13937.549797256945 años 2 meses dias 5 desde mi nacimiento
 
-``
-
-
+```
 
 ```javascript
+// DISTANCIA ENTRE DOS PUNTOS
 const p1 = {
     x: 0,
     y: 4
@@ -323,11 +333,17 @@ console.log(distancia(p1,p2))
 ```
 
 ```javascript
+// DISTANCIA ENTRE DOS PUNTOS
+
 const p1 = {
     x: 0,
     y: 4,
-    moverEnX: function (x) { this.x += x }, // SE HACE REFERENCIA AL VALOR DE x QUE VALE 0
-    moverEnY: function (y) { this.y += y }, // SE HACE REFERENCIA AL VALOR DE Y QUE VALE 4
+    moverEnX(x){ // HACE LA MISMA FUNCIONQUE PARA P2
+        this.x += x
+    },
+    moverEnX(y){ // HACE LA MISMA FUNCIONQUE PARA P2
+        this.y += y
+    }
 }
 
 const p2 = {
@@ -343,11 +359,13 @@ function distancia(p1, p2){
     
     return Math.sqrt(x * x + y * y).toFixed(2)
 }
-
+// PARA MOVER CUALQUIERA DE LOS PUNTOS -> `p2.moverEnX(3)`
 console.log(distancia(p1,p2))
 ```
 
 ```javascript
+// DEFINIR LA CLASE/PROTOTIPO "Punto"
+
 function Punto(x, y){ //PROPOTIPO
     this.x = x // CONSTRUCTOR
     this.y = y
@@ -403,6 +421,7 @@ console.log(p1.distancia(p2))
 //     return Math.sqrt(x * x + y * y).toFixed(2)
 // }
 
+// DEFINIR LA CLASE/PROTOTIPO "Punto" - Object.create
 const Punto = {
     init: function(x, y){
         this.x = x
@@ -438,13 +457,14 @@ console.log(p1.distancia(p2))
 ```
 
 ```javascript
+// DEFINIR LA CLASE/PROTOTIPO "Punto" - Class de Javascript
 class Punto{ // SE CREA UN NUEVO OBJETO DE TIPO PUNTO
     constructor(x, y){ // DICE QUE ES CLASE PERO FUNCIONA COMO PROTOTIPO
         this.x = x
         this.y = y
     }
 
-    moverEnX (x) {
+    moverEnX (x) { // METODOS NO ES NECESARIO EL KEYWORD "function"
         this.x += x
     }
 
