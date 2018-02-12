@@ -492,7 +492,54 @@ console.log(p1.distancia(p2))
 
 ```
 
+```javascript
 
+var nombre = "Sacha"
+
+function saludar10() {
+  var nombre
+  if (true) {
+     nombre = "Eric"
+  }
+  
+  console.log(`Hola ${nombre}`)
+}
+
+saludar("Sacha")
+console.log(`La variable nombre tiene el valor ${nombre}`)
+
+
+function saludarASacha10() {
+  const nombre = "Sacha"
+
+  for (let i = 0; i < 10; i++) {
+    console.log(`Hola ${nombre}`)
+  }
+}
+
+saludarASacha10()
+
+```
+
+```javascript
+// OPERACIONES CON METODOS DE ARRAYS
+
+function suma(...numeros) {
+  return numeros.reduce(function (acum, numero) {
+    acum += numero
+    return acum
+  }, 0) // <- ES EL VALOR INICIAL DEL ACOMULADOR
+}
+
+const dobles = (...numeros) => numeros.map(numero => numero * 2)
+
+const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
+
+```
+- [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
+- [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
+- [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map)
+- [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
 
 
 
