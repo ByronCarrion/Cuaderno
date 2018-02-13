@@ -567,6 +567,21 @@ saludarRomero("Jorge")
 
 ```
 
+```javascript
+// CLOSURES JAVASCRIPT EJEMPLO 2
+function makePrefixer(antes) {
+  return function palabra(palabra) {
+    console.log(`${antes}${palabra}`)
+  }
+}
+
+const prefijoRe = makePrefixer("re")
+
+makePrefixer("bueno")
+
+// rebueno
+```
+
 
 
 
