@@ -582,6 +582,15 @@ makePrefixer("bueno")
 // rebueno
 ```
 
+## Estructura del lenguaje Js
+
+![](img/js_01.jpg "Estructura del lenguaje JavaScript")
+![](img/js_02.jpg "Estructura del lenguaje JavaScript")
+![](img/js_03.jpg "Estructura del lenguaje JavaScript")
+![](img/js_04.jpg "Estructura del lenguaje JavaScript")
+![](img/js_05.jpg "Estructura del lenguaje JavaScript")
+![](img/js_06.jpg "Estructura del lenguaje JavaScript")
+![](img/js_07.jpg "Estructura del lenguaje JavaScript")
 
 
 
