@@ -1,7 +1,5 @@
 ejemplos_javascript_curso_
 
-- :link: [git](https://github.com/git/git)
-
 ### Links
 * :link: [The best front-end hacking cheatsheets — all in one place.](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
 * :link: [ES2015+ cheatsheet A quick overview of new JavaScript features in ES2015, ES2016, ES2017 and beyond](https://devhints.io/es6)
