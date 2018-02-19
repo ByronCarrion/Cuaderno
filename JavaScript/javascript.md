@@ -1,5 +1,16 @@
 ejemplos_javascript_curso_
 
+## Estructura del lenguaje Js
+
+![](img/js_01.jpg "Estructura del lenguaje JavaScript")
+![](img/js_02.jpg "Estructura del lenguaje JavaScript")
+![](img/js_03.jpg "Estructura del lenguaje JavaScript")
+![](img/js_04.jpg "Estructura del lenguaje JavaScript")
+![](img/js_05.jpg "Estructura del lenguaje JavaScript")
+![](img/js_06.jpg "Estructura del lenguaje JavaScript")
+![](img/js_07.jpg "Estructura del lenguaje JavaScript")
+
+
 ```javascript
 console.log("El area de un triangulo de base 5 y altura 7 es: " + 5 * 7 / 2)
 console.log(`El area de un triangulo de base 5 y altura 7 es: ${5 *7 / 2}`)
@@ -582,15 +593,213 @@ makePrefixer("bueno")
 // rebueno
 ```
 
-## Estructura del lenguaje Js
+### EJEMPLO QUE AL PRECIONAR LAS TECLAS SE ACTIVA UN SONIDO Y SE MUESTRA EN HTML Y CSS QUE TECLA SE PRECIONO
+```javascript
 
-![](img/js_01.jpg "Estructura del lenguaje JavaScript")
-![](img/js_02.jpg "Estructura del lenguaje JavaScript")
-![](img/js_03.jpg "Estructura del lenguaje JavaScript")
-![](img/js_04.jpg "Estructura del lenguaje JavaScript")
-![](img/js_05.jpg "Estructura del lenguaje JavaScript")
-![](img/js_06.jpg "Estructura del lenguaje JavaScript")
-![](img/js_07.jpg "Estructura del lenguaje JavaScript")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS Drum Kit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">hihat</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">kick</span>
+    </div>
+    <div data-key="70" class="key">
+      <kbd>F</kbd>
+      <span class="sound">openhat</span>
+    </div>
+    <div data-key="71" class="key">
+      <kbd>G</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="72" class="key">
+      <kbd>H</kbd>
+      <span class="sound">ride</span>
+    </div>
+    <div data-key="74" class="key">
+      <kbd>J</kbd>
+      <span class="sound">snare</span>
+    </div>
+    <div data-key="75" class="key">
+      <kbd>K</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="76" class="key">
+      <kbd>L</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+  <audio data-key="65" src="sounds/clap.wav"></audio>
+  <audio data-key="83" src="sounds/hihat.wav"></audio>
+  <audio data-key="68" src="sounds/kick.wav"></audio>
+  <audio data-key="70" src="sounds/openhat.wav"></audio>
+  <audio data-key="71" src="sounds/boom.wav"></audio>
+  <audio data-key="72" src="sounds/ride.wav"></audio>
+  <audio data-key="74" src="sounds/snare.wav"></audio>
+  <audio data-key="75" src="sounds/tom.wav"></audio>
+  <audio data-key="76" src="sounds/tink.wav"></audio>
+
+<script>
+  function playSound(e) {
+  //console.log(e.keyCode); // SE CAPTURA EL CODIGO DE LA TECLA PRESIONADA 65
+  // BUSCAR EL AUDIO DEPENDIENDO DE LA TECLA PRECIONADA
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+  //console.log(audio); // <audio data-key="83" src="sounds/hihat.wav"></audio>
+  if (!audio) return; // SI NO SE ENCUENTRA LA TECLA SE PARA LA FUNCION
+  // console.log(audio.currentTime);
+  audio.play();
+  audio.currentTime = 0; // REGRESAR AL INICIO DEL AUDIO PARA REPETIRLO
+  //console.log(key)
+  key.classList.add('playing'); // SE AÑADE LA CLASE "playing"
+};
+
+  function removeTransition(e){
+    // console.log(e);
+    // SE SALTA SI NO ES 'transform'
+    if (e.propertyName !== 'transform') return; // EN CSS EN EL EVENTO "TransitionEvent" SE BUSCA LA PROPIEDAD "propertyName"
+    // console.log(e.propertyName);
+    // console.log(this); // <div data-key="65" class="key playing"> // PROVIENEN DE key DEL VALOR DE keys
+    this.classList.remove('playing'); // SE REMUEVE LA CLASE 'playing'
+  }
+
+  const keys = document.querySelectorAll('.key'); // REGRESA NODO DE TECLAS OCUPADAS 
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  // console.log(keys);
+  window.addEventListener('keydown', playSound); // EN LA VENTANA WINDOWS SE BUSCA EL EVENTO TECLA Y SE ALAMACENA EN EL EVENTO(e) DE LA FUNCION
+</script>
+
+
+</body>
+</html>
+
+
+```
+
+### EJEMPLO PARA HACER UN RELOG CON MANESILLAS
+```javascript
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background:#018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background-size:cover;
+      font-family:'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display:flex;
+      flex:1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border:20px solid white;
+      border-radius:50%;
+      margin:50px auto;
+      position: relative;
+      padding:2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width:50%;
+      height:6px;
+      background:black;
+      position: absolute;
+      top:50%;
+      /*ESTILOS MODIFICADOS*/
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.05s;
+      transition-timing-function: cubic-bezier(0.33, 3.46, 0.58, 1);
+    }
+
+  </style>
+
+  <script>
+  // SE SELECCIONA LA MANESILLA SOLO DE SEGUNDOS POR LA CLASE
+  const secondHand = document.querySelector('.second-hand');
+  const minsHand = document.querySelector('.min-hand');
+  const hourHand = document.querySelector('.hour-hand');
+
+  function setDate(){
+    const now = new Date();
+    const seconds = now.getSeconds();
+    const secondsDegrees = ((seconds / 60) * 360) + 90;
+    secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+
+    const mins = now.getMinutes();
+    const minsDegrees = ((mins / 60) * 360) + 90;
+    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+    
+    const hours = now.getHours();
+    const hoursDegrees = ((hours / 12) * 360) + 90;
+    hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+    console.log(`${hours} - ${secondsDegrees} - ${minsDegrees}`);
+  }
+
+  setInterval(setDate, 1000);
+
+  </script>
+</body>
+</html>
+
+
+
+```
 
 
 
