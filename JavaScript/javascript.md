@@ -1,5 +1,15 @@
 ejemplos_javascript_curso_
 
+- :link: [git](https://github.com/git/git)
+
+### Links
+* :link: [The best front-end hacking cheatsheets — all in one place.](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
+* :link: [ES2015+ cheatsheet A quick overview of new JavaScript features in ES2015, ES2016, ES2017 and beyond](https://devhints.io/es6)
+* :link: [JavaScript Cheat Sheet - OverAPI](http://overapi.com/javascript)
+* :link: [JavaScript in one page](http://www.cheat-sheets.org/sites/javascript.su/#arrayDescription)
+* :link: [JavaScript Regular Expression - Cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
+* :link: [JavaScript Event KeysCodes](http://keycode.info/)
+
 ## Estructura del lenguaje Js
 
 ![](img/js_01.jpg "Estructura del lenguaje JavaScript")
