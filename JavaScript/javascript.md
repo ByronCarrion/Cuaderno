@@ -541,6 +541,31 @@ saludarASacha10()
 ```
 
 ```javascript
+// EJEMPLO OPERADOR Spread (...)
+
+var a, b, c, d, e;  
+a = [1,2,3];  
+b = "dog";  
+c = [42, "cat"];  
+  
+// Using the concat method.  
+d = a.concat(b, c);  
+  
+// Using the spread operator.  
+e = [...a, b, ...c];  
+  
+console.log(d);  
+console.log(e);  
+  
+// Output:  
+// 1, 2, 3, "dog", 42, "cat"  
+// 1, 2, 3, "dog", 42, "cat" 
+
+
+```
+
+
+```javascript
 // OPERACIONES CON METODOS DE ARRAYS
 
 function suma(...numeros) {
@@ -810,6 +835,7 @@ makePrefixer("bueno")
 ```
 ### EJEMPLO DE REDUCE, PUSH, MAP, FILTER
 ```javascript
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -884,15 +910,27 @@ makePrefixer("bueno")
         }, 0); // SE INICIALISA A CERO LA VARIALE 'acomuladorTotal' O SE PUEDE DECLARAR ANTES CON CERO
         console.log(totalYears);
 
-
-
-
-
     // 5. Sort the inventors by years lived
+
+        let masBiejo = inventors.sort(function(a, b){
+            let primerPersona = a.passed - a.year;
+            let segundaPersona = b.passed - b.year;
+                return segundaPersona < primerPersona ? 1 : -1; //SE CAMBIA EL SIGNO PARA SORTEAR DE MAYOR A MENOR
+        });
+        console.table(masBiejo);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+        let category = document.querySelector('.mw-category'); //SE BUSCA DENTRO DE VARIABLE QUE GUARDO ELEMENTOS DEL DOM
+        // let links = category.querySelectorAll('a'); // TOMA LOS VALORES DEL DOM COMO UN NODO
+        // let links = Array.from(category.querySelectorAll('a')); // SE CONVIERTEN EL NODO EN ARRAY
+        let links = [...category.querySelectorAll('a')]; // SE CONVIERTEN EL NODO EN ARRAY CON EL OPERADO SPREAD
+
+        let de = links
+                    .map(links => links.textContent) // POR EL METODO map SE OBTIENE UN ARRAY PARA SACAR EL PARAMETRO DE LA VARIABLE OBJETO links
+                    .filter(streetName => streetName.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
