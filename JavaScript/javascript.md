@@ -923,17 +923,31 @@ makePrefixer("bueno")
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-        let category = document.querySelector('.mw-category'); //SE BUSCA DENTRO DE VARIABLE QUE GUARDO ELEMENTOS DEL DOM
+    //    let category = document.querySelector('.mw-category'); //SE BUSCA DENTRO DE VARIABLE QUE GUARDO ELEMENTOS DEL DOM
         // let links = category.querySelectorAll('a'); // TOMA LOS VALORES DEL DOM COMO UN NODO
         // let links = Array.from(category.querySelectorAll('a')); // SE CONVIERTEN EL NODO EN ARRAY
-        let links = [...category.querySelectorAll('a')]; // SE CONVIERTEN EL NODO EN ARRAY CON EL OPERADO SPREAD
+    //    let links = [...category.querySelectorAll('a')]; // SE CONVIERTEN EL NODO EN ARRAY CON EL OPERADO SPREAD
 
-        let de = links
-                    .map(links => links.textContent) // POR EL METODO map SE OBTIENE UN ARRAY PARA SACAR EL PARAMETRO DE LA VARIABLE OBJETO links
-                    .filter(streetName => streetName.includes('de'));
+    //    let de = links
+    //                .map(links => links.textContent) // POR EL METODO map SE OBTIENE UN ARRAY PARA SACAR EL PARAMETRO DE LA VARIABLE OBJETO links
+    //                .filter(streetName => streetName.includes('de'));
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    
+        let alpah = people.sort( (primero, segundo) => {
+            // console.log(primero); // VER EL VALOR QUE RESULTA
+            // let separados = primero.split(', '); // CADA VES SE CREA UN ARREGLO DE DOS POR CADA NOMBRE, primero, segundo
+            // console.log(separados); // VER EL VALOR QUE RESULTA DESPUES
+            // let [primi, segundi] = primero.split(', '); // SE ELIMINA EL ARRAY Y SE CREAN EN VARIABLES
+            // console.log(primi, segundi); // VER EL VALOR QUE RESULTA DESPUES
+            let [aPrimi, aSegundi] = primero.split(', '); // SE ELIMINA EL ARRAY Y SE CREAN EN VARIABLES DE PRIMERO
+            let [bPrimi, bSegundi] = segundo.split(', '); // SE ELIMINA EL ARRAY Y SE CREAN EN VARIABLES DE SEGUNDO
+            // console.log(`a1 ${aPrimi} a2 ${aSegundi}--b1 ${bPrimi} b2 ${bSegundi}`);
+            return aPrimi > bPrimi ? 1 : -1;
+        });
+        console.log(alpah);
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
@@ -942,6 +956,7 @@ makePrefixer("bueno")
   </script>
 </body>
 </html>
+
 
 
 ```
