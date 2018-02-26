@@ -971,7 +971,85 @@ makePrefixer("bueno")
 
 ```
 
+### BUSCAR EN LINK (JSON) MIENTRAS ESCRIBES
+```javascript
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+    const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+    const cities = []; // SE CREA ARRAY BACIO PARA LAS CIUDADES
+    // const prom = fetch(endpoint); console.log(prom); // fetch SIEMPRE REGRESA UNA PROMESA, 
+    // PARA TRABAJAR CON LAS PROMESAS SE USA ".then"
+    // fetch(endpoint).then(alotData => console.log(alotData)); // REGRESA MUCHA INFO EN LA RESPUESTA PERO NO JSON
+    fetch(endpoint)
+        .then(alotData => alotData.json()) // EN LA RESPUESTA EN __proto__ HAY UN METODO JSON, QUE REGRESA OTRA PROMESA
+        // .then(data => console.log(data)); // REGRESA UN ARRAY DE OBJETOS QUE SE TIENEN QUE ASIGNAR A cities
+        .then(data => cities.push(...data)); // SE UTILIZA EL OPERADOR 'spread' PARA METERLO EN EL ARRAY 'cities'
+
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function encuentraCoincidencia(palabraBuscar, cities){
+        // HACER FILTRADO DEL ARRAY PARA BUSCAR LA PALABRA
+        return cities.filter(lugar => {
+            const regex = new RegExp(palabraBuscar, 'gi'); // g-> GLOBAL BUSCA EN TODA LA PALABRA, i-> MAYUSCULAS & MINUSCULAS NO IMPORTA
+            // BUSCAR EN EL DICCIONARIO EL CONTENIDO DE LAS LLAVES 'city' Y 'state' EN TODO EL ARRAY 'cities'
+            return lugar.city.match(regex) || lugar.state.match(regex)
+            // encuentraCoincidencia('york', cities);
+        });
+    }
+    // FUNCION PARA MOSTRAR LAS COINCIDENCIAS DE LO QUE SE ESCRIBE EN INPUT
+    function muestraIguales(){
+        // console.log(this.value);
+        const igualArray = encuentraCoincidencia(this.value, cities);
+        // console.log(igualArray);
+        const html = igualArray.map(place => {
+            const regex = new RegExp(this.value, 'gi');
+            const nombreCiudad = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+            const nombreEstado = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+            return `
+                <li>
+                    <span class="name">${nombreCiudad}, ${nombreEstado}</span>
+                    <span class="population">${numberWithCommas(place.population)}</span>
+                </li>
+            `;
+        }).join(''); // SE UNEN TODAS LAS COINCIDENCIAS
+        searchSuggestions.innerHTML = html; // A LA CLASE '.suggestions' SE LE CAMBIA EL CONTENIDO EN html
+
+    }
+    // SE BUSCAN LAS CLASES '.seach' Y '.suggestions' 
+    const searchInput = document.querySelector('.search');
+    const searchSuggestions = document.querySelector('.suggestions');
+    // EN LA CLASE 'searchInput' SE BUSCAN CAMBIOS Y CUANDO OCURRA SE EJECUTA LA FUNCION 'muestraIguales'
+    searchInput.addEventListener('change', muestraIguales);
+    // EN LA CLASE 'searchInput' SE BUSCAN CAMBIOS DE 'tecla arriba' Y CUANDO OCURRA SE EJECUTA LA FUNCION 'muestraIguales'
+    searchInput.addEventListener('keyup', muestraIguales); // MOSTRAR CAMBIOS CUANDO SE ESCRIBA
+
+
+
+</script>
+  </body>
+</html>
+
+
+```
 
 
 
