@@ -1051,17 +1051,53 @@ makePrefixer("bueno")
 
 ```
 
+### PRIMERRA FORMA - this, _this y los arrow functions
+```javascript
+class Persona{
+    constructor(nombre, amigos = []){
+        this.nombre = nombre
+        this.amigos = amigos
+    }
 
+    listarAmigos(){
+        const _this = this
+        this.amigos.forEach(function(amigo){
+            console.log(`Mi nombre es ${_this.nombre} y soy amigos de ${amigo}`)
+        }.bind(this))
+    }
+}
 
+const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
 
+// mack.listarAmigos()
+```
+### SEGUNDA FORMA - this, _this y los arrow functions
+```javascript
+class Persona{
+    constructor(nombre, amigos = []){
+        this.nombre = nombre
+        this.amigos = amigos
+    }
 
+    listarAmigos(){
+        const _this = this
+        this.amigos.forEach((amigo) => {
+            console.log(`Mi nombre es ${_this.nombre} y soy amigos de ${amigo}`)
+        })
+    }
+}
 
+const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
+```
 
+```javascript
+```
 
+```javascript
+```
 
-
-
-
+```javascript
+```
 
 
 
