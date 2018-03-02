@@ -24,6 +24,23 @@ console.log("El area de un triangulo de base 5 y altura 7 es: " + 5 * 7 / 2)
 console.log(`El area de un triangulo de base 5 y altura 7 es: ${5 *7 / 2}`)
 ```
 
+### Ejemplo de forEach :link:[forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+```javascript
+var array1 = ['a', 'b', 'c'];
+
+array1.forEach(function(element) {
+  console.log(element);
+});
+```
+### Ejemplo de forEach
+```javascript
+const items = ['item1', 'item2', 'item3'];
+const copy = [];
+
+items.forEach(function(item){
+  copy.push(item)
+});
+```
 
 ```javascript
 // CALCULAR LABASE DE UN TRIANGULO
@@ -36,7 +53,7 @@ console.log(`El area de un triangulo de base ${base} y ${height}  es: ${base * h
 // CALCULAR LABASE DE UN TRIANGULO
     let base = 5
     let height = 7
-    function triangleArea(base, height){
+    function triangleArea(base, height)
         return base * height / 2
     }
 
@@ -626,6 +643,103 @@ makePrefixer("bueno")
 // rebueno
 ```
 
+### PRIMERRA FORMA - this, _this y los arrow functions
+```javascript
+class Persona{
+    constructor(nombre, amigos = []){
+        this.nombre = nombre
+        this.amigos = amigos
+    }
+
+    listarAmigos(){
+        const _this = this
+        this.amigos.forEach(function(amigo){
+            console.log(`Mi nombre es ${_this.nombre} y soy amigos de ${amigo}`)
+        }.bind(this))
+    }
+}
+
+const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
+
+// mack.listarAmigos()
+```
+### SEGUNDA FORMA - this, _this y los arrow functions  - bind() sirve para definir this en contecto de esa funcion.
+```javascript
+class Persona{
+    constructor(nombre, amigos = []){
+        this.nombre = nombre
+        this.amigos = amigos
+    }
+
+    listarAmigos(){
+        this.amigos.forEach((amigo) => {
+            console.log(`Mi nombre es ${this.nombre} y soy amigos de ${amigo}`)
+        })
+    }
+}
+
+const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
+// mack.listarAmigos()
+```
+
+### Funcion bind()
+```javascript
+<html>
+  <head>
+    <style>
+      * {
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="boton">Off</button>
+    <script>
+
+        class Toggable {
+          constructor(el) { // el DE ELEMENT
+            // INICIALIZAR EL ESTADO INTERNO
+            this.el = el
+            this.el.innerHTML = 'Off'
+            this.activated = false
+            this.onClick = this.onClick.bind(this)
+            this.el.addEventListener('click', this.onClick)
+          }
+
+          onClick(ev) {
+            // CAMBIAR EL ESTADO INTERNO Y LLAMAR A toggleText
+            this.activated = !this.activated
+            this.toggleText()
+          }
+
+          toggleText() {
+            // CAMBIAR TEXTO
+            this.el.innerHTML = this.activated ? 'On' : 'Off'
+          }
+        }
+
+        const button = document.getElementById('boton')
+
+        const miBoton = new Toggable(button)
+    </script>
+  </body>
+</html>
+
+```
+### bind DE LOS PARAMTROS
+```javascript
+function saludar(nombre, apellido){
+    console.log(`Hola soy ${nombre} ${apellido}`)
+}
+saludar("Pepito", "Rudo")
+
+
+const saludarBind = saludar.bind(null, "Tecnico") //<-- SE HACE bind DE LOS PARAMTROS
+saludarBind("Segungo")
+saludarBind("Primero")
+```
+
+
 ### EJEMPLO QUE AL PRECIONAR LAS TECLAS SE ACTIVA UN SONIDO Y SE MUESTRA EN HTML Y CSS QUE TECLA SE PRECIONO
 ```javascript
 
@@ -1051,44 +1165,7 @@ makePrefixer("bueno")
 
 ```
 
-### PRIMERRA FORMA - this, _this y los arrow functions
-```javascript
-class Persona{
-    constructor(nombre, amigos = []){
-        this.nombre = nombre
-        this.amigos = amigos
-    }
 
-    listarAmigos(){
-        const _this = this
-        this.amigos.forEach(function(amigo){
-            console.log(`Mi nombre es ${_this.nombre} y soy amigos de ${amigo}`)
-        }.bind(this))
-    }
-}
-
-const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
-
-// mack.listarAmigos()
-```
-### SEGUNDA FORMA - this, _this y los arrow functions
-```javascript
-class Persona{
-    constructor(nombre, amigos = []){
-        this.nombre = nombre
-        this.amigos = amigos
-    }
-
-    listarAmigos(){
-        this.amigos.forEach((amigo) => {
-            console.log(`Mi nombre es ${this.nombre} y soy amigos de ${amigo}`)
-        })
-    }
-}
-
-const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
-// mack.listarAmigos()
-```
 
 ```javascript
 ```
