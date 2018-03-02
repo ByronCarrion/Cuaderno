@@ -1080,14 +1080,14 @@ class Persona{
     }
 
     listarAmigos(){
-        const _this = this
         this.amigos.forEach((amigo) => {
-            console.log(`Mi nombre es ${_this.nombre} y soy amigos de ${amigo}`)
+            console.log(`Mi nombre es ${this.nombre} y soy amigos de ${amigo}`)
         })
     }
 }
 
 const mack = new Persona("Pablo", ["Pedro", "Paco", "Luis"])
+// mack.listarAmigos()
 ```
 
 ```javascript
