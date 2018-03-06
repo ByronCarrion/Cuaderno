@@ -737,7 +737,123 @@ saludar("Pepito", "Rudo")
 const saludarBind = saludar.bind(null, "Tecnico") //<-- SE HACE bind DE LOS PARAMTROS
 saludarBind("Segungo")
 saludarBind("Primero")
+
+// Hola soy Pepito Rudo
+// Hola soy Tecnico Segungo
+// Hola soy Tecnico Primero
+
 ```
+
+### EL METODO BIND()
++ **El metodo bind()**: es un metodo de todas las funciones, el cual **nos debuelve una funcion para ser invocada en cualquier momento**  
+Se caracteriza por permitirnos definir el scope/contextoy por permitir establecer previamente los parametros
+```javascript
+const new function = fun.bind(contexto, primerParametro) // ESTABLECE EL scope Y EL/LOS PARAMETROS fun
+
+newFunction(segundoParametro) // EJECUTA fun PERO CON LA CARACTERISTICA DE QUE YA ESTA ESTABLECIDO EL SCOPE
+Y LOS PARAMETROS, Y NOS PERMITE ENVIARLE MÁS PARAMETROS A fun SI FUERA EL CASO
+
+```
+### METODO call()
+
+```javascript
+const sacha = {
+  nombre: 'Paco',
+  apellido: 'Perez'
+}
+
+function saludar(veces) {
+  let str = `Hola ${this.nombre} ${this.apellido}`
+  for (let i = 0; i < veces; i++) {
+    console.log(str)
+  }
+}
+saludar.call(sacha, 3)
+// (3)Hola Paco Perez
+```
+### METODO call()
+```javascript
+const sacha = {
+  nombre: 'Paco',
+  apellido: 'Perez'
+}
+
+function saludar(veces, uppercase) {
+    let str = `Hola ${this.nombre} ${this.apellido}`
+    str = uppercase ? str.toUpperCase() : str
+    for (let i = 0; i < veces; i++) {
+        console.log(str)
+    }
+}
+saludar.call(sacha, 3, true)
+//(3) Hola Paco Perez
+```
+### METODO call()
+```javascript
+const sacha = {
+  nombre: 'Sacha',
+  apellido: 'Lifszyc'
+}
+
+function saludar(veces, uppercase) {
+  let str = `Hola ${this.nombre} ${this.apellido}`
+  str = uppercase ? str.toUpperCase() : str
+  for (let i = 0; i < veces; i++) {
+    console.log(str)
+  }
+}
+
+const params = [3, true]
+saludar.call(sacha, ...params)
+```
+
+### METODO apply()
+```javascript
+const sacha = {
+    nombre: 'Sacha',
+    apellido: 'Lifszyc'
+}
+
+function saludar(veces, uppercase) {
+    let str = `Hola ${this.nombre} ${this.apellido}`
+    str = uppercase ? str.toUpperCase() : str
+    for (let i = 0; i < veces; i++) {
+        console.log(str)
+    }
+}
+saludar.apply(sacha,[3, true])
+```
+### METODO CALL()
+```javascript
+const sacha = {
+  nombre: 'Sacha',
+  apellido: 'Lifszyc'
+}
+
+function saludar(veces, uppercase) {
+  let str = `Hola ${this.nombre} ${this.apellido}`
+  str = uppercase ? str.toUpperCase() : str
+  for (let i = 0; i < veces; i++) {
+    console.log(str)
+  }
+}
+
+const params = [3, true]
+saludar.call(sacha, ...params)
+```
+
+### METODO CALL() Y APPLY()
+* LOS METODS call() Y apply() **EJECUTAN LA FUNCION "PADRE"** INSTANTANEAMENTE, Y NOS PERMITE ESTABLECER EL SCOPE
+Y LOS PARAMETROS CON LA **DIFERIENCIA** DE QUE apply(), RECIBE LOS PARAMETROS EN UN ARRAY
+```javascript
+fun.call(contexto, primerParametro, segundoParametro) //EJECUTA fun CON EL SCOPE ESTABLECIDO Y CON LOS PARAMETROS
+ENVIADOS.
+
+fun.apply(contexto, primerParametro, segundoParametro) //EJECUTA fun CON EL ESCOPE ESTABLECIDO Y CON
+LOS PARAMETROS ENVIADOS EN EL ARRAY
+
+```
+
 
 
 ### EJEMPLO QUE AL PRECIONAR LAS TECLAS SE ACTIVA UN SONIDO Y SE MUESTRA EN HTML Y CSS QUE TECLA SE PRECIONO
