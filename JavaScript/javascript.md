@@ -1,6 +1,9 @@
 ejemplos_javascript_curso_
 
 ### Links
+
+* :link: [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/#Constants)
+* :link: [CMA-262 7ᵗEdition / June 2016 ECMAScript 2016 Language Specification](https://www.ecma-international.org/ecma-262/7.0/index.html)
 * :link: [The best front-end hacking cheatsheets — all in one place.](https://medium.freecodecamp.org/modern-frontend-hacking-cheatsheets-df9c2566c72a)
 * :link: [ES2015+ cheatsheet A quick overview of new JavaScript features in ES2015, ES2016, ES2017 and beyond](https://devhints.io/es6)
 * :link: [JavaScript Cheat Sheet - OverAPI](http://overapi.com/javascript)
@@ -17,6 +20,20 @@ ejemplos_javascript_curso_
 ![](img/js_05.jpg "Estructura del lenguaje JavaScript")
 ![](img/js_06.jpg "Estructura del lenguaje JavaScript")
 ![](img/js_07.jpg "Estructura del lenguaje JavaScript")
+
+
+
+### Los callbacks de JavaScript
+
+Lo primero que se ejecuta es la declaración de las funciones, cuando javascript ejecuta una linea de carga
+en una pila de ejecución; javascript solo ejecuta una cosa ala vez, por esto, de debe de tener la pila lo
+más limpia posible; sin embargo se puede delegar la ejecución de otras cosas.
+
+**Javascript** cuando ejecuta código lo hace de manera **síncrona**, pero de una manera que tiene que ejecutar
+código **asíncrono** es con las funciones llamadas *callbacks*.  Estás se ejecutan y nos debuelben el proceso,
+generalmente después de algun evebto de tiempo, al completarse request o al terminar de leer un archivo.
+
+
 
 
 ```javascript
