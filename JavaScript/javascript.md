@@ -1297,10 +1297,87 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 
 
 ```
-
-
-
+### Manjo de Arrays No.2
+:link:
+:link: [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+:link: [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+:link: [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
 ```javascript
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Cardio 💪💪</title>
+</head>
+<body>
+  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <script>
+    // ## Array Cardio Day 2
+
+    const people = [
+      { name: 'Wes', year: 1988 },
+      { name: 'Kait', year: 1986 },
+      { name: 'Irv', year: 1970 },
+      { name: 'Lux', year: 2015 }
+    ];
+
+    const comments = [
+      { text: 'Love this!', id: 523423 },
+      { text: 'Super good', id: 823423 },
+      { text: 'You are the best', id: 2039842 },
+      { text: 'Ramen is my fav food ever', id: 123523 },
+      { text: 'Nice Nice Nice!', id: 542328 }
+    ];
+
+    // Some and Every Checks
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some
+    // Array.prototype.some() // ALMENOS UNA PERSONA TIENE 19 O MAYOR?
+    // PRIMERA FORMA
+    //  const esAdulto = people.some(  persona => {
+    //    const anoActual = (new Date()).getFullYear();
+    //    console.log(anoActual)
+    //    if (anoActual - persona.year >= 19) {
+    //      return true;
+    //    }
+    //  });
+    // console.log(esAdulto)
+    // console.log({esAdulto}) // MUESTRA LAS VARIABLES Y SUS VALORES
+    // SEGUNDA FORMA
+    //  const esAdulto = people.some(  persona => {
+    //    const anoActual = (new Date()).getFullYear();
+    //    return anoActual - persona.year >= 19;
+    //  });
+    // console.log(esAdulto)
+    // console.log({esAdulto}) // MUESTRA LAS VARIABLES Y SUS VALORES
+    // TERCERA FORMA
+    const esAdulto = people.some( persona => (new Date().getFullYear()) - persona.year >= 19 );
+    // console.log(esAdulto)
+    console.log({esAdulto}) // MUESTRA LAS VARIABLES Y SUS VALORES
+    // Array.prototype.every() // is everyone 19 or older?
+    const todosAdultos = people.every( persona => (new Date().getFullYear()) - persona.year >= 19 );
+    console.log({todosAdultos}) // MUESTRA LAS VARIABLES Y SUS VALORES
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+    // Array.prototype.find()
+    // Find is like filter, but instead returns just the one you are looking for
+    // find the comment with the ID of 823423
+    const comment = comments.find( comment =>  comment.id === 823423 );
+    console.log(comment);
+
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+    // Array.prototype.findIndex()
+    // Find the comment with this ID
+    // delete the comment with the ID of 823423
+    const index = comments.findIndex( comment => comment.id === 823423 );
+    console.log(index); // MUESTRA EL INDEX EN EL CUAL SE ENCONTRO LA COINCIDENCIA
+    const newComments = [...comments.slice(0, index), ...comments.slice(index + 1)];
+    console.table(comments);
+    console.table(newComments);
+  </script>
+</body>
+</html>
+
 ```
 
 ```javascript
