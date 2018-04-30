@@ -44,13 +44,10 @@ Para que quede de la siguiente mandera:
 # PostgreSQL
 deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-```
-```
 # apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
-
+```
 
 ### Howto's MySql
-
 
 Mostrar lista de todos usuarios de MySql
 ```
@@ -113,7 +110,7 @@ Para dar permisos desde la consola sobre una tabla concreta de la base de datos
 mysql> GRANT SELECT,INSERT,UPDATE,DELETE ON database_name.concrete_table TO 'landani'@'%';
 ```
 
-Para quitar permisos desde la consola de mysql, ejecutaremos el siguiente comando. Si queremos afectar a una base de datos, tabla concreta, etc. lo haremos igual que para dar permisos. En este ejemplo afectamos a todas las bases de datos (*.*) y quitaremos todos los permisos (ALL PRIVILEGES)
+Para quitar permisos desde la consola de mysql, ejecutaremos el siguiente comando. Si queremos afectar a una base de datos, tabla concreta, etc. lo haremos igual que para dar permisos. En este ejemplo afectamos a todas las bases de datos *(*.*)* y quitaremos todos los permisos (`ALL PRIVILEGES`)
 ```
 mysql> REVOKE ALL PRIVILEGES ON *.* FROM 'landani'@'localhost';
 ```
