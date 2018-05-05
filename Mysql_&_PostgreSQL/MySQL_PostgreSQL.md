@@ -4,7 +4,8 @@
 ## Instalar MariaDB debian
 
 
-* :link: [MariaDB Downloads](https://downloads.mariadb.org/mariadb/repositories/#mirror=globotech)
+*  :link: [MariaDB Downloads](https://downloads.mariadb.org/mariadb/repositories/#mirror=globotech)
+*  :link: [MariaDB tutorials](https://mariadb.com/kb/en/library/training-tutorials/)
 
 Crear en `source.list`
 
@@ -24,6 +25,10 @@ sudo apt-get update
 sudo apt-get install mariadb-server
 ```
 
+Para añadir password y configurar las opciones de MariaDB:
+```
+# mysql_secure_installation
+```
 
 ## Instalar PostgreSql :link: https://www.postgresql.org/
 
@@ -45,6 +50,43 @@ Para que quede de la siguiente mandera:
 deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 # apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
+```
+
+### Database Backups
+
+Store mysql root password in `/root/.cnf` Como __root__ se puede acceder. chmod 600
+
+```
+[client]
+user=root
+password=<CONTRASEÑA>
+```
+
+### Back Up una DB
+
+```
+mysqldump --add-drop-table --database nombredelabasededatos > /home/nombredeusuario/backups/db/$(bin/date '+\%Y-\%m-\%d').sql.bk
+```
+
+### Back Up todas las DB
+```
+mysqldump --all-databases --all-routines > /path/to/fulldump.sql
+```
+
+### Restaurar a DB de un Back Up
+```
+mysql -u root -p [nombredelabasededatos] < archivoDeBackup.sql
+```
+
+### Para restaurar dotas las DB
+Primero necesitan existir o el archivo debe de contener __CREATE TABLE__
+```
+mysql -u root -p < archivoDeTodasLasDB.sql
+```
+
+### Login MySQL
+```
+mysql -u root -p -h localhost
 ```
 
 ### Howto's MySql
