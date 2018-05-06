@@ -109,11 +109,10 @@ SHOW VARIABLES LIKE "%version%";
 4. `flush privileges;`
 5. `quit`
 
-Mostrar privilegios concedidos de un usuario
-```
-mysql> show grants for 'root'@'%';
-SHOW GRANTS FOR 'root'@'localhost';
-```
+#### Mostrar privilegios concedidos de un usuario
+1. `mysql> show grants for 'root'@'%';`
+2. `SHOW GRANTS FOR 'root'@'localhost';`
+
 
 #### Muestra las BD
 ```
@@ -127,7 +126,7 @@ mysql> CREATE DATABASE nombredelabasededatos;
 
 #### Borrar una BD
 1. `mysql> DROP DATABASE nombredelabasededatos;`
-2. `DROP DATABASE IF EXISTS tutorial_database;
+2. `DROP DATABASE IF EXISTS tutorial_database;`
 
 #### Para usar una BD
 ```
