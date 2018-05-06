@@ -115,30 +115,26 @@ mysql> show grants for 'root'@'%';
 SHOW GRANTS FOR 'root'@'localhost';
 ```
 
-Muestra las BD
+#### Muestra las BD
 ```
 mysql> show DATABASES;
 ```
 
-Crea una BD
+#### Crea una BD
 ```
 mysql> CREATE DATABASE nombredelabasededatos;
 ```
 
-Borrar una BD
-```
-mysql> DROP DATABASE nombredelabasededatos;
-```
-```
-DROP DATABASE IF EXISTS tutorial_database;
-```
+#### Borrar una BD
+1. `mysql> DROP DATABASE nombredelabasededatos;`
+2. `DROP DATABASE IF EXISTS tutorial_database;
 
-Para usar una BD
+#### Para usar una BD
 ```
 mysql> USE nombredelabasededatos;
 ```
 
-Crear usuario
+#### Crear usuario
 ```
 mysql> CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'mi_contraseña';
 ```
