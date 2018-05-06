@@ -145,16 +145,16 @@ mysql> CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'mi_contraseña';
 
 ### Dar permisos a usuarios a DB
 1. `GRANT permission ON database.table TO 'user'@'localhost';`
-ALL – Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.  
-CREATE – Allow a user to create databases and tables.  
-DELETE – Allow a user to delete rows from a table.  
-DROP – Allow a user to drop databases and tables.  
-EXECUTE – Allow a user to execute stored routines.  
-GRANT OPTION – Allow a user to grant or remove another user’s privileges.  
-INSERT – Allow a user to insert rows from a table.  
-SELECT – Allow a user to select data from a database.  
-SHOW DATABASES- Allow a user to view a list of all databases.  
-UPDATE – Allow a user to update rows in a table.  
+    - ALL – Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.  
+    - CREATE – Allow a user to create databases and tables.  
+    - DELETE – Allow a user to delete rows from a table.  
+    - DROP – Allow a user to drop databases and tables.  
+    - EXECUTE – Allow a user to execute stored routines.  
+    - GRANT OPTION – Allow a user to grant or remove another user’s privileges.  
+    - INSERT – Allow a user to insert rows from a table.  
+    - SELECT – Allow a user to select data from a database.  
+    - SHOW DATABASES- Allow a user to view a list of all databases.  
+    - UPDATE – Allow a user to update rows in a table.  
 
 
 Para borrar un usuario.
