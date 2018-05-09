@@ -314,3 +314,4 @@ flush-status: Clear status variables.
 ```
 # mysqladmin  -u root -p debug
 ```
+asd
