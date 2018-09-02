@@ -1,7 +1,7 @@
 
 # Git & GitHub
 
-![GitHub](img/Octocat.png "GitHub")
+![GitHub](img/Octocat_.png "GitHub")
 
 - :link: [git](https://github.com/git/git)
 - :link: [git](https://git-scm.com/)
