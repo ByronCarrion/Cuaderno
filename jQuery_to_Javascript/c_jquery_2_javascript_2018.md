@@ -207,4 +207,77 @@ document.querySelector("div .home #modal")
 
 // DEVUELVE TODOS LOS ELEMENTOS QUE COINCIDAN CON EL QUERY DE BÚSQUEDA.
 document.querySelectorAll("div .home #modal")
+
 ```
+## Creación de templates
+Para realizar debug en javascript se puede hacer escribiendo `debugger` despues de una variable para saver los valores que obtiene
+
+### Jquery
+Dentro de jQuery, la creación de un template seria con un texto base y si nuestro texto cuenta con distintas líneas más aparte tuviera valores dinámicos.
+
+```javascript
+function videoItemTemplate(src, title) {
+  return (
+    '<div class="primaryPlaylistItem">' +
+      '<div class="primaryPlaylistItem-image">' +
+        '<img src="' + src + '">' +
+      '</div>' +
+      '<h4 class="primaryPlaylistItem-title">' +
+        title +
+      '</h4>' +
+    '</div>'
+  )
+}
+
+```
+### Javascript
+Se usa una característica de ES6 que se llama `template literals`. Desde ECMAScript 6 contamos con una nueva característica llamada template literals que se representan con las comillas invertidas ` `` `
+
+```javascript
+functionv ideoItemTemplate(src, title) {
+  return (
+    `<div class="primaryPlaylistItem">
+      <div class="primaryPlaylistItem-image">
+        <img src="${src}">
+      </div>
+      <h4 class="primaryPlaylistItem-title">
+        ${title}
+      </h4>
+    </div>`
+  )
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
