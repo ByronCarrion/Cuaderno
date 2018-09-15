@@ -248,6 +248,33 @@ functionv ideoItemTemplate(src, title) {
 }
 
 ```
+## Creación de DOM
+Para la creación de documentos en el DOM y poder hacer uso de diferentes maneras (reutilización) se puede hacer con este __metodo__ para crear un nuevo HTML
+
+- :link: [DOMImplementation.createHTMLDocument()](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
+- :link: [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
+
+`innerHTML` gets or sets the HTML or XML markup contained within the element.
+
+```javascript
+function funcionAEjecutar(title) {
+  return (
+    `<h1>${title}</h1>`
+  )
+}
+
+const $nombreSelector = document.querySelector('#nombreID');
+ruta.de.api.forEach((variable_a_pasar) => {
+    // debugger
+    // SE TRAE LA PLANTILLA Y SE GUARDA EN UNA VARIABLE
+    const HTMLString = funcionAEjecutar(variable_a_pasar); 
+    const html = document.implementation.createHTMLDocument();
+    // SE AGREGA LA NUEVA PLANTILLA AL DOM, ESTO HACE QUE LA PLANTILLA EN TEXTO SE CONVIERTA EN ELEMTOS DOM
+    html.body.innerHTML = HTMLString
+    $nombreSelector.append(html.body.children[0]);
+}) 
+
+```
 
 
 
