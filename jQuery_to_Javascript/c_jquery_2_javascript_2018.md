@@ -270,7 +270,7 @@ const $nombreSelector = document.querySelector('#nombreID');
 actionList.data.movies.forEach((movie) => {
     // debugger
     // SE TRAE LA PLANTILLA Y SE GUARDA EN UNA VARIABLE
-    const HTMLString = funcionAEjecutar(variable_a_pasar); 
+    const HTMLString = funcionAEjecutar(movie); 
     const html = document.implementation.createHTMLDocument();
     // SE AGREGA LA NUEVA PLANTILLA AL DOM, ESTO HACE QUE LA PLANTILLA EN TEXTO SE CONVIERTA EN ELEMTOS DOM
     html.body.innerHTML = HTMLString;
