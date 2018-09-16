@@ -257,6 +257,9 @@ Para la creación de documentos en el DOM y poder hacer uso de diferentes manera
 `innerHTML` gets or sets the HTML or XML markup contained within the element.
 
 ```javascript
+const actionList = await getData('https://yts.am/api/v2/list_movies.json?genre=action')
+console.log(actionList)
+
 function funcionAEjecutar(title) {
   return (
     `<h1>${title}</h1>`
@@ -264,13 +267,14 @@ function funcionAEjecutar(title) {
 }
 
 const $nombreSelector = document.querySelector('#nombreID');
-ruta.de.api.forEach((variable_a_pasar) => {
+actionList.data.movies.forEach((movie) => {
     // debugger
     // SE TRAE LA PLANTILLA Y SE GUARDA EN UNA VARIABLE
     const HTMLString = funcionAEjecutar(variable_a_pasar); 
     const html = document.implementation.createHTMLDocument();
     // SE AGREGA LA NUEVA PLANTILLA AL DOM, ESTO HACE QUE LA PLANTILLA EN TEXTO SE CONVIERTA EN ELEMTOS DOM
-    html.body.innerHTML = HTMLString
+    html.body.innerHTML = HTMLString;
+    //SE AGREGA EL PRIMER HIJO (QUE ES DONDE SE ENCUENTRA LA PLANTILLA) AL CONTENEDOR DONDE SE QUIERE AGREGAR LA PLANTILLA
     $nombreSelector.append(html.body.children[0]);
 }) 
 
