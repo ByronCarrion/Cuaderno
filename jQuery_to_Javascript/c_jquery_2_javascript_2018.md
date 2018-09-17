@@ -250,34 +250,3 @@ functionv ideoItemTemplate(src, title) {
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
