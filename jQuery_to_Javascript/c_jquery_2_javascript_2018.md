@@ -301,9 +301,59 @@ $element.addEventListener("click", (event) => {
 ### Clases y estilos CSS
 
 SOLO en chrome con el "Inspector de elementos" y la "Consola" al mismo tiempo en abiertos; se selecciona el elemento que se desea inspeccionar, despues en la **consola** con el elemento seleccionado se escribe `$0` (no es jQuery), seguido de un elemento que tenga el HTML.
-```html
+```
 $0.classList
 ```
+```javascript
+// AGREGA UNA CLASE
+$element.classList.add("clase");
+
+// REMUEVE UNA CLASE
+$element.classList.remove("clase");
+
+// INTERCAMBIA ENTRE AGREGAR Y REMOVER UNA CLASE
+$element.classList.toggle("clase");
+```
+Estilos Inline
+
+```javascript
+$modal.style.animation = "modalOut .8s forwards";
+```
+
+## Creación de elementos y asignación de atributos
+
+### jQuery
+```javascript
+$("#element").attr({
+  src: "",
+  height: ""
+})
+```
+Para crear un elemento `ìmg` y se le asigna a una variable del DOM
+```javascript
+const $loader = document.createElement("img");
+```
+```javascript
+function setAttributes($element, attributes) {
+    for (const attribute in attributes) {
+        $element.setAttribute(attribute, attributes[attribute]);
+    }
+}
+
+const $loader = document.getElementById("img");
+
+// SE CREA UNA FUNCION CON UN OBJETO DE LOS ATRIBUTOS A CREAR COMO SEGUNDO PARAMETRO
+setAttributes($loader, {
+    src: 'ruta/de/la/imagen.jpg',
+    height: 50,
+    width: 50,
+})
+
+
+```
+
+
+
 
 
 
