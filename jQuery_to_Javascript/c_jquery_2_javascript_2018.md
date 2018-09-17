@@ -280,4 +280,30 @@ actionList.data.movies.forEach((movie) => {
 
 ```
 
+## Eventos en Javascript
+
+- :link: [MDN web docs Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
+- :link: [Standard events](https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events)
+
+### jQuery
+
+```javascript
+$("div").on("click", function(event) {
+
+})
+```
+```javascript
+const $element = document.getElementById("elementID");
+$element.addEventListener("click", (event) => {
+
+})
+```
+### Clases y estilos CSS
+
+SOLO en chrome con el "Inspector de elementos" y la "Consola" al mismo tiempo en abiertos; se selecciona el elemento que se desea inspeccionar, despues en la **consola** con el elemento seleccionado se escribe `$0` (no es jQuery), seguido de un elemento que tenga el HTML.
+```html
+$0.classList
+```
+
+
 
