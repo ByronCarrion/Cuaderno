@@ -2,6 +2,37 @@
 # Jquery to Javascript
 
 - :link: [Promesas - async - await ](https://dev.to/ardennl/about-promises-and-async--await-5ebm)
+- :link: [Learn ES6 without leaving Dev.to](https://dev.to/andersonjoseph/learn-es6-without-leave-devto-57o3)
+
+### Async Arrow functions 
+
+La **async arrow function** seria asi...
+```javascript
+const foo = async () => {
+    // do something
+}
+```
+
+La **anonima** async arrow function seria asi...
+```javascript
+const foo = async function() {
+    // do something
+}
+```
+
+La **declaración** de la funcion async arrow seria asi...
+```javascript
+async function foo() {
+    // do something
+}
+```
+
+Usando la funcion async en un **callbak**
+```javascript
+const foo = event.onCall(async () => {
+    // do something
+})
+```
 
 ## Promesas
 
