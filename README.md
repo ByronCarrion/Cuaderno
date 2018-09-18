@@ -7,4 +7,4 @@
 [![JavaScript](img/js_logo.png "JavaScript")](https://github.com/macknilan/Cuaderno/blob/master/JavaScript/javascript.md)
 [![MariaDb - PostgreSql](img/postgresql_mariadb.jpg "MariaDb - PostgreSql")](https://github.com/macknilan/Cuaderno/blob/master/Mysql_%26_PostgreSQL/MySQL_PostgreSQL.md)
 [![jQuery to Javascript](img/jquery_to_javascript.png "jQuery to Javascript")](https://github.com/macknilan/Cuaderno/blob/master/jQuery_to_Javascript/c_jquery_2_javascript_2018.md)
-[![Python](img/python-powered-h-70x91.png "Python")](https://github.com/macknilan/Cuaderno/blob/master/jQuery_to_Javascript/c_jquery_2_javascript_2018.md)
+[![Python](img/python-powered-h-70x91.png "Python")](https://github.com/macknilan/Cuaderno/blob/master/Python/README.md)
