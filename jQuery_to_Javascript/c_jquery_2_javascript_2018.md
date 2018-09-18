@@ -348,10 +348,20 @@ setAttributes($loader, {
     height: 50,
     width: 50,
 })
+```
+### Formularios
+- :link: [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData)
 
+```javascript
+<form action="" class="search" id="form">
+    <input type="text" name="searchTextBox" placeholder="Buscar un artista o tema favorito"/>
+</form>
+
+const $form = document.getElementById('form');
+cons data = new FormData($form);
+data.get('searchTextBox'); // EL RESULTADO ES EL CONTENIDO DE -input- CON -name- "searchTextBox"
 
 ```
-
 
 
 
