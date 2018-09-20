@@ -412,4 +412,44 @@ const response = await fetch(`api_url`);
 const pelis = response.data.movies;
 ```
 
+### DataSet's
+
+- :link: [Using data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes)
+- :link: [data-*](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
+
+The `data-*` global attributes form a class of attributes called custom data attributes, that allow proprietary information to be exchanged between the HTML and its DOM representation by scripts.
+
+HTML5 is designed with extensibility in mind for data that should be associated with a particular element but need not have any defined meaning. `data-*` attributes allow us to store extra information on standard, semantic HTML elements without other hacks such as non-standard attributes, extra properties on DOM, or `Node.setUserData()`.
+
+
+```javascript
+<divid="element"data-id="10"data-category="action"></div>
+
+const $element = document.getElementById("element");
+
+// GUARDA EL VALOR DE DATA-ID
+const id = $element.dataset.id;
+// GUARDA EL VALOR DE DATA-CATEGORY
+const category = $element.dataset.category;
+
+// parseInt("número", base)
+let n = parseInt("500", 10)
+```
+
+### Encontrando elementos en una lista
+
+- :link: [Array.prototype.find()](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find)
+
+El método `find()` devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada. En cualquier otro caso se devuelve `undefined`.
+
+```javascript
+var array1 = [5, 12, 8, 130, 44];
+
+var found = array1.find(function(element) {
+  return element > 10;
+});
+
+console.log(found);
+// expected output: 12
+```
 
