@@ -453,3 +453,23 @@ console.log(found);
 // expected output: 12
 ```
 
+### Manejo de errores
+
+- :link: [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
+- :link: [error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+- :link: [throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw)
+
+```javascript
+// ALGO SALIO MAL EN RESULTADO NO DESEADO Y SE CREA UN throw
+throw new Error('No se encontró ningun resultado');
+
+
+try {
+    // CODIGO A EVALUAR Y QUE intente EJECUTARLO SIN ERRORES
+    
+} catch(error) {
+    // CÓDIGO POR SI SUCEDE UN ERROR
+    alert(error.message);
+    // PUEDEN IR MAS LINEAS DE CODIGO DESPUES MOSTRAR EL MENSANJE
+}
+```
