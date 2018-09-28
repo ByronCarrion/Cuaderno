@@ -473,3 +473,35 @@ try {
     // PUEDEN IR MAS LINEAS DE CODIGO DESPUES MOSTRAR EL MENSANJE
 }
 ```
+### Local Storage
+
+- :link: [window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
+- `localStorage` permite almacenar datos sin tiempo de expiración
+- `sessionStorage` permite almacenar datos. Estos datos se van a borrar cuando se termine la sessión del navegador
+
+En local storage solo se puede guardar texto plano. No se pueden guardar objetos.
+
+La propiedad `localStorage` te permite acceder al objeto local Storage. `localStorage` es similar a `sessionStorage`. La única diferencia es que, mientras los datos almacenados en `localStorage` no tienen fecha de expiración, los datos almacenados en `sessionStorage` son eliminados cuando finaliza la sesion de navegación - lo cual ocurre cuando se cierra el navegador.
+
+Con `sessionStorage` los datos persisten sólo en la ventana/tab que los creó, mientras que con `localStorage` los datos persisten entre ventanas/tabs con el mismo origen.
+
+```javascript
+// ELIMINAR LOS DATOS
+window.localStorage.clear();
+
+// SETEAR UN VALOR
+window.localStorage.setItem("nombre", "Toshi");
+
+// OBTENER EL VALOR DE UN KEY
+window.localStorage.getItem("nombre");
+
+// SETEAR UN OBJETO
+// PRIMERO SE TIENE QUE CONVERTIR EL OBJETO EN UN STRING
+window.localStorage.setItem("objeto", JSON.stringify({"peli": "wonder woman"});
+// window.localStorage.setItem("objeto", JSON.stringify(VARIABLE_PARA_MANDAR_POR_PARAMETRO);
+
+// OBTENER EL VALOR DE UN TEXTO OBJETO Y CONVERTIRLO A OBJETO
+JSON.parse(window.localStorage.getItem("objeto"));
+```
+
