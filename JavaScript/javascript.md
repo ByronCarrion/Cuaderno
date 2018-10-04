@@ -573,23 +573,41 @@ function saludarASacha10() {
 saludarASacha10()
 
 ```
+### Ejemplo Operador Spread (...)
+:link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
 ```javascript
-// EJEMPLO OPERADOR Spread (...)
+var mackObj = {
+    nombre:   'Mack',
+    apellido: 'Nilan',
+    edad: 30
+}
 
-var a, b, c, d, e;  
-a = [1,2,3];  
-b = "dog";  
-c = [42, "cat"];  
+function cumpleanos(persona){
+    return{
+        ...persona,
+        edad: persona.edad + 1,
+        mensaje: "Feliz cumple!"
+    }
+}
+// cumpleanos(mackObj)
+// {nombre: "Mack", apellido: "Nilan", edad: 31, mensaje: "Feliz cumple!"}
+```
+
+```javascript
+var a, b, c, d, e;
+a = [1,2,3];
+b = "dog";
+c = [42, "cat"];
   
-// Using the concat method.  
-d = a.concat(b, c);  
+// Using the concat method.
+d = a.concat(b, c);
   
-// Using the spread operator.  
-e = [...a, b, ...c];  
+// Using the spread operator.
+e = [...a, b, ...c];
   
-console.log(d);  
-console.log(e);  
+console.log(d);
+console.log(e);
   
 // Output:  
 // 1, 2, 3, "dog", 42, "cat"  
