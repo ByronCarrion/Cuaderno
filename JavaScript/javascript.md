@@ -649,11 +649,55 @@ const dobles = (...numeros) => numeros.map(numero => numero * 2)
 const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
 
 ```
-* :link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
-* :link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
-* :link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
-* :link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-* :link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+:link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
+:link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
+:link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
+:link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+:link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+### Ejemplo de map
+
+```javascript
+var sacha = {
+  nombre: 'Sacha',
+  apellido: 'Lifszyc',
+  altura: 1.72
+}
+
+var alan = {
+  nombre: 'Alan',
+  apellido: 'Perez',
+  altura: 1.86
+}
+
+var martin = {
+  nombre: 'Martin',
+  apellido: 'Gomez',
+  altura: 1.85
+}
+
+var personas = [sacha, alan, martin]
+// personas
+
+
+const pasarAlturaACms = personas => {
+    return {
+        ...personas, // SE CREA Y SE REGRESA UN NUEVO OBJETO -persona- Y SE GUARDAN EN -personasCms-
+        altura: personas.altura * 100
+    }
+}
+
+// ALTERNATIVA
+// const pasarAlturaACms = persona => ({
+//   ...persona,
+//   altura: persona.altura * 100
+// })
+
+var personasCms = personas.map(pasarAlturaACms)
+
+
+```
+
 
 ```javascript
 // CLOSURES JAVASCRIPT
