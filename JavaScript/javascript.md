@@ -682,7 +682,7 @@ var personas = [sacha, alan, martin]
 
 const pasarAlturaACms = personas => {
     return {
-        ...personas, // SE CREA Y SE REGRESA UN NUEVO OBJETO -persona- Y SE GUARDAN EN -personasCms-
+        ...personas, // SE CREA Y SE REGRESA UN NUEVO OBJETO -personas- Y SE GUARDAN EN -personasCms-
         altura: personas.altura * 100
     }
 }
