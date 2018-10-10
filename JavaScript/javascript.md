@@ -1,5 +1,3 @@
-ejemplos_javascript_curso_
-
 ### Links
 
 * :link: [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/#Constants)
@@ -649,11 +647,45 @@ const dobles = (...numeros) => numeros.map(numero => numero * 2)
 const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
 
 ```
-:link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
-:link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
-:link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
-:link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-:link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+- :link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
+- :link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
+- :link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
+- :link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+- :link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+### Ejemplo de reduce
+
+```javascript
+var alan = {
+    nombre: 'Alan',
+    apellido: 'Perez',
+    altura: 1.86,
+    cantidadDeLibros: 78
+}
+
+var martin = {
+    nombre: 'Martin',
+    apellido: 'Gomez',
+    altura: 1.85,
+    cantidadDeLibros: 132
+}
+
+var dario = {
+    nombre: 'Dario',
+    apellido: 'Juarez',
+    altura: 1.71,
+    cantidadDeLibros: 90
+}
+var personas = [alan, martin, dario]
+
+const reducer = (acum, persona) => {
+    return acum + persona.cantidadDeLibros
+}
+var totalDeLibros = personas.reduce(reducer, 0);
+
+console.log(`Total de libros entre todos -> ${totalDeLibros}`);
+```
+
 
 ### Ejemplo de map
 
@@ -694,13 +726,11 @@ const pasarAlturaACms = personas => {
 // })
 
 var personasCms = personas.map(pasarAlturaACms)
-
-
 ```
 
 
+### Ejemplede Closures
 ```javascript
-// CLOSURES JAVASCRIPT
 function saludarFamilia(apellido) {
   return function saludarMiembroDeFamilia(nombre) {
     console.log(`Hola ${nombre} ${apellido}`)
@@ -1226,15 +1256,15 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
-        let transportation = data.reduce(function(obj, item){
-            //console.log(`obj ${obj} - item ${item}`);
-            if (!obj[item]){
-                obj[item] = 0;
-            }
-            obj[item]++;
-            return obj;
-        }, {}); // SE DECLARA UN OBJETO VACIO
-        console.table(transportation);
+    let transportation = data.reduce(function(obj, item){
+        //console.log(`obj ${obj} - item ${item}`);
+        if (!obj[item]){
+            obj[item] = 0;
+        }
+        obj[item]++;
+        return obj;
+    }, {}); // SE DECLARA UN OBJETO VACIO
+    console.table(transportation);
 
 
   </script>
