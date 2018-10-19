@@ -5,6 +5,11 @@
 * :link: [Learn ES6 without leaving Dev.to](https://dev.to/andersonjoseph/learn-es6-without-leave-devto-57o3)
 * :link: [Lista de API's publicas](https://github.com/toddmotto/public-apis)
 * :link: [Lista de API's publicas "local-file-in-repo" ](https://github.com/macknilan/Cuaderno/blob/master/jQuery_to_Javascript/Public_APIs.md)
+* :link: [The Vanilla JS Toolkit](https://vanillajstoolkit.com/code-snippets/)
+* :link: [ES2015+ cheatsheet](https://devhints.io/es6)
+* :link: [You might not need jQuery](http://youmightnotneedjquery.com/)
+
+
 
 ### Async Arrow functions 
 
