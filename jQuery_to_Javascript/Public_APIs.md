@@ -1,13 +1,4 @@
-Public_APIs.md
-# Public APIs [![Build Status](https://api.travis-ci.org/toddmotto/public-apis.svg)](https://travis-ci.org/toddmotto/public-apis)
 
-A collective list of free APIs for use in software and web development.
-
-A public API for this project can be found [here](https://github.com/davemachado/public-api) - thanks to [DigitalOcean](https://www.digitalocean.com/) for helping us provide this service!
-
-For information on contributing to this project, please see the [contributing guide](.github/CONTRIBUTING.md).
-
-Please note a passing build status indicates all listed APIs are available since the last update. A failing build status indicates that 1 or more services may be unavailable at the moment.
 
 ## Index
 
