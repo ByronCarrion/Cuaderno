@@ -317,6 +317,7 @@ actionList.data.movies.forEach((movie) => {
 
 * :link: [MDN web docs Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
 * :link: [Standard events](https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events)
+* :link: [EventTarget.addEventListener()](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)
 
 ### jQuery
 
