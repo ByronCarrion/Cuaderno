@@ -1,8 +1,10 @@
 
 # Jquery to Javascript
 
-- :link: [Promesas - async - await ](https://dev.to/ardennl/about-promises-and-async--await-5ebm)
-- :link: [Learn ES6 without leaving Dev.to](https://dev.to/andersonjoseph/learn-es6-without-leave-devto-57o3)
+* :link: [Promesas - async - await ](https://dev.to/ardennl/about-promises-and-async--await-5ebm)
+* :link: [Learn ES6 without leaving Dev.to](https://dev.to/andersonjoseph/learn-es6-without-leave-devto-57o3)
+* :link: [Lista de API's publicas](https://github.com/toddmotto/public-apis)
+* :link: [Lista de API's publicas "local-file" ]()
 
 ### Async Arrow functions 
 
@@ -140,7 +142,7 @@ fetch('yts.am/api/v2/list_movies.json?genres=sci-fy')
 
 El metodo **finaly** Retorna la promesa sin importar si esta es exitosa o es rechazada; puede ser de utilidad para poner a un estado inicial la promesa ejecutada.
 
-- :link: [Finally - MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)
+* :link: [Finally - MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)
 
 ```javascript
 fetch('https://yts.am/api/v2/list_movies.json?genres=sci-fy')
@@ -282,8 +284,8 @@ functionv ideoItemTemplate(src, title) {
 ## Creación de DOM
 Para la creación de documentos en el DOM y poder hacer uso de diferentes maneras (reutilización) se puede hacer con este __metodo__ para crear un nuevo HTML
 
-- :link: [DOMImplementation.createHTMLDocument()](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
-- :link: [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
+* :link: [DOMImplementation.createHTMLDocument()](https://developer.mozilla.org/en-US/docs/Web/API/DOMImplementation/createHTMLDocument)
+* :link: [Element.innerHTML](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
 
 `innerHTML` gets or sets the HTML or XML markup contained within the element.
 
@@ -313,8 +315,8 @@ actionList.data.movies.forEach((movie) => {
 
 ## Eventos en Javascript
 
-- :link: [MDN web docs Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
-- :link: [Standard events](https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events)
+* :link: [MDN web docs Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
+* :link: [Standard events](https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events)
 
 ### jQuery
 
@@ -381,7 +383,7 @@ setAttributes($loader, {
 })
 ```
 ### Formularios
-- :link: [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData)
+* :link: [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData)
 
 ```javascript
 <form action="" class="search" id="form">
@@ -395,8 +397,8 @@ data.get('searchTextBox'); // EL RESULTADO ES EL CONTENIDO DE -input- CON -name-
 ```
 
 ### Asignación de una variable por destructuración "Destructuring assignment"
--:link: [Destructuring assignment MDN web ocs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
-- :link: [Desestructuración en Javascript. Parte 1 - http://www.etnassoft.com](http://www.etnassoft.com/2016/07/04/desestructuracion-en-javascript-parte-1/)
+* :link: [Destructuring assignment MDN web ocs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+* :link: [Desestructuración en Javascript. Parte 1 - http://www.etnassoft.com](http://www.etnassoft.com/2016/07/04/desestructuracion-en-javascript-parte-1/)
 
 ```javascript
 // EL FETCH DEVUELVE UNA PROMESA CON LA SIGUIENTE ESTRUCTURA: ->promesa.data.movies<-
@@ -414,8 +416,8 @@ const pelis = response.data.movies;
 
 ### DataSet's
 
-- :link: [Using data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes)
-- :link: [data-*](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
+* :link: [Using data attributes](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes)
+* :link: [data-*](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/data-*)
 
 The `data-*` global attributes form a class of attributes called custom data attributes, that allow proprietary information to be exchanged between the HTML and its DOM representation by scripts.
 
@@ -438,7 +440,7 @@ let n = parseInt("500", 10)
 
 ### Encontrando elementos en una lista
 
-- :link: [Array.prototype.find()](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find)
+* :link: [Array.prototype.find()](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find)
 
 El método `find()` devuelve el valor del primer elemento del array que cumple la función de prueba proporcionada. En cualquier otro caso se devuelve `undefined`.
 
@@ -455,9 +457,9 @@ console.log(found);
 
 ### Manejo de errores
 
-- :link: [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
-- :link: [error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
-- :link: [throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw)
+* :link: [try...catch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch)
+* :link: [error](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error)
+* :link: [throw](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw)
 
 ```javascript
 // ALGO SALIO MAL EN RESULTADO NO DESEADO Y SE CREA UN throw
@@ -475,7 +477,7 @@ try {
 ```
 ### Local Storage
 
-- :link: [window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+* :link: [window.localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 - `localStorage` permite almacenar datos sin tiempo de expiración
 - `sessionStorage` permite almacenar datos. Estos datos se van a borrar cuando se termine la sessión del navegador

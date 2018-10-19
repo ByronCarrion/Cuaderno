@@ -375,6 +375,144 @@ console.log(`Han pasado ${tiempoDias} años ${tiempoMeses} meses dias ${dias} de
 // Han pasado 13937.549797256945 años 2 meses dias 5 desde mi nacimiento
 
 ```
+### Prototipos
+
+```javascript
+//EJEMPLO #1
+function Persona(nombre, apellido) { // --> PROTOTIPO
+    this.nombre = nombre
+    this.apellido = apellido
+}
+
+Persona.prototype.saludar = function () { // --> ATRIBUTO SALUDAR
+    console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+}
+
+var sacha = new Persona('Sacha', 'Lifszyc')
+sacha.saludar();
+var erika = new Persona('Erika', 'Luna')
+erika.saludar();
+var arturo = new Persona('Arturo', 'Martinez')
+```
+
+```javascript
+//EJEMPLO #1.1
+function Persona(nombre, apellido, altura) {
+  this.nombre = nombre
+  this.apellido = apellido
+  this.altura = altura
+}
+
+Persona.prototype.saludar = function () {
+  console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+}
+
+Persona.prototype.soyAlto = function () {
+  return this.altura > 1.8
+}
+
+var sacha = new Persona('Sacha', 'Lifszyc', 1.72)
+sacha.soyAlto();
+var erika = new Persona('Erika', 'Luna', 1.65)
+erik.soyAlto();
+var arturo = new Persona('Arturo', 'Martinez', 1.89)
+arturo.soyAlto();
+```
+
+### Prototipos a Clases con "Herencia de clases"
+
+```javascript
+//EJEMPLO #1.2 AHORA EN "CLASES"
+
+class Persona {
+  constructor(nombre, apellido, altura) {
+    this.nombre = nombre
+    this.apellido = apellido
+    this.altura = altura
+  }
+
+  saludar() {
+    console.log(`Hola, me llamo ${this.nombre} ${this.apellido}`)
+  }
+
+  soyAlto() {
+    return this.altura > 1.8
+  }
+}
+
+class Desarrollador extends Persona {
+  constructor(nombre, apellido, altura) {
+    super(nombre, apellido, altura)
+  }
+
+  saludar() {
+    console.log(`Hola, me llamo ${this.nombre} ${this.apellido} y soy desarrollador/a`)
+  }
+}
+
+var erika = new Persona('Erika', 'Luna', 1.65)
+erika.saludar()
+var arturo = new Desarrollador('Arturo', 'Martinez', 1.89)
+arturo.saludar()
+```
+
+### Clases con "Herencia de clases"
+#### Pasar funciones como parametros
+```javascript
+class Persona {
+  constructor(nombre, apellido, altura) {
+    this.nombre = nombre
+    this.apellido = apellido
+    this.altura = altura
+  }
+
+  saludar(fn) {
+    var { nombre, apellido } = this
+
+    console.log(`Hola, me llamo ${nombre} ${apellido}`)
+    if (fn) {
+      fn(nombre, apellido)
+    }
+  }
+
+  soyAlto() {
+    return this.altura > 1.8
+  }
+}
+
+class Desarrollador extends Persona {
+  constructor(nombre, apellido, altura) {
+    super(nombre, apellido, altura)
+  }
+
+  saludar(fn) {
+    // var nombre = this.nombre
+    // var apellido = this.apellido
+    var { nombre, apellido } = this
+
+    console.log(`Hola, me llamo ${nombre} ${apellido} y soy desarrollador/a`)
+    if (fn) {
+      fn(nombre, apellido, true)
+    }
+  }
+}
+
+function responderSaludo(nombre, apellido, esDev) {
+  console.log(`Buen día ${nombre} ${apellido}`)
+  if (esDev) {
+    console.log(`Ah mirá, no sabía que eras desarrollador/a`)
+  }
+}
+
+var sacha = new Persona('Sacha', 'Lifszyc', 1.72)
+var erika = new Persona('Erika', 'Luna', 1.65)
+var arturo = new Desarrollador('Arturo', 'Martinez', 1.89)
+
+sacha.saludar()
+erika.saludar(responderSaludo)
+arturo.saludar(responderSaludo)
+```
+
 
 ```javascript
 // DISTANCIA ENTRE DOS PUNTOS
@@ -406,10 +544,10 @@ console.log(distancia(p1,p2))
 const p1 = {
     x: 0,
     y: 4,
-    moverEnX(x){ // HACE LA MISMA FUNCIONQUE PARA P2
+    moverEnX(x){ // HACE LA MISMA FUNCION QUE PARA P2
         this.x += x
     },
-    moverEnX(y){ // HACE LA MISMA FUNCIONQUE PARA P2
+    moverEnX(y){ // HACE LA MISMA FUNCION QUE PARA P2
         this.y += y
     }
 }
@@ -434,27 +572,6 @@ console.log(distancia(p1,p2))
 ```javascript
 // DEFINIR LA CLASE/PROTOTIPO "Punto"
 
-function Punto(x, y){ //PROPOTIPO
-    this.x = x // CONSTRUCTOR
-    this.y = y
-}
-
-// SE AGREGAN METODOS AL PROTOTIPO
-Punto.prototype.moverEnX = function moverEnX (x){
-    this.x += x
-}
-
-Punto.prototype.moverEnY = function moverEnY (y){
-    this.y += y
-}
-
-Punto.prototype.distancia = function distancia(p){
-    const x = this.x - p.x
-    const y = this.y - p.y
-
-    return Math.sqrt(x * x + y * y).toFixed(2)
-}
-
 
 const p1 = new Punto(0, 4) // SE CREA UN NUEVO OBJETO
 const p2 = new Punto(3, 0) // SE CREA UN NUEVO OBJETO
@@ -468,27 +585,6 @@ console.log(p1.distancia(p2))
 ```
 
 ```javascript
-// function Punto(x, y){ //PROPOTIPO
-//     this.x = x // CONSTRUCTOR
-//     this.y = y
-// }
-// 
-// // SE AGREGAN METODOS AL PROTOTIPO
-// Punto.prototype.moverEnX = function moverEnX (x){
-//     this.x += x
-// }
-// 
-// Punto.prototype.moverEnY = function moverEnY (y){
-//     this.y += y
-// }
-// 
-// Punto.prototype.distancia = function distancia(p){
-//     const x = this.x - p.x
-//     const y = this.y - p.y
-// 
-//     return Math.sqrt(x * x + y * y).toFixed(2)
-// }
-
 // DEFINIR LA CLASE/PROTOTIPO "Punto" - Object.create
 const Punto = {
     init: function(x, y){
@@ -557,11 +653,9 @@ p1.moverEnX(10)
 console.log(p1.distancia(p2))
 p2.moverEnY(-4)
 console.log(p1.distancia(p2))
-
 ```
 
 ```javascript
-
 var nombre = "Sacha"
 
 function saludar10() {
@@ -576,7 +670,6 @@ function saludar10() {
 saludar("Sacha")
 console.log(`La variable nombre tiene el valor ${nombre}`)
 
-
 function saludarASacha10() {
   const nombre = "Sacha"
 
@@ -586,7 +679,6 @@ function saludarASacha10() {
 }
 
 saludarASacha10()
-
 ```
 ### Ejemplo Operador Spread (...)
 :link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
