@@ -4,7 +4,7 @@
 * :link: [Promesas - async - await ](https://dev.to/ardennl/about-promises-and-async--await-5ebm)
 * :link: [Learn ES6 without leaving Dev.to](https://dev.to/andersonjoseph/learn-es6-without-leave-devto-57o3)
 * :link: [Lista de API's publicas](https://github.com/toddmotto/public-apis)
-* :link: [Lista de API's publicas "local-file" ]()
+* :link: [Lista de API's publicas "local-files" ]()
 
 ### Async Arrow functions 
 
