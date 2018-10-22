@@ -19,8 +19,6 @@
 ![](img/js_06.jpg "Estructura del lenguaje JavaScript")
 ![](img/js_07.jpg "Estructura del lenguaje JavaScript")
 
-
-
 ### Los callbacks de JavaScript
 
 Lo primero que se ejecuta es la declaración de las funciones, cuando javascript ejecuta una linea de carga
@@ -32,15 +30,13 @@ código **asíncrono** es con las funciones llamadas *callbacks*.  Estás se eje
 generalmente después de algun evebto de tiempo, al completarse request o al terminar de leer un archivo.
 
 
-
-
 ```javascript
 console.log("El area de un triangulo de base 5 y altura 7 es: " + 5 * 7 / 2)
 console.log(`El area de un triangulo de base 5 y altura 7 es: ${5 *7 / 2}`)
 ```
 
 ### Operador condicional (ternario)
-:link:[Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
+*link:[Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
 
 El operador condicional (ternario) es el único operador en JavaScript que tiene tres operandos. Este operador se usa con frecuencia como atajo para la instrucción if.
 ```javascript
@@ -56,7 +52,7 @@ console.log( access ); // muestra "Acceso Permitido"
 ```
 
 
-### Ejemplo de forEach :link:[forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+*## Ejemplo de forEach :link:[forEach](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
 ```javascript
 var array1 = ['a', 'b', 'c'];
 
@@ -681,7 +677,7 @@ function saludarASacha10() {
 saludarASacha10()
 ```
 ### Ejemplo Operador Spread (...)
-:link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+*link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
 ```javascript
 var mackObj = {
@@ -739,11 +735,11 @@ const dobles = (...numeros) => numeros.map(numero => numero * 2)
 const pares = (...numeros) => numeros.filter(numero => numero % 2 == 0)
 
 ```
-- :link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
-- :link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
-- :link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
-- :link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-- :link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+* :link: - [reduce](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce)
+* :link: - [push](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/push)
+* :link: - [filter](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter)
+* :link: - [map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+* :link: - [sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
 
 ### Ejemplo de reduce
 
@@ -1446,9 +1442,9 @@ LOS PARAMETROS ENVIADOS EN EL ARRAY
 
 ```
 ### Manejo de Arrays No.2
-- :link: [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
-- :link: [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
-- :link: [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
+* :link: [some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
+* :link: [findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
+* :link: [slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
 ```javascript
 <!DOCTYPE html>
 <html lang="en">
