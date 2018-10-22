@@ -18,7 +18,7 @@
 ![](img/js_05.jpg "Estructura del lenguaje JavaScript")
 ![](img/js_06.jpg "Estructura del lenguaje JavaScript")
 ![](img/js_07.jpg "Estructura del lenguaje JavaScript")
-
+564
 ### Los callbacks de JavaScript
 
 Lo primero que se ejecuta es la declaración de las funciones, cuando javascript ejecuta una linea de carga
