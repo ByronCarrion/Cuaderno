@@ -36,7 +36,7 @@ console.log(`El area de un triangulo de base 5 y altura 7 es: ${5 *7 / 2}`)
 ```
 
 ### Operador condicional (ternario)
-*link:[Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
+* :link: [Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Operadores/Conditional_Operator)
 
 El operador condicional (ternario) es el único operador en JavaScript que tiene tres operandos. Este operador se usa con frecuencia como atajo para la instrucción if.
 ```javascript
@@ -527,6 +527,20 @@ $.get(lukeUrl, opts, onPeopleResponse)
 ```
 ### Promesas
 
+#### SINTAXIS
+```javascript
+new Promise( ( resolve, reject ) => {
+  // LLAMADO ASÍNCRONO
+  if( todoOK ) {
+     // SE EJECUTÓ EL LLAMADO EXITOSAMENTE
+     resolve()
+  } else {
+     // HUBO UN ERROR EN EL LLAMADO
+     reject()
+  }
+})
+```
+
 ```javascript
 const API_URL = 'https://swapi.co/api/'
 const PEOPLE_URL = 'people/:id'
@@ -554,6 +568,37 @@ obtenerPersonaje(1)
   .catch(onError)
 ```
 
+###  MÚLTIPLES PROMESAS EN PARALELO
+```javascript
+const API_URL = 'https://swapi.co/api/'
+const PEOPLE_URL = 'people/:id'
+const opts = { crossDomain: true }
+
+function obtenerPersonaje(id) {
+  return new Promise((resolve, reject) => {
+    const url = `${API_URL}${PEOPLE_URL.replace(':id', id)}`
+    $
+      .get(url, opts, function (data) {
+        resolve(data)
+      })
+      .fail(() => reject(id))
+  })
+}
+
+function onError(id) {
+  console.log(`Sucedió un error al obtener el personaje ${id}`)
+}
+
+var ids = [1, 2, 3, 4, 5, 6, 7]
+// var promesas = ids.map(function (id) {
+//   return obtenerPersonaje(id)
+// })
+var promesas = ids.map(id => obtenerPersonaje(id))
+Promise
+  .all(promesas)
+  .then(personajes => console.log(personajes))
+  .catch(onError)
+```
 
 ```javascript
 // DISTANCIA ENTRE DOS PUNTOS
@@ -722,7 +767,7 @@ function saludarASacha10() {
 saludarASacha10()
 ```
 ### Ejemplo Operador Spread (...)
-*link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
+* :link: [Spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
 
 ```javascript
 var mackObj = {
