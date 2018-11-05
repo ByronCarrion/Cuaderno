@@ -634,6 +634,34 @@ async function obtenerPersonajes() {
 
 obtenerPersonajes()
 ```
+
+### RECURSIVIDAD
+```javascript
+let contadorRec = 1
+function fibonacciRecursivo(num) {
+  contadorRec++
+  if (num == 1) return 0
+  if (num == 2) return 1
+
+  return fibonacciRecursivo(num - 1) +
+      fibonacciRecursivo(num - 2)
+}
+```
+
+### RECURSIVIDAD & MEMORIZACIÓN
+```javascript
+let contadorMemo = 1
+function fibonacciMemo(num, memoria = {}) {
+    contadorMemo++
+    if (memoria[num]) return memoria[num]
+    if (num == 1) return 0
+    if (num == 2) return 1
+
+    console.log(memoria)
+    return memoria[num] = fibonacciMemo(num - 1, memoria) + fibonacciMemo(num - 2, memoria)
+}
+```
+
 ### CLASES ejempllo de -DISTANCIA ENTRE DOS PUNTOS-
 ```javascript
 // DISTANCIA ENTRE DOS PUNTOS
