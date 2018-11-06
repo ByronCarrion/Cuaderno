@@ -662,6 +662,70 @@ function fibonacciMemo(num, memoria = {}) {
 }
 ```
 
+### Iteradores en Javascript
+```javascript
+// EJEMPLO No.1
+function fibonacci() {
+    let a = 0, b = 1
+    return {
+        next: function () {
+            let f = a
+            a = b
+            b = f + a
+            return {value: f, done: false}
+        }
+    }
+}
+
+const fibo = fibonacci()
+
+// fibo.next() // 0
+// fibo.next() // 1
+// fibo.next() // 1
+// fibo.next() // 2
+// fibo.next() // 3
+// fibo.next() // 5
+// fibo.next() // 8
+
+// a = 0
+// b = 1
+
+// a   b       f
+// 0   1       0
+// 1   0+1     1
+// 1   2       1
+// 2   1+2     2
+// 3   2+3     3
+// 5   3+5     5
+// 8   5+8     8
+// 13  8+13    13
+```
+### Iteradores en Javascript
+```javascript
+// EJEMPLO No. 2
+function fibonacci() {
+    let a = 0, b = 1
+    return {
+        next: function () {
+            let f = a
+            a = b
+            b = f + a
+            return {value: f, done: false}
+        }
+    }
+}
+
+const fibo = {}
+fibo[Symbol.iterator] = fibonacci
+
+let i = 1
+for (let value of fibo) {
+    console.log(value)
+    i++
+    if (i > 20) break
+}
+```
+
 ### CLASES ejempllo de -DISTANCIA ENTRE DOS PUNTOS-
 ```javascript
 // DISTANCIA ENTRE DOS PUNTOS
