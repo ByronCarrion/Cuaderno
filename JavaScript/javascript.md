@@ -635,7 +635,39 @@ async function obtenerPersonajes() {
 obtenerPersonajes()
 ```
 
-### RECURSIVIDAD
+### RECURSIVIDAD Ejemplo 01
+```javascript
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Clase 38 - Recursividad</title>
+    </head>
+
+    <body>
+        <script>
+        /*
+              13  |_4___
+              13 - 4 = 9      1
+              9 - 4 = 5       1
+              5 - 4 = 1       1
+              1 - 4 = -3      0
+            */
+        function divisionEntera(dividendo, divisor) {
+            if (dividendo < divisor) {
+                return 0
+            }
+            return 1 + divisionEntera(dividendo - divisor, divisor)
+        }
+        </script>
+    </body>
+
+</html>
+```
+
+
+### RECURSIVIDAD Ejemplo 02
 ```javascript
 let contadorRec = 1
 function fibonacciRecursivo(num) {
@@ -647,8 +679,45 @@ function fibonacciRecursivo(num) {
       fibonacciRecursivo(num - 2)
 }
 ```
+### RECURSIVIDAD & MEMORIZACIÓN Ejemplo 01
+```javascript
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-### RECURSIVIDAD & MEMORIZACIÓN
+<head>
+    <meta charset="utf-8">
+    <title>Clase 39 - Memoización</title>
+</head>
+
+<body>
+    <script>
+    /*
+        !6 = 6 * 5 * 4 * 3 * 2 * 1 = 720
+        !12 = 12 * 11 * 10 * 9 * 8 * 7 * !6
+      */
+    function factorial(n) {
+        if (!this.cache) {
+            this.cache = {}
+        }
+        debugger
+        if (this.cache[n]) {
+            return this.cache[n]
+        }
+        if (n === 1) {
+            return 1
+        }
+        this.cache[n] = n * factorial(n - 1)
+        debugger
+        return this.cache[n]
+    }
+    </script>
+</body>
+
+</html>
+```
+
+
+### RECURSIVIDAD & MEMORIZACIÓN Ejemplo 02
 ```javascript
 let contadorMemo = 1
 function fibonacciMemo(num, memoria = {}) {
@@ -1017,7 +1086,62 @@ fibo.next()
 
 </html>
 ```
+## Estructura de datos inmutables
+```javascript
+const nombrePersona = {
+    nombre: 'Pepito',
+    apellido: 'Perez',
+    edad: 28
+}
+// const cumpleanos = persona => persona.edad++
+const cumpleanosInmutable = persona => ({
+    ...persona,
+    edad: persona.edad + 1
+})
 
+// nombrePersona
+// {nombre: "Pepito", apellido: "Perez", edad: 28}
+// cumpleanosInmutable(nombrePersona)
+// {nombre: "Pepito", apellido: "Perez", edad: 29}
+// nombrePersona
+// {nombre: "Pepito", apellido: "Perez", edad: 28}
+// cumpleanosInmutable(nombrePersona)
+// {nombre: "Pepito", apellido: "Perez", edad: 29}
+```
+
+### Cambiando de contexto al llamar a una función
+El contexto (o alcance) de una función es por lo general, window. Así que en ciertos casos, cuando intentamos referirnos a this en alguna parte del código, es posible que tengamos un comportamiento inesperado, porque el contexto quizás no sea el que esperamos.
+
+Existen al menos tres maneras de cambiar el contexto de una función.
+
+- Usando el método .bind, enviamos la referencia a la función sin ejecutarla, pasando el contexto como parámetro.
+- Usando el método .call, ejecutamos inmediatamente la función con el contexto indicado
+- Usando el método .apply, es similar a .call pero los parámetros adicionales se pasan como un arreglo de valores
+```javascript
+const Pepito = {
+    nombre: 'Pepito',
+    apellido: 'Perez'
+}
+const Juana = {
+    nombre: 'Juana',
+    apellido: 'Martinez'
+}
+
+function saludar(saludo = 'Hola') {
+    console.log(`${saludo}, mi nombre es ${this.nombre}`)
+}
+// const saludarAPepito = saludar.bind(Pepito)
+// Hola, mi nombre es Pepito
+// const saludarAJuana = saludar.bind(Juana)
+// Hola, mi nombre es Juana
+//
+// setTimeout(saludar.bind(Pepito, 'Hola pe'), 1000)
+// Hola pe, mi nombre es Pepito
+// saludar.call(Pepito, 'Hola pe')
+// Hola pe, mi nombre es Pepito
+saludar.apply(Pepito, ['Hola pe'])
+// Hola pe, mi nombre es Pepito
+```
 
 
 ### CLASES ejempllo de -DISTANCIA ENTRE DOS PUNTOS-
@@ -1328,7 +1452,7 @@ var personasCms = personas.map(pasarAlturaACms)
 ```
 
 
-### Ejemplede Closures
+### Ejemplo de Closures
 ```javascript
 function saludarFamilia(apellido) {
   return function saludarMiembroDeFamilia(nombre) {
@@ -1356,9 +1480,9 @@ saludarRomero("Jorge")
 ```javascript
 // CLOSURES JAVASCRIPT EJEMPLO 2
 function makePrefixer(antes) {
-  return function palabra(palabra) {
-    console.log(`${antes}${palabra}`)
-  }
+    return function palabra(palabra) {
+        console.log(`${antes}${palabra}`)
+    }
 }
 
 const prefijoRe = makePrefixer("re")
