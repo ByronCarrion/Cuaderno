@@ -1,10 +1,7 @@
 # Guía de la Consola de Linux
 
-*Si te dices a ti mismo web developer y no sabes usar la consola, entonces no eres un web developer.*
-
 ## <a name="INDEX">Índice</a>
 
-  1. [Introducción](#introduccion)
   1. [Ayuda](#ayuda)
   1. [Sistema de archivos](#archivos)
     - [Rutas relativas y absolutas](#rutas)
@@ -18,21 +15,12 @@
   1. [Introducción a SSH: Olvídate del FTP](#ssh)
   1. [Recursos](#recursos)
 
-## <a name="introduccion">Introducción</a>
-
-El ser desarrollador web el día de hoy requiere dominar herramientas básicas como la consola o terminal para ser más productivo.
-
-Los sistemas UNIX proveen navitamente terminales con los cuales podemos hacer muchas de las operaciones que hacemos desde una GUI. 
-
-Esta pequeña guía está enfocada a los comandos más usados por los desarrolladores web y también tiene la intención de ayudar a novatos a su uso.
-
-**[[ Volver al índice ]](#INDEX)**
 
 ## <a name="ayuda">Ayuda</a>
 
 Podemos obtener ayuda sobre un comando de las siguientes maneras:
 
-### Comando <code>man</code>
+### Comando `man`
 
   ```bash
   # Muestra el manual del comando
