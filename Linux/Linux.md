@@ -1,19 +1,19 @@
-# Guía de la Consola de Linux
+# Terminal y Línea de Comandos
 
 ## <a name="INDEX">Índice</a>
 
   1. [Ayuda](#ayuda)
-  1. [Sistema de archivos](#archivos)
+  2. [Sistema de archivos](#archivos)
     - [Rutas relativas y absolutas](#rutas)
     - [Comandos básicos](#comandos)
     - [Listar directorios](#listado)
     - [Búsqueda](#busqueda)
     - [Permisos](#permisos)
     - [Enlaces simbólicos](#enlaces)
-  1. [Compresión y descompresión de archivos](#compresion)
-  1. [Editando archivos](#edicion)
-  1. [Introducción a SSH: Olvídate del FTP](#ssh)
-  1. [Recursos](#recursos)
+  3. [Compresión y descompresión de archivos](#compresion)
+  4. [Editando archivos](#edicion)
+  5. [Introducción a SSH: Olvídate del FTP](#ssh)
+  6. [Recursos](#recursos)
 
 
 ## <a name="ayuda">Ayuda</a>
