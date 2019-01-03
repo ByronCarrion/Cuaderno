@@ -216,6 +216,13 @@ Donde:
 ### <a name="listado">Listar directorios</a>
 
   ```bash
+
+  # Lista recursivamente la estructura de árbol de un directorio incluyendo tanto archivos como directorios (**NOTA:** No viene pre-instalado así 
+    que hay que instalarlo primero con su administrador de paquetes preferido: para RHEL/CentOS/Fedora yum install tree para Debian/Mint/Ubuntu 
+    para OS X `brew install tree`)
+	$ apt-get install tree
+
+
   # Muestra carpetas y archivos en el directorio actual
   $ ls
 
