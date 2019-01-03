@@ -4,12 +4,13 @@
 
   1. [Ayuda](#ayuda)
   2. [Sistema de archivos](#archivos)
-    - [Rutas relativas y absolutas](#rutas)
-    - [Comandos básicos](#comandos)
-    - [Listar directorios](#listado)
-    - [Búsqueda](#busqueda)
-    - [Permisos](#permisos)
-    - [Enlaces simbólicos](#enlaces)
+    * [Rutas relativas y absolutas](#rutas)
+    * [Comandos básicos](#comandos)
+    * [Listar directorios](#listado)
+    * [Búsqueda](#busqueda)
+    * [Standard Input, Standard Output y Standard Error](#standard)
+    * [Permisos](#permisos)
+    * [Enlaces simbólicos](#enlaces)
   3. [Compresión y descompresión de archivos](#compresion)
   4. [Editando archivos](#edicion)
   5. [Introducción a SSH: Olvídate del FTP](#ssh)
@@ -265,7 +266,7 @@ $ ll | grep html
 # Guardar la salida a un archivo
 $ ll > listado1.txt
 # Se crea un archivo listado1.txt con la salida de ll
- ```
+```
 
 **[[ Volver al índice ]](#INDEX)**
 
@@ -300,6 +301,17 @@ $ locate brau
 ```
 
 **[[ Volver al índice ]](#INDEX)**
+
+### <a name="busqueda">Standard Input, Standard Output y Standard Error</a>
+
+![](img/standard_input_standard_output_y_standard_error.png "Standard Input, Standard Output y Standard Error")
+```bash
+
+
+```
+
+**[[ Volver al índice ]](#INDEX)**
+
 
 ### <a name="permisos">Permisos</a>
 
