@@ -4,13 +4,13 @@
 
   1. [Ayuda](#ayuda)
   2. [Sistema de archivos](#archivos)
-    * [Rutas relativas y absolutas](#rutas)
-    * [Comandos básicos](#comandos)
-    * [Listar directorios](#listado)
-    * [Búsqueda](#busqueda)
-    * [Standard Input, Standard Output y Standard Error](#standard)
-    * [Permisos](#permisos)
-    * [Enlaces simbólicos](#enlaces)
+    - [Rutas relativas y absolutas](#rutas)
+    - [Comandos básicos](#comandos)
+    - [Listar directorios](#listado)
+    - [Búsqueda](#busqueda)
+    - [Standard Input, Standard Output y Standard Error](#standard)
+    - [Permisos](#permisos)
+    - [Enlaces simbólicos](#enlaces)
   3. [Compresión y descompresión de archivos](#compresion)
   4. [Editando archivos](#edicion)
   5. [Introducción a SSH: Olvídate del FTP](#ssh)
@@ -306,9 +306,9 @@ $ locate brau
 
 ![](img/standard_input_standard_output_y_standard_error.png "Standard Input, Standard Output y Standard Error")
 
-STDIN = 0
-STDOUT = 1
-STDERR = 2
+- STDIN = 0
+- STDOUT = 1
+- STDERR = 2
 
 `| pipe` = Manda el STDOUT o el resultado a otro comando o programa:
 ```bash
