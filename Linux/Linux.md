@@ -302,12 +302,25 @@ $ locate brau
 
 **[[ Volver al índice ]](#INDEX)**
 
-### <a name="busqueda">Standard Input, Standard Output y Standard Error</a>
+### <a name="standard">Standard Input, Standard Output y Standard Error</a>
 
 ![](img/standard_input_standard_output_y_standard_error.png "Standard Input, Standard Output y Standard Error")
-```bash
 
+```python
+# CODIGO PARA EJEMPLIFICAR STANDARD INPUT, STANDARD OUTPUT Y STANDARD ERROR
 
+import  sys
+import time
+print"numero:"
+d = input()
+i =0
+while(True):
+    i =i+1
+    if((i % d) ==0):
+            sys.stdout.write("El %d  es multiplo de %d \n " %(i,d))
+    else:
+            sys.stderr.write("NO!!! ALARMA: el %d No es multiplo de %d!!!\n" %(i,d))
+    time.sleep(1)
 ```
 
 **[[ Volver al índice ]](#INDEX)**
