@@ -217,10 +217,27 @@ Donde:
 
   ```bash
 
-	# Lista recursivamente la estructura de árbol de un directorio incluyendo tanto archivos como directorios
-	(**NOTA:** No viene pre-instalado así que hay que instalarlo primero con su administrador de paquetes 
-	preferido: para RHEL/CentOS/Fedora yum install tree para Debian/Mint/Ubuntu para OS X `brew install tree`)
-	$ apt-get install tree
+# Lista recursivamente la estructura de árbol de un directorio incluyendo tanto archivos
+como directorios (**NOTA:** No viene pre-instalado así que hay que instalarlo primero con su
+administrador de paquetes preferido: para RHEL/CentOS/Fedora yum install tree para
+Debian/Mint/Ubuntu, para OS X `brew install tree`)
+$ apt-get install tree
+
+# Muestra recursivamente la estructura de árbol de un directorio pero sólo hasta el
+primer subnivel de directorios
+$ tree -L 1
+
+# Muestra recursivamente la estructura de árbol de un directorio incluyendo tanto
+archivos como directorio ocultos
+$ tree -a
+
+# Muestra recursivamente la estructura de árbol de un directorio tomando en cuenta
+sólo los directorios
+$ tree -d
+
+# Muestra recursivamente la estructura de árbol de un directorio tomando en cuenta
+sólo los directorios y hasta el primer subnivel
+$ tree -dL 1
 
 
   # Muestra carpetas y archivos en el directorio actual
