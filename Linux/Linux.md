@@ -2,8 +2,8 @@
 
 ## <a name="INDEX">Índice</a>
 
-  1. [Ayuda](#ayuda)
-  2. [Sistema de archivos](#archivos)
+1. [Ayuda](#ayuda)
+2. [Sistema de archivos](#archivos)
     - [Rutas relativas y absolutas](#rutas)
     - [Comandos básicos](#comandos)
     - [Listar directorios](#listado)
@@ -11,10 +11,10 @@
     - [Standard Input, Standard Output y Standard Error](#standard)
     - [Permisos](#permisos)
     - [Enlaces simbólicos](#enlaces)
-  3. [Compresión y descompresión de archivos](#compresion)
-  4. [Editando archivos](#edicion)
-  5. [Introducción a SSH: Olvídate del FTP](#ssh)
-  6. [Recursos](#recursos)
+3. [Compresión y descompresión de archivos](#compresion)
+4. [Editando archivos](#edicion)
+5. [Introducción a SSH: Olvídate del FTP](#ssh)
+6. [Recursos](#recursos)
 
 
 ## <a name="ayuda">Ayuda</a>
