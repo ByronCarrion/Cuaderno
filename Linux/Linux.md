@@ -306,14 +306,31 @@ $ locate brau
 
 ![](img/standard_input_standard_output_y_standard_error.png "Standard Input, Standard Output y Standard Error")
 
+STDIN = 0
+STDOUT = 1
+STDERR = 2
+
+`| pipe` = Manda el STDOUT o el resultado a otro comando o programa:
+```bash
+cat operaciones.bc | bc -q
+```
+`> mayor que` = Imprime el STDOUT a un archivo
+```bash
+operaciones.bc > resultados.txt
+```
+`< menor que` = Lo mismo que el pipe, pero sin necesidad de ejecutar otro comando
+```bash
+bc -q < operaciones.bc
+```
+
 ```python
 # CODIGO PARA EJEMPLIFICAR STANDARD INPUT, STANDARD OUTPUT Y STANDARD ERROR
-
+# standardIOERR.py
 import  sys
 import time
 print"numero:"
 d = input()
-i =0
+i = 0
 while(True):
     i =i+1
     if((i % d) ==0):
