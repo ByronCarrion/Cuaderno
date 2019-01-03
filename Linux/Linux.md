@@ -84,9 +84,9 @@ $ cd ../.. # /home
 
 Donde:
 
-- El <code>~</code> significa la carpeta del usuario, es decir, /home/braulio.
-- El <code>.</code> se refiere a la carpeta en sí misma.
-- El <code>..</code> se refiere a la carpeta padre.
+- El `~` significa la carpeta del usuario, es decir, /home/braulio.
+- El `.` se refiere a la carpeta en sí misma.
+- El `..` se refiere a la carpeta padre.
 
 **[[ Volver al índice ]](#INDEX)**
 
