@@ -310,6 +310,19 @@ $ locate brau
 - STDOUT = 1
 - STDERR = 2
 
+Independiente del lenguaje, cualquier programa tiene un flujo de entrada de datos, un flujo de salida y un modo de capturar errores.
+
+En la terminal, podemos tener este mismo flujo de datos gracias a `“<” y “>”`.
+Nuestro ejemplo fue:
+```bash
+# De un archivo llamado operaciones.bc, abrelo usando bc, y el resultado, mandalo a resultado
+$ bc -q < operaciones.bc > resultado
+
+# 1ro lee lo que se encuentra en "operaciones.bc" y lo manda a "bc -p", despues manda el STDOUT a "resultado" y los errores STDERR los manda al archivo errores
+$ bc -p < operaciones.bc > resultado 2> errores
+
+```
+
 `| pipe` = Manda el STDOUT o el resultado a otro comando o programa:
 ```bash
 cat operaciones.bc | bc -q
