@@ -368,8 +368,8 @@ Columna 4: mes 1-12
 Columna 5: día de la semana 0-7 (donde 0 y 7 equivalen a domingo)
 Columna 6: script o comando que queremos que se ejecute
 
-`crontab -l`: Lista las tareas que tengo agendadas.
-`crontab -e`: Edita las tareas que tengo agendadas.
+- `crontab -l`: Lista las tareas que tengo agendadas.
+- `crontab -e`: Edita las tareas que tengo agendadas.
 ```bash
 0          - todos los valores
 1-10      - de 1 a 10
