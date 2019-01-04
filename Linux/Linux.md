@@ -9,6 +9,7 @@
     - [Listar directorios](#listado)
     - [Búsqueda](#busqueda)
     - [Standard Input, Standard Output y Standard Error](#standard)
+    - [Crontab](#crontab)
     - [Permisos](#permisos)
     - [Enlaces simbólicos](#enlaces)
 3. [Compresión y descompresión de archivos](#compresion)
