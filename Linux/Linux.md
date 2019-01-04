@@ -312,17 +312,16 @@ $ locate brau
 
 Independiente del lenguaje, cualquier programa tiene un flujo de entrada de datos, un flujo de salida y un modo de capturar errores.
 
-En la terminal, podemos tener este mismo flujo de datos gracias a `“<” y “>”`.
+En la terminal, podemos tener este mismo flujo de datos gracias a `“<” y “>”` `>>` es para **concatenar**.
 Nuestro ejemplo fue:
 ```bash
 # De un archivo llamado operaciones.bc, abrelo usando bc, y el resultado, mandalo a resultado
 $ bc -q < operaciones.bc > resultado
 
 # 1ro lee lo que se encuentra en "operaciones.bc" y lo manda a "bc -p", despues manda el STDOUT a "resultado" y los errores STDERR los manda al archivo errores
-$ bc -p < operaciones.bc > resultado 2> errores
+$ bc -p < operaciones.bc 1> resultado 2> errores
 
 ```
-
 `| pipe` = Manda el STDOUT o el resultado a otro comando o programa:
 ```bash
 cat operaciones.bc | bc -q
@@ -354,6 +353,31 @@ while(True):
 ```
 
 **[[ Volver al índice ]](#INDEX)**
+
+### <a name="crontab">Crontab</a>
+![](img/crontab.png "Crontab")
+
+Una de las herramientas más potentes de los sistemas UNIX, que nos permite programar la ejecución de diferentes scripts. Con crontab podemos agendar todo lo que necesitemos para facilitar nuestro trabajo y automatizar tareas.
+`contrab -l` despliega el crontab que tenemos instalado. Cada una de las primeras 5 columnas que tenemos al correr este comando especifica en qué momento exacto queremos que se ejecute la tarea que vamos a definir en la sexta columna.
+
+Columna 1: minuto 0-59
+Columna 2: hora 0-23
+Columna 3: día del mes 1-31
+Columna 4: mes 1-12
+Columna 5: día de la semana 0-7 (donde 0 y 7 equivalen a domingo)
+Columna 6: script o comando que queremos que se ejecute
+
+`crontab -l`: Lista las tareas que tengo agendadas.
+`crontab -e`: Edita las tareas que tengo agendadas.
+```bash
+0          - todos los valores
+1-10      - de 1 a 10
+*/5        - cada 5
+1,2,3,9    - ejecutate estas horas
+```
+
+**[[ Volver al índice ]](#INDEX)**
+
 
 
 ### <a name="permisos">Permisos</a>
