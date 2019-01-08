@@ -189,7 +189,10 @@ $ du -hs
 $ du -hs index.html
 
 # Ver de cierta carpeta
-$ du -hs braulio
+$ du -hs mack
+
+# Ver el espacio creado desde la pocisión actual con la profundidad de 1
+$ du -h -d 1
 
 # Ver mi directorio actual
 $ pwd
@@ -386,11 +389,11 @@ Columna 6: script o comando que queremos que se ejecute
 Si usamos el listado en esta carpeta lo que encontremos es:
 
 ```bash
-drwxr-xr-x  3 brau brau  4096 nov 22 09:35 ./
-drwxrwxr-x 33 brau brau  4096 nov 21 23:13 ../
-drwxrwxr-x  8 brau brau  4096 nov 22 10:18 .git/
--rw-rw-r--  1 brau brau 11325 nov 21 23:13 LICENSE
--rw-rw-r--  1 brau brau  6920 nov 22 10:18 README.md
+drwxr-xr-x  3 mack mack  4096 nov 22 09:35 ./
+drwxrwxr-x 33 mack mack  4096 nov 21 23:13 ../
+drwxrwxr-x  8 mack mack  4096 nov 22 10:18 .git/
+-rw-rw-r--  1 mack mack 11325 nov 21 23:13 LICENSE
+-rw-rw-r--  1 mack mack  6920 nov 22 10:18 README.md
 ```
 
 Vemos 7 columnas las cuales indican:
@@ -440,12 +443,12 @@ Donde:
 Para los directorios:
 
 ```bash
-# Cambiando los permisos de la carpeta braulio
-$ chmod 444 braulio
-# Ahora la carpeta braulio es de sólo lectura.
+# Cambiando los permisos de la carpeta mack
+$ chmod 444 mack
+# Ahora la carpeta mack es de sólo lectura.
 
-# Cambiando los permisos de la carpeta Braulio y de todo su contenido recursivamente
-$ chmod -R 444 braulio 
+# Cambiando los permisos de la carpeta mack y de todo su contenido recursivamente
+$ chmod -R 444 mack 
 ```
 
 #### Cambiando de propietario y grupo
@@ -479,6 +482,11 @@ $ sudo mkdir carpeta
 Los enlaces simbólicos sirven para tener una referencia a un archivo o carpeta y acceder a esta sin tener que ir a la ruta.
 
 El ejemplo más básico lo vemos en los hostings que usan CPanel, donde encontramos la carpeta <code>public_html</code> y el enlace simbólico <code>www</code>, si entramos a ambos, veremos el mismo contenido.
+
+```bash
+# Para crear un enlace simbólico
+$ ln -s path/to/the/target/directory name-of-symlink
+```
 
 ```bash
 # Creamos el enlace simbólico www para public_html
