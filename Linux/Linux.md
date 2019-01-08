@@ -66,7 +66,7 @@ root@localhost:/home/mack# apt-get update ; apt-get upgrade ; mkdir test
 The above command combination will first execute update instruction, then upgrade instruction and finally will create a `test` directory under the current working directory.
 
 #### 3. AND Operator (&&)
-The AND Operator (&&) would execute the second command only, if the execution of first command **SUCCEEDS**, i.e., the exit status of the first command is 0. This command is very useful in checking the execution status of last command.
+The AND Operator (&&) would execute the second command only, if the execution of first command **SUCCEEDS**, i.e., **the exit status of the first command is 0**. This command is very useful in checking the execution status of last command.
 
 For example, I want to visit website mack.com using links command, in terminal but before that I need to check if the host is live or not.
 ```bash
