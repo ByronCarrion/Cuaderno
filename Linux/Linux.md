@@ -3,7 +3,8 @@
 ## <a name="INDEX">Índice</a>
 
 1. [Ayuda](#ayuda)
-2. [Sistema de archivos](#archivos)
+2. [Operadores de encadenamiento - Command­-chaining Operators](#command­_chaining_operators)
+3. [Sistema de archivos](#archivos)
     - [Rutas relativas y absolutas](#rutas)
     - [Comandos básicos](#comandos)
     - [Listar directorios](#listado)
@@ -12,10 +13,10 @@
     - [Crontab](#crontab)
     - [Permisos](#permisos)
     - [Enlaces simbólicos](#enlaces)
-3. [Compresión y descompresión de archivos](#compresion)
-4. [Editando archivos](#edicion)
-5. [Introducción a SSH: Olvídate del FTP](#ssh)
-6. [Recursos](#recursos)
+4. [Compresión y descompresión de archivos](#compresion)
+5. [Editando archivos](#edicion)
+6. [Introducción a SSH: Olvídate del FTP](#ssh)
+7. [Recursos](#recursos)
 
 
 ## <a name="ayuda">Ayuda</a>
@@ -41,6 +42,134 @@ $ <comando> --help
 [Explain Shell](http://explainshell.com/), un sitio que permite explicar específicamente la mayoría de comandos.
 
 **[[ Volver al índice ]](#INDEX)**
+
+## <a name="command­_chaining_operators">Operadores de encadenamiento - Command­-chaining Operators</a>
+
+This Article aims at throwing light on frequently used command­-chaining operators, with short descriptions and corresponding examples which surely will increase your productivity and lets you write short and meaningful codes beside reducing system load, at times.
+
+#### 1. Ampersand Operator (&)
+The function of `&` is to make the command run in background. Just type the command followed with a white space and `&`. You can execute more than one command in the background, in a single go.
+
+Run one command in the background:
+```bash
+tecmint@localhost:~$ ping ­c5 www.tecmint.com &
+```
+Run two command in background, simultaneously:
+```bash
+root@localhost:/home/tecmint# apt-get update & apt-get upgrade &
+```
+#### 2. semi-colon Operator (;)
+The semi-colon operator makes it possible to run, several commands in a single go and the execution of command occurs sequentially.
+```bash
+root@localhost:/home/tecmint# apt-get update ; apt-get upgrade ; mkdir test
+```
+The above command combination will first execute update instruction, then upgrade instruction and finally will create a `test` directory under the current working directory.
+
+#### 3. AND Operator (&&)
+The AND Operator (&&) would execute the second command only, if the execution of first command **SUCCEEDS**, i.e., the exit status of the first command is 0. This command is very useful in checking the execution status of last command.
+
+For example, I want to visit website tecmint.com using links command, in terminal but before that I need to check if the host is live or not.
+```bash
+root@localhost:/home/tecmint# ping -c3 www.tecmint.com && links www.tecmint.com
+```
+
+#### 4. OR Operator (||)
+The `OR` Operator **(||)** is much like an `else` statement in programming. The above operator allow you to execute second command only if the execution of first command fails, i.e., the exit status of first command is ‘1‘.
+
+For example, I want to execute `apt-get update` from non-root account and if the first command fails, then the second `links www.tecmint.com` command will execute.
+```bash
+tecmint@localhost:~$ apt-get update || links tecmint.com
+```
+In the above command, since the user was not allowed to update system, it means that the exit status of first command is `1` and hence the last command ‘links tecmint.com‘ gets executed.
+
+What if the first command is executed successfully, with an exit status `0`? Obviously! Second command won’t execute.
+```bash
+tecmint@localhost:~$ mkdir test || links tecmint.com
+```
+Here, the user creates a folder `test` in his home directory, for which user is permitted. The command executed successfully giving an exit status `0` and hence the last part of the command is not executed.
+
+#### 5. NOT Operator (!)
+The `NOT` Operator **(!)** is much like an `except` statement. This command will execute all except the condition provided. To understand this, create a directory `tecmint` in your home directory and `cd` to it.
+```bash
+tecmint@localhost:~$ mkdir tecmint 
+tecmint@localhost:~$ cd tecmint
+```
+Next, create several types of files in the folder `tecmint`.
+```bash
+tecmint@localhost:~/tecmint$ touch a.doc b.doc a.pdf b.pdf a.xml b.xml a.html b.html
+```
+See we’ve created all the new files within the folder `tecmint`.
+```bash
+tecmint@localhost:~/tecmint$ ls 
+a.doc  a.html  a.pdf  a.xml  b.doc  b.html  b.pdf  b.xml
+```
+Now delete all the files except `html` file all at once, in a smart way.
+```bash
+tecmint@localhost:~/tecmint$ rm -r !(*.html)
+```
+Just to verify, last execution. List all of the available files using ls command.
+```bash
+tecmint@localhost:~/tecmint$ ls 
+
+a.html  b.html
+```
+#### 6. AND – OR operator (&& – ||)
+The above operator is actually a combination of `AND` and `OR` Operator. It is much like an `if-else` statement.
+
+For example, let’s do ping to tecmint.com, if success echo `Verified` else echo `Host Down`.
+```bash
+tecmint@localhost:~/tecmint$ ping -c3 www.tecmint.com && echo "Verified" || echo "Host Down"
+```
+Sample Output
+```bash
+PING www.tecmint.com (212.71.234.61) 56(84) bytes of data. 
+64 bytes from www.tecmint.com (212.71.234.61): icmp_req=1 ttl=55 time=216 ms 
+64 bytes from www.tecmint.com (212.71.234.61): icmp_req=2 ttl=55 time=224 ms 
+64 bytes from www.tecmint.com (212.71.234.61): icmp_req=3 ttl=55 time=226 ms 
+
+--- www.tecmint.com ping statistics --- 
+3 packets transmitted, 3 received, 0% packet loss, time 2001ms 
+rtt min/avg/max/mdev = 216.960/222.789/226.423/4.199 ms 
+Verified
+```
+Now, disconnect your internet connection, and try same command again.
+```bash
+tecmint@localhost:~/tecmint$ ping -c3 www.tecmint.com && echo "verified" || echo "Host Down"
+Sample Output
+ping: unknown host www.tecmint.com 
+Host Down
+```
+#### 7. PIPE Operator (|)
+This PIPE operator is very useful where the output of first command acts as an input to the second command. For example, pipeline the output of `ls -l` to `less` and see the output of the command.
+```bash
+tecmint@localhost:~$ ls -l | less
+```
+#### 8. Command Combination Operator {}
+Combine two or more commands, the second command depends upon the execution of the first command.
+
+For example, check if a directory `bin` is available or not, and output corresponding output.
+```bash
+tecmint@localhost:~$ [ -d bin ] || { echo Directory does not exist, creating directory now.; mkdir bin; } && echo Directory exists.
+```
+#### 9. Precedence Operator ()
+The Operator makes it possible to execute command in precedence order.
+```bash
+Command_x1 &&Command_x2 || Command_x3 && Command_x4.
+```
+In the above pseudo command, what if the Command_x1 fails? Neither of the Command_x2, Command_x3, Command_x4 would executed, for this we use Precedence Operator, as:
+```bash
+(Command_x1 &&Command_x2) || (Command_x3 && Command_x4)
+```
+In the above pseudo command, if Command_x1 fails, Command_x2 also fails but Still Command_x3 and Command_x4 executes depends upon exit status of Command_x3.
+
+#### 10. Concatenation Operator (\)
+The Concatenation Operator **(\)** as the name specifies, is used to concatenate large commands over several lines in the shell. For example, The below command will open text file **test(1).txt**.
+```bash
+tecmint@localhost:~/Downloads$ nano test\(1\).txt
+```
+
+**[[ Volver al índice ]](#INDEX)**
+
 
 ## <a name="archivos">Sistema de archivos</a>
 
@@ -364,12 +493,12 @@ while(True):
 Una de las herramientas más potentes de los sistemas UNIX, que nos permite programar la ejecución de diferentes scripts. Con crontab podemos agendar todo lo que necesitemos para facilitar nuestro trabajo y automatizar tareas.
 `contrab -l` despliega el crontab que tenemos instalado. Cada una de las primeras 5 columnas que tenemos al correr este comando especifica en qué momento exacto queremos que se ejecute la tarea que vamos a definir en la sexta columna.
 
- - Columna 1: minuto 0-59
- - Columna 2: hora 0-23
- - Columna 3: día del mes 1-31
- - Columna 4: mes 1-12
- - Columna 5: día de la semana 0-7 (donde 0 y 7 equivalen a domingo)
- - Columna 6: script o comando que queremos que se ejecute
+ 1 Columna 1: minuto 0-59
+ 2 Columna 2: hora 0-23
+ 3 Columna 3: día del mes 1-31
+ 4 Columna 4: mes 1-12
+ 5 Columna 5: día de la semana 0-7 (donde 0 y 7 equivalen a domingo)
+ 6 Columna 6: script o comando que queremos que se ejecute
 
  - `crontab -l`: Lista las tareas que tengo agendadas.
  - `crontab -e`: Edita las tareas que tengo agendadas.
@@ -381,7 +510,6 @@ Una de las herramientas más potentes de los sistemas UNIX, que nos permite prog
 ```
 
 **[[ Volver al índice ]](#INDEX)**
-
 
 
 ### <a name="permisos">Permisos</a>
