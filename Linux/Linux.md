@@ -1,7 +1,7 @@
 # Terminal y Línea de Comandos
 
 ## <a name="INDEX">Índice</a>
-
+0. :link: [Documentos Linux](https://github.com/macknilan/Cuaderno/tree/master/Linux/docs_linux)
 1. [Ayuda](#ayuda)
 2. [Operadores de encadenamiento - Command­-chaining Operators](#command­_chaining_operators)
 3. [Sistema de archivos](#archivos)
