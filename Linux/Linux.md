@@ -405,6 +405,57 @@ $ ll > listado1.txt
 
 ### <a name="busqueda">Búsqueda</a>
 
+##### find
+```bash
+# To find files by case-insensitive extension (ex: .jpg, .JPG, .jpG):
+find . -iname "*.jpg"
+
+# To find directories:
+find . -type d
+
+# To find files:
+find . -type f
+
+# To find files by octal permission:
+find . -type f -perm 777
+
+# To find files with setuid bit set:
+find . -xdev \( -perm -4000 \) -type f -print0 | xargs -0 ls -l
+
+# To find files with extension '.txt' and remove them:
+find ./path/ -name '*.txt' -exec rm '{}' \;
+
+# To find files with extension '.txt' and look for a string into them:
+find ./path/ -name '*.txt' | xargs grep 'string'
+
+# To find files with size bigger than 5 Mebibyte and sort them by size:
+find . -size +5M -type f -print0 | xargs -0 ls -Ssh | sort -z
+
+# To find files bigger than 2 Megabyte and list them:
+find . -type f -size +200000000c -exec ls -lh {} \; | awk '{ print $9 ": " $5 }'
+
+# To find files modified more than 7 days ago and list file information
+find . -type f -mtime +7d -ls
+
+# To find symlinks owned by a user and list file information
+find . -type l --user=username -ls
+
+# To search for and delete empty directories
+find . -type d -empty -exec rmdir {} \;
+
+# To search for directories named build at a max depth of 2 directories
+find . -maxdepth 2 -name build -type d
+
+# To search all files who are not in .git directory
+find . ! -iwholename '*.git*' -type f
+
+# To find all files that have the same node (hard link) as MY_FILE_HERE
+find . -type f -samefile MY_FILE_HERE 2>/dev/null
+
+# To find all files in the current directory and modify their permissions
+find . -type f -exec chmod 644 {} \;
+```
+
 ```bash
 # Muestra todos los archivos y carpetas recursivamente dentro del directorio actual
 $ find
@@ -431,6 +482,39 @@ $ updatedb
 
 # Para encontrar cierto archivo o carpeta con el nombre brau
 $ locate brau
+```
+
+##### grep
+```bash
+# Search a file for a pattern
+grep pattern file
+
+# Case insensitive search (with line numbers)
+grep -in pattern file
+
+# Recursively grep for string <pattern> in folder:
+grep -R pattern folder
+
+# Read search patterns from a file (one per line)
+grep -f pattern_file file
+
+# Find lines NOT containing pattern
+grep -v pattern file
+
+# You can grep with regular expressions
+grep "^00" file  #Match lines starting with 00
+grep -E "[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" file  #Find IP add
+
+# Find all files which match {pattern} in {directory}
+# This will show: "file:line my research"
+grep -rnw 'directory' -e "pattern"
+
+# Exclude grep from your grepped output of ps.
+# Add [] to the first letter. Ex: sshd -> [s]shd
+ps aux | grep '[h]ttpd'
+
+# Colour in red {bash} and keep all other lines
+ps aux | grep -E --color 'bash|$'
 ```
 
 **[[ Volver al índice ]](#INDEX)**
