@@ -224,9 +224,10 @@ console.log(platzom("sometemos")) //SoMeTeMoS
 
 ```javascript
 // PROMEDIO CORRIDO POR SEMANA
-// math.floor//rendondea hacia abajo 3.9 = 3
-// math.ceil//redondea para arriba 3.1 = 4
-// math.round// redondea dependiendo 3.1 = 3, 3.5 = 4
+// Math.floor(3.9) //rendondea hacia abajo 3.9 = 3
+// Math.ceil(3.1) //redondea para arriba 3.1 = 4
+// Math.round(3.5) // redondea dependiendo 3.1 = 3, 3.5 = 4
+// Math.trunc(3.6) //rendondea hacia abajo 3.6 = 3
 
 const nombre = 'rodolfo'
 const dias = [
