@@ -8,6 +8,7 @@
 * :link: [JavaScript in one page](http://www.cheat-sheets.org/sites/javascript.su/#arrayDescription)
 * :link: [JavaScript Regular Expression - Cheatsheet](https://www.debuggex.com/cheatsheet/regex/javascript)
 * :link: [JavaScript Event KeysCodes](http://keycode.info/)
+* :link: [33 Concepts Every JavaScript Developer Should Know](https://github.com/leonardomso/33-js-concepts)
 
 ## Estructura del lenguaje Js
 
