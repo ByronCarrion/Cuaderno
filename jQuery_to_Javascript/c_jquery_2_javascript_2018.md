@@ -216,11 +216,11 @@ Por convención una variable que este represente un objeto del DOM lleva el sign
 
 Dentro de JavaScript existen distintas funciones para hacer selectores, entre ellas se encuentra:
 
-+ getElementById: recibe como parámetro el id del objeto del DOM que estás buscando. Te regresa un solo objeto.
-+ getElementByTagName: recibe como parámetro el tag que estas buscando y te regresa una colección html de los elementos que tengan ese tag.
-+ getElementByClassName: recibe como parámetro la clase y te regresa una colección html de los elementos que tengan esa clase.
-+ querySelector: va a buscar el primer elemento que coincida con el selector que le pases como parámetro.
-+ querySelectorAll: va a buscar todos los elementos que coincidan con el selector que le pases como parámetro.
++ **getElementById**: recibe como parámetro el id del objeto del DOM que estás buscando. Te regresa un solo objeto.
++ **getElementByTagName**: recibe como parámetro el tag que estas buscando y te regresa una colección html de los elementos que tengan ese tag.
++ **getElementByClassName**: recibe como parámetro la clase y te regresa una colección html de los elementos que tengan esa clase.
++ **querySelector**: va a buscar el primer elemento que coincida con el selector que le pases como parámetro.
++ **querySelectorAll**: va a buscar todos los elementos que coincidan con el selector que le pases como parámetro.
 
 ### jQuery
 ```jquery
