@@ -11,30 +11,30 @@
 
 ## 1.  Actualizar los paquetes de Ubuntu o del sistema Debian:
 
-```
+```bash
 $ sudo apt-get install python-pip python3-pip python3-dev python-dev build-essential python-setuptools python-pip virtualenv virtualenvwrapper git nginx supervisor ufw
 ```
-```
+```bash
 $ pip install -r requirements.txt
 ```
 
 ### Actualizar el índice local de paquetes
-```
+```bash
 $ sudo apt-get update
 ```
 
 ### Actualizar todos los paquetes que puedan ser actualizados
-```
+```bash
 $ sudo apt-get dist-upgrade
 ```
 
 ### Remover los paquetes que no sean necesarios
-```
+```bash
 $ sudo apt-get autoremove
 ```
 
 ### Reiniciar la maquina (solo necesario para algunas actualizaciones)
-```
+```bash
 $ sudo reboot
 ```
 
@@ -44,26 +44,26 @@ Build-essential es el paquete que provee todas las herramientas de compilación 
 Python-dev provee los archivos necesarios para compilar módulos Python/C.
 Para instalar `pip` en Debian
 
-```
+```bash
 $ sudo apt-get install build-essential python-dev python-pip
 ```
-```
+```bash
 $ sudo pip install --upgrade pip
 ```
 
 ### Para instalar pip en Ubuntu
-```
+```bash
 $ sudo apt-get install  python-setuptools build-essential python-dev
 ```
-```
+```bash
 $ sudo easy_install pip
 ```
 
 ## 3. Instalar pip en debian & ubuntu
-```
+```bash
 sudo apt-get install python-pip
 ```
-```
+```bash
 # pip install -U pip
 ```
 
@@ -77,35 +77,35 @@ Virtualenv se usa para aislar en ambientes virtuales diferentes los paquetes que
 Virtualenvwrapper se usa para agilizar virtualenv
 
 ### Instalar virtualenv y virtualenvwrapper
-```
+```bash
 $ sudo pip install virtualenv virtualenvwrapper
 ```
 
 ### Editar el archivo .bashrc con ayuda de vim
-```
+```bash
 $ vim .bashrc
 ```
 
 ### Agregar la siguiente linea al final del archivo para #habilitar el virtualenvwrapper
-```
+```bash
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/[NOMBRE_DE_USUARIO]
 source /usr/local/bin/virtualenvwrapper.sh (esto es para las distribuciones debian y ubuntu)
 ```
 
 Salvar y cerrar el editor / Salir y volver a acceder
-```
+```bash
 $ exit
 ```
 
 ### Lo anterior se hace para que no se tenga que hacer lo siguiente
-```
+```bash
 $ source virtualenvwrapper.sh
 $ workon NOMBRE_ENTORNO
 ```
 
 Por defecto virtualenvwrapper crea todos los virtualenvs en la carpeta `~/.virtualenvs`. Sin embargo ese comportamiento se puede cambiar. Para eso se necesita agregar un par de variables de entorno al archivo `~/.bashrc` ó `~/.bash_profile`:
-```
+```bash
 export WORKON_HOME=/opt/virtualenvs
 export VIRTUALENVWRAPPER_HOOK_DIR=$WORKON_HOME/hooks
 ```
@@ -115,31 +115,31 @@ La segunda variable, `VIRTUALENVWRAPPER_HOOK_DIR`, establece el directorio en do
 
 ## 5.  Crear un ambiente virtual
 ### Crear un ambiente virtual
-```
+```bash
 $ mkvirtualenv <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ```
 
 ### Algunos comandos útiles para el ambiente virtual:
 ### Desactivar ambiente virtual
-```
+```bash
 $ deactivate
 ```
 
 ### Activar ambiente virtual o cambiar a otro
-```
+```bash
 $ workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ```
 
 ### Mostrar lo paquetes instalados en un ambiente virtual
-```
+```bash
 $ workon <NOMBRE_DEL_AMBIENTE_VIRTUAL>
 ```
-```
+```bash
 $ pip freeze
 ```
 
 ### Listar los ambientes vistuales
-```
+```bash
 $ lsvirtualenv
 ```
 
@@ -150,22 +150,22 @@ $ lsvirtualenv
 - -h -> Print the help for lsvirtualenv.
 
 ### Mostrar los detalles de un solo ambiente vistual
-```
+```bash
 $ showvirtualenv <NOMBRE DEL AMBIENTE VIRTUAL>
 ```
 
 ### Remover el ambiente virtual posicionando nos en la carpeta del proyecto
-```
+```bash
 $ rmvirtualenv <NOMBRE DE LA CARPETA VIRTUAL> (Se tiene que desactivar primero el ambiente virtual)
 ```
 
 ### Calling lssitepackages shows the content of the site-packages directory of the currently-active virtualenv.
-```
+```bash
 $ lssitepackages
 ```
 
 ### Mostrar todos los comandos
-```
+```bash
 $ virtualenvwrapper
 ```
 ```
@@ -188,6 +188,12 @@ virtualenvwrapper: show this help message
 wipeenv: remove all packages installed in the current virtualenv
 workon: list or change working virtualenvs
 ```
+
+## 6 Crear un ambiente virtual con Python 3
+### Crear un ambiente virtual
+
+
+
 
 ## Estructura de django para crear proyectos
 
