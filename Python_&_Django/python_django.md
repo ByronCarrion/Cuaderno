@@ -202,31 +202,31 @@ workon: list or change working virtualenvs
 
 - Para instalar django (estando dentro del ambiente virtual),
 
-```
+```bash
 pip install django
 ```
 
 3. Crear un proyecto en django
-```
+```bash
 $django-admin.py startproject [NombreDeTuProyecto]
 ```
 
 Despues de hacer hacer el proyecto se tiene que ceacrear las tablas del proyecto, con el siguiente comando. Crea las/Prepara las migraciones para cualquier cambio que se halla echo para despues aplicarlas.
 
-```
+```bash
 $ python manage.py makemigrations
 ```
 
 Despues para aplicar las migraciones se ejecuta el sig comando; de esta manera los cambios echos a las BD se aplican y en caso de aver errores se mostraran en pantalla
 
-```
+```bash
 $ python manage.py migrate
 ```
 salida..
-```
+```bash
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
-Running migrations:
+  Running migrations:
   Applying contenttypes.0001_initial... OK
   Applying auth.0001_initial... OK
   Applying admin.0001_initial... OK
@@ -240,23 +240,23 @@ Running migrations:
   Applying auth.0007_alter_validators_add_error_messages... OK
   Applying auth.0008_alter_user_username_max_length... OK
   Applying sessions.0001_initial... OK
-  ```
+```
 
 Esto se hace para poder crear la BD inicial del proyecto y despues se tiene que crear el usuario (super usuario) para que tenga acceso sin restriciones al proyecto y a las aplicaciones.
 
-```
+```bash
 $ python manage.py createsuperuser
 ```
 
-*NOTA*: Se tiene que crear un usuario  y la contraseña tiene que cimplir con los requerimientos NUEVOS de seguridad.
+*NOTA*: Se tiene que crear un usuario y la contraseña tiene que cimplir con los requerimientos NUEVOS de seguridad.
 
 Para correr el proyecto se ejecuta entramos a `http://localhost:8000/admin  - http://127.0.0.1:8000/admin` y entramos con el usuario y contraseña anterior puestas
-```
+```bash
 $ python manage.py runserver
 ```
 
 *NOTA:* ejecutando el siguiente comando nos muestra todas las opciones que podemos realizar cuando esta correctamente instalado
-```
+```bash
 ./manage.py
 Type 'manage.py help <subcommand>' for help on a specific subcommand.
 
@@ -304,19 +304,19 @@ Available subcommands:
   ```
 
 Para ejecutar el shell de python
-```
+```bash
 $ python manage.py shell
 ```
 - Con el shell de python se puede hacer CRUD en la B.D. Para revisar los datos que se modificaron a la tabla -> `$`
 
 4 Crear (app) aplicación en django para un proyecto
-```
+```bash
 $ python manage.py startapp [NombreDeLaApp] (POR CONVENCIÓN LAS APPS/MODULOS SE CREA SU NOMBRE EN PLURAL)
 ```
 
 ## Administrador de django
 ### Cambiar/crear Nuevo Usuario en Django
-```
+```bash
 $ ./manage.py createsuperuser [# LAS PREGUNTAS SIGUIENTES SE CONTESTAN CORRECTAMENTE]
 $ ./manage.py changepassword [# POR DEFAULT TOMA EL DE SISTEMA, EN CASO DE NO EXISTIR EL USUARIO Y DE PREFERENCIA SE DEBE DE CREAR UNO NUEVO]
 ```
@@ -363,8 +363,8 @@ Cuando necesitas una información que consume tiempo de calcular, procesar o con
 - Por vista - Per view -> :link:  https://docs.djangoproject.com/en/1.11/topics/cache/#the-per-site-cache
 - En las plantillas
 
-En Django se tiene que llevar un orden para poner en los Middleware el cache por vista. -> Middleware ordering
-```
+En Django se tiene que llevar un orden para poner en los *Middleware* el cache por vista. -> Middleware ordering
+```bash
 """ setting.py """
 MIDDLEWARE = [
   'django.middleware.security.SecurityMiddleware',
@@ -386,12 +386,12 @@ MIDDLEWARE = [
 Se pone en el `setings.py`
 
 Para no pegarle tanto a la b.d. Este cache funciona de manera simultanea. Cada escritura que se ahce en la cache tambien se hace en la BD. La sesion solo usa la BD si los datos no estan en la memoria cache.
-```
+```bash
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 ```
 
 A un más -- si no nos importa que se pierda la sesion. Esta opción es para una simple sesion de cache. La sesion se almacena en la cache directo. No es persistente, se borrara si se llena la cache o si el servidor es reiniciado.
-```
+```bash
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 ```
 
@@ -400,7 +400,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 ### Instalar REDIS
 Para instalar redis en debian 9 se siguen los pasos del :link: https://redis.io/topics/quickstart
 **NOTA**: Se tiene que leer con detenimiento
-```
+```bash
 $ wget http://download.redis.io/redis-stable.tar.gz
 $ tar xvzf redis-stable.tar.gz
 $ cd redis-stable
@@ -413,18 +413,18 @@ $ sudo make install
 Seguir los pasos del :link: -> https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
 
 #### 1. Para empezar se necesita crear la carpeta de coonfiguración. Se usa la rura de la carpeta  `/etc/redis`
-```
+```bash
 # mkdir /etc/redis
 ```
 
 #### 2. Se copia el archivo `redis.conf` que se cuentra en el archivo que se descargo para instalar redis -> `redis-stable.tar.gz`
-```
+```bash
 # cp /tmp/redis-stable/redis.conf /etc/redis
 ```
 
 #### 3.- Se edita el archivo "redis.conf"
 En el archivo, encuentre la directiva supervised. Actualmente, esto está establecido en **no**. Como estamos ejecutando un sistema operativo que usa el sistema de sistema **init(systemd)**, podemos cambiar esto a **systemd**
-```
+```bash
 # "/etc/redis/redis.conf"
 # If you run Redis from upstart or systemd, Redis can interact with your
 # supervision tree. Options:
@@ -441,7 +441,7 @@ supervised systemd
 En la opción donde se espeficica que direcorio va a ocupar para trabajar se define con la opcion -> `/lab/lib/redis`
 eje
 
-```
+```bash
 # The working directory.
 #
 # The DB will be written inside this directory, with the filename specified
@@ -457,33 +457,33 @@ Despues se tiene que guardar y cerrar.
 
 ### 3.1 (**SEGURIDAD**) Configurar contraseña para acceder a redis
 Buscar en el archivo /etc/redis/redis.conf
-```
+```bash
 # requirepass foobared
 ```
 
 Descomentarlo y cambiarlo por:
-```
+```bash
 requirepass [CONTRASEÑA]
 ```
 
 **NOTA**:
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
-```
+```bash
 $ echo "cualquer-texto" | sha512sum
 ```
-```
+```bash
 $ echo "cualquer-texto" | sha512sum
 ```
 salida..
-```
+```bash
 8898c46dfd4e3e3f35082bfa1dae27e9e2d9991785828478f05fba38a98dd8ab5dc503658620684ed6cfa7b7d43c6d322c9ff9568b9c0b3c164b35f5d5191380
 ```
 
 #### 4. Se crea el archivo para que el sistema systemd pueda administrarlo. Se creca el archivo y se edita con la siguiente
-```
+```bash
 # vim /etc/systemd/system/redis.service
 ```
-```
+```bash
 # /etc/systemd/system/redis.service
 [Unit]
 Description=Redis In-Memory Data Store
@@ -510,34 +510,34 @@ Despues se tiene que **guardar** y **cerrar.**
 #### 5. Crear los direcorios, archivos de redis y usuarios y grupos
 
 Crear el **usuario** redis y **grupo** redis
-```
+```bash
 # adduser --system --group --no-create-home redis
 ```
 
 Se crea la carpeta `/var/lib`
-```
+```bash
 #  mkdir /var/lib/redis
 ```
 
 Se cambian el grupo y el usuario a quien pertence la carpeta y se cambian los permisos para restringir el acceso
-```
+```bash
 # chown redis:redis /var/lib/redis
 # chmod 770 /var/lib/redis
 ```
 
 #### 6.- Iniciar, parar, reiniciar el servicio creado
-```
+```bash
 # systemctl start redis
 ```
-```
+```bash
 # systemctl status redis
 ```
-```
+```bash
 # systemctl stop redis
 ```
 
 salida...
-```
+```bash
 ➜ ~ systemctl status redis
 ● redis.service - Redis In-Memory Data Store
   Loaded: loaded (/etc/systemd/system/redis.service; disabled; vendor preset: enabled)
@@ -548,33 +548,33 @@ salida...
   CPU: 5.092s
   CGroup: /system.slice/redis.service
   └─14706 /usr/local/bin/redis-server 127.0.0.1:6379
-  ```
+```
 
 #### 7. Hacer las pruebas para comprobar si funciona redis
 #### 8. Para hacer que el servicio se inicie al inicio
-```
+```bash
 # systemctl enable redis
 ```
 salida...
-```
+```bash
 Created symlink from /etc/systemd/system/multi-user.target.wants/redis.service to /etc/systemd/system/redis.service.
 ```
 
 ### Instalar Redis cache backend for Django
 Para que funcione django con redis se tienen que instalar el paquete django-redis
 
-- https://github.com/niwinz/django-redis
-- http://niwinz.github.io/django-redis/latest/
+- :link: https://github.com/niwinz/django-redis
+- :link: http://niwinz.github.io/django-redis/latest/
 
 Para que se hagan las configuraciones.
 
-En el (dentro)ambiente del trabajo del proyecto:
-```
+En el (dentro) ambiente del trabajo del proyecto:
+```bash
 $ pip install django-redis
 ```
 
 En el `settings.py` de  queda de la iguiente manera:
-```
+```bash
 """ CACHE """
 CACHES = {
   "default": {
@@ -592,7 +592,7 @@ CACHES = {
 ## Templates
 
 Configuración para que busque en todas las carpetas del proyecto la carpeta **templates**
-```
+```bash
 TEMPLATES = [
   {
        'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -617,7 +617,7 @@ TEMPLATES = [
 ## Estatic & Media files
 
 En el archivo `settings.py` va la siguiente configuración.
-```
+```bash
 """ [STATIC & MEDIA FILES] """
 
 STATIC_URL = '/static/'
@@ -638,23 +638,23 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "COLLECT_STATIC", "media_ro
 ```
 
 En el `archivo url.py` que se encuentra al mismo nivel del archivo `settings.py`
-```
+```bash
 if settings.DEBUG:
   """
   PARA SERVIR LOS ARCHIVOS ESTATICOS EN DESARROLLO
   """
   urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-  ```
+```
 
-## Administración de las contraseñas enn Django
+## Administración de las contraseñas en Django
 
 - Se ocupa de preferencia **Argon2** :link: https://docs.djangoproject.com/en/2.0/topics/auth/passwords/#using-argon2-with-django
 - Par apoder ocupar **Argon2** se tienen que instalar en el ambiente de del proyecto. :link: https://pypi.python.org/pypi/argon2_cffi/
-```
+```bash
 $ pip install argon2-cffi
 ```
-```
+```bash
 """ settings.py """
 PASSWORD_HASHERS = [
   'django.contrib.auth.hashers.Argon2PasswordHasher',
@@ -674,18 +674,18 @@ PASSWORD_HASHERS = [
 Para instalar git la versión mas reciente del link
 - :link: https://github.com/git/git.git
 - :link: https://www.kernel.org/pub/software/scm/git/
-```
+```bash
 $ sudo apt-get update
 $ sudo apt-get install git
 $ sudo apt-get update
 ```
-```
+```bash
 $ sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 ```
-```
+```bash
 $ wget https://github.com/git/git/archive/v1.9.2.zip -O git.zip
 ```
-```
+```bash
 $ unzip git.zip
 $ cd git-XXX
 $ make prefix=/usr/local all
@@ -696,7 +696,7 @@ $ sudo make prefix=/usr/local install
 
 **HACER LA LLAVE SSH**
 Si quiere crear un par de llave RSA en vez de DSA solo debe usar -t rsa ( no debe especificar el largo "-b" por defecto el largo para RSA es de 4096 y es suficiente)
-```
+```bash
 $ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -> frase_de_la_llave
 ```
 
@@ -704,19 +704,19 @@ $ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com" -
 Before adding a new SSH key to the ssh-agent to manage your keys, you should have [checked for existing SSH](https://help.github.com/articles/checking-for-existing-ssh-keys/) keys and [generated a new SSH key](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key)
 
 1. Start the ssh-agent in the background.
-```
+```bash
 $ eval "$(ssh-agent -s)"
 Agent pid 59566
 ```
 
 2. Add your SSH private key to the ssh-agent. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
-```
+```bash
 $ ssh-add ~/.ssh/id_rsa
 ```
 
 3. Add the SSH key to your GitHub account.Copy the SSH key to your clipboard.
 If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
-```
+```bash
 $ sudo apt-get install xclip
 # Downloads and installs xclip. If you don't have `apt-get`, you might need to use another installer (like `yum`)
 
@@ -744,13 +744,13 @@ Before testing your SSH connection, you should have:
 - [Added a new SSH key to your GitHub account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account)
 
 1. Abrir la terminal  y
-```
+```bash
 $ ssh -T git@github.com
 ```
 
 # Attempts to ssh to GitHub
 Se mostraran mensajes de advertencia ejem:
-```
+```bash
 The authenticity of host 'github.com (192.30.252.1)' can't be established.
 RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
 Are you sure you want to continue connecting (yes/no)?
@@ -763,13 +763,13 @@ Are you sure you want to continue connecting (yes/no)?
 **Nota**: The example above lists the GitHub IP address as 192.30.252.1. When pinging GitHub, you may see a range of IP addresses. For more information, see "What IP addresses does GitHub use that I should whitelist?"
 
 2. Verify that the fingerprint in the message you see matches one of the messages in step 2, then type yes:
-```
+```bash
 Hi username! You've successfully authenticated, but GitHub does not
 provide shell access.
 ```
 
 You may see this error message:
-```
+```bash
 Agent admitted failure to sign using the key.
 debug1: No more authentication methods to try.
 Permission denied (publickey).
@@ -779,34 +779,34 @@ This is a known problem with certain Linux distributions. For more information, 
 Verify that the resulting message contains your username. If you receive a "permission denied" message, see "[Error: Permission denied (publickey)](https://help.github.com/articles/error-permission-denied-publickey)".
 
 Para entrar vía terminal a maquina remota vía ssh
-```
+```bash
 $ ssh root@XXX.XXX.XXX.XXX -> Después pedirá cambia la contraseña por otra nueva "xxxxxxxxxxxxxxx"
 ```
 
 Para que se pueda conectar el VPS con nuestro repositorio en github se tiene que hacer una llave ssh en el usuario en el que se esta ejecutando nuestra aplicación.
 
 Cuando se crea la llave ssh, en el repositorio de github se añade. Con nombre lacanteramack854JdsK
-```
+```bash
 $ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave" -> Frase contrasena_de_la_llave
 ```
 
 Cuando se crea la llave ssh y esta instalal en github ahora en nuestra sesión de nuestro usuario en vps dentro de la carpeta donde se encuentra manage.py y dentro del ambiente virtual se ejecuta
-```
+```bash
 $ git init
 ```
 
 Se agrega la dirección del repositorio remoto
-```
+```bash
 $ git remote add origin [REPOSITORIO HTTPS o SSH]
 ```
 
 Se comprueba que se añadieron correctamente
-```
+```bash
 $ git remote -v
 ```
 
 Para descargar/jalar el repositorio a nuestro vps, tiene que ser de la rama master
-```
+```bash
 $ git pull origin master -> Piede el password del ssh
 ```
 
@@ -816,7 +816,7 @@ $ git pull origin master -> Piede el password del ssh
 >The gateway translates the request received from the web server so the application can handle it. The gateway is often responsible for logging and reporting as well. We will use Gunicorn as our Gateway for this tutorial.
 
 Dentro del ambiente virtual del proyecto.
-```
+```bash
 $ pip install django gunicorn
 ```
 
@@ -825,7 +825,7 @@ $ pip install django gunicorn
 
 > The web server receives an HTTP request from the client (the browser) and is usually responsible for load balancing, proxying requests to other processes, serving static files, caching and more. The web server usually interprets the request and sends it to the gateway.
 
-```
+```bash
 $ sudo apt-get install nginx
 ```
 
@@ -833,7 +833,7 @@ $ sudo apt-get install nginx
 
 >Supervisor es un sistema cliente/servidor que permite a los usuarios monitorear y controlar el numero de procesos en UNIX como los sistemas operativos.
 
-```
+```bash
 $ sudo apt-get install supervisor
 ```
 
@@ -842,48 +842,48 @@ $ sudo apt-get install supervisor
 En debian 9
 
 Añadir en el archivo `/etc/apt/sources.list`
-```
+```bash
 deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 ```
 
 Importar la key
-```
+```bash
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 ```
 
 Para que quede de la siguiente mandera:
-```
+```bash
 # PostgreSQL
 deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 ```
-```
+```bash
 # apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
 ```
 
 ### Instalar boto3 & django-storages
 >Boto3 es un **SDK** "Software Development Kid" de "Amazon Web Services" **AWS** para **python**, que permite a los usuarios escribir software para hacer uso de los servicios de **AWS S3 y EC2**
 
-- http://boto3.readthedocs.io/en/latest/
-- https://github.com/boto/boto3
+:link: - http://boto3.readthedocs.io/en/latest/
+:link: - https://github.com/boto/boto3
 
 Estando dentro del ambiente virtual del proyecto
-```
+```bash
 $ pip install boto3
 ```
 
 >django-storages, es una colección de backends de almacenamiento personalizados para Django y boto3.
 
-- https://django-storages.readthedocs.io/en/latest/
-- https://github.com/jschneier/django-storages
+:link:- https://django-storages.readthedocs.io/en/latest/
+:link:- https://github.com/jschneier/django-storages
 
 Estando dentro del ambiente virtual.
-```
+```bash
 $ pip install django-storages
 ```
 
 Se añade `storages` en el archivo **settings.py**
-```
+```bash
 INSTALLED_APPS = (
   ...
   'storages',
@@ -891,10 +891,10 @@ INSTALLED_APPS = (
 )
 ```
 
-## Usar diferentes archivos settings.
+## Usar diferentes archivos **settings**, para poder trabajar con diferentes ambientes.
 
 ejemplo:
-```
+```bash
 settings/
      __init__.py
      base.py
@@ -907,7 +907,7 @@ settings/
 ```
 
 ejemplo:
-```
+```bash
 [PROYECTO]
 ├── OLD_settings.py
 ├── settings
@@ -920,22 +920,22 @@ ejemplo:
 ```
 
 Para ejecutar los diferentes tipos de ambientes se hace de la siguiente manera
+```bash
+$ ./manage.py runserver --settings=<NOMBRE_DEL_PROYECTO>.settings.<NOMBRE_DEL_ARCHIVO_QUE_ESTAMOS_CORRIENDO>
 ```
-$ ./anage.py runserver --settings=<nombre_del_proyecto>.settings.<nombre_del_archivo_que_estamos_corriendo>
-```
-```
-$ ./manage.py runserver --settings=nombre_del_proyecto.settings.prod
+```bash
+$ ./manage.py runserver --settings=NOMBRE_DEL_PROYECTO.settings.prod
 ```
 
 ## Crear un "droplet" en digitalocean
 
 - Antes de crear el droplet se tiene que crear la llave ssh
-```
+```bash
 $ ssh-keygen -t rsa -b 4096 -C "comentario_de_la_llave+your_email@example.com"
 ```
 
 y se guarda en `~/.ssh/<LLAVE> <LLAVE.pub>`
-```
+```bash
 $ ssh-keygen -t rsa -b 4096 -C "COMENTARIO_DE_LA_LLAVE+YOUR_EMAIL@EXAMPLE.COM"
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/mack/.ssh/id_rsa): <FRASE_DE_LA_LLAVE>
@@ -968,7 +968,7 @@ Ya que se tiene la llave creada se tiene en entrar al panel de control, y abrir 
 - Generalmente puede obtener esta clave copiando los resultados de:
 
 - Se copia la llave a `xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub` **digitalocean**.
-```
+```bash
 $ cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 ```
 
@@ -976,7 +976,7 @@ $ cat ~.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 
 - Los pasos anteriores han explicado cómo configurar un servidor con claves SSH preinstaladas. Sin embargo, no puede usar el panel de control para agregar claves a los **droplets** ya creadas.
 - Para agregar llaves adicionales a **droplets** preexistentes, puede pegar las claves usando SSH:
-```
+```bash
 $ cat ~/.ssh/id_rsa.pub | ssh root@[LA_IP_DE_EL_DROPLET] "cat >> ~/.ssh/authorized_keys"
 ```
 
@@ -987,7 +987,7 @@ Cuando realmente esté creando un nuevo servidor, seleccione las teclas que dese
 Ya que este creado el "droplet" desaparece mensaje "Your root password will be emailed to you". Y no se recibirá el correo con la contraseña de root
 
 - Ya que esta creado el "droplet" con la llave pre-instalada nos conectamos de la siguiente manera.
-```
+```bash
 ssh root@[IP_DE_LA_MAQUINA_DROPLET]
 ```
 
@@ -995,7 +995,7 @@ Paso seguido se escriben las contraseñas de las llaves.
 Cuando nos conectamos con otra maquina creada  que comparte la llave, no hay nececidad de escribir la contraseña de **root**
 
 Cuando se elimina (destruye) un "droplet" y antes de crear un **droplet** nuevo al cual nos conectamos, posiblemente se pueda ver este mensaje
-```
+```bash
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -1005,7 +1005,7 @@ It is also possible that a host key has just been changed.
 ```
 
 Si se presenta el caso el nuevo **droplet** posiblemente tiene la misma IP que la anterior eliminada (destruida) pero una llave SHH diferente, Se puede eliminar el mensaje de **advertencia** eliminando la anterior llave SHH del sistema con este COMANDO.
-```
+```bash
 ssh-kengen -T [IP_DE_LA MAQUINA_DROPLET]
 ```
 
@@ -1013,17 +1013,17 @@ ssh-kengen -T [IP_DE_LA MAQUINA_DROPLET]
 1. Por seguridad es mejor solo entrar al servidor con las llaves y no ocupar ninguna contraseña escrita.
 2. Es necesario editar las configuraciones SSHd del servidor en la ruta -> /etc/ssh/sshd_config
 3. Editarlo con "vim" en la linea donde se encuentre "PermitRootLogin" para que se vea como sigue:
-```
+```bash
 PermitRootLogin without-password
 ```
 
 Después es necesario reiniciar el **droplet** o reiniciar el servicio **sshd** de la siguiente manera
-```
+```bash
 # ps auxw | grep ssh
 USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND
 root 681 0.0 0.1 49948 2332 ? Ss 2012 3:23 /usr/sbin/sshd -D
 ```
-```
+```bash
 # kill -HUP 681
 ```
 
@@ -1032,10 +1032,10 @@ Ahora el inicio de sesión **root** del servidor está protegido y puede entrar 
 A las llaves creadas se les cambian los permisos para que solo sean de solo lectura para **root** de muestro sistema de archivos
 
 :link: https://es.wikipedia.org/wiki/Chmod
-```
+```bash
 # chmod 400 ruta/al/archivo/.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 ```
-```
+```bash
 # chmod 400 ruta/al/archivo/.ssh/xxxxxxxx_xxxxxxx_xxxxx_xxxxx.pub
 ```
 
@@ -1045,7 +1045,7 @@ A las llaves creadas se les cambian los permisos para que solo sean de solo lect
 0 es para "denegar permiso"
 
 
-```
+```bash
 chmod [DIGITIGO-DUEÑO][DIGITO-GRUPO][DIGITO-RESTO] <ARCHIVO>
 ```
 
@@ -1053,23 +1053,23 @@ chmod [DIGITIGO-DUEÑO][DIGITO-GRUPO][DIGITO-RESTO] <ARCHIVO>
 
 **NOTA**:
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
-```
+```bash
 $ echo "cualquer-texto" | sha512sum
 ```
-```
+```bash
 $ echo "cualquer-texto" | sha512sum
 ```
 salida..
-```
+```bash
 8898c46dfd4e3e3f35082bfa1dae27e9e2d9991785828478f05fba38a98dd8ab5dc503658620684ed6cfa7b7d43c6d322c9ff9568b9c0b3c164b35f5d5191380
 ```
 
 1. Se crea un usuario nuevo
-```
+```bash
 # adduser [NOMBRE_DE_USUARIO]
 ```
 salida..
-```
+```bash
 # adduser [NOMBRE_DE_USUARIO]
 Adding user `NOMBRE_DE_USUARIO' ...
 Adding new group `NOMBRE_DE_USUARIO' (1000) ...
@@ -1090,14 +1090,14 @@ Is the information correct? [Y/n] y
 ```
 
 Para eliminar el usuario
-```
+```bash
 # deluser [NOMBRE_DE_USUARIO]
 ```
 
 Posterior se tiene que eliminar de la carpeta `/home/` la carpeta con el nombre del usuario `[NOMBRE_DEL_USUARIO]`
 
 2. Se tiene que añadir el usuario al grupo **sudo**
-```
+```bash
 # usermod -aG sudo [NOMBRE_DE_USUARIO]
 ```
 
@@ -1111,7 +1111,7 @@ Posterior se tiene que eliminar de la carpeta `/home/` la carpeta con el nombre 
 Link extra -> [UFW Essentials: Common Firewall Rules and Commands](https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands)
 
 #### Para instalar UFW
-```
+```bash
 $ sudo apt-get install ufw
 ```
 
@@ -1123,13 +1123,13 @@ Para hacer esto, abra la configuración de UFW con su editor favorito
 
 
 `/etc/default/ufw excerpt`
-```
+```bash
 IPV6=yes
 ```
 
 #### Revisar el status y las reglas, de forma predeterminada UFW esta deshabilitado
 
-```
+```bash
 sudo ufw status verbose
 
 Salida:
@@ -1138,7 +1138,7 @@ Status: inactive
 
 #### Por ejemplo si estuviera habilidato SHH el puerto 22 se veria de esta forma
 
-```
+```bash
 Salida:
 Status: active
 Logging: on (low)
@@ -1155,38 +1155,38 @@ To Action From
 #### Para poner por default las reglas de UFW
 Estos parametros son suficientes para una computadora personal, pero los servidores necesitan responder a peticiones desde fuera
 
-```
+```bash
 $ sudo ufw default deny incoming
 $ sudo ufw default allow outgoing
 ```
 
 #### Permitir conexiones SHH
 
-```
+```bash
 $ sudo ufw allow ssh
 ```
 
 #### Permitir conexiones SHH POR EL PUERTO
 
-```
+```bash
 $ sudo ufw allow 22
 ```
 
 #### Permitir conexiones SHH POR OTRO PUERTO
 
-```
+```bash
 $ sudo ufw allow 2222
 ```
 
 #### Habilitar ufw
 
-```
+```bash
 $ sudo ufw enable
 ```
 
 #### Para ver las reglas que estan definidas
 
-```
+```bash
 $ sudo ufw status verbose
 ```
 
@@ -1195,84 +1195,84 @@ $ sudo ufw status verbose
 #### HTTP—port 80
 Conexiones HTTP , conexiones que no estan encriptadas
 
-```
+```bash
 sudo ufw allow http
 ```
 
 #### Permitir el servicio HTTP por puerto
 
-```
+```bash
 sudo ufw allow 80
 ```
 
 #### HTTPS—port 443
 Conexiones HTTPS, conexiones que estan encriptadas
 
-```
+```bash
 sudo ufw allow https
 ```
 
 #### Permitir el servicio HTTPS por puerto
 
-```
+```bash
 sudo ufw allow 443
 ```
 
 #### FTP—port 21
 Conexiones FTP , transferencia de archivos encriptada
 
-```
+```bash
 sudo ufw allow ftp
 ```
 
 #### Permitir el servicio FTPS por puerto
 
-```
+```bash
 sudo ufw allow 21/tcp
 ```
 
 #### Permitir puertos especificos
 
-```
+```bash
 $ sudo ufw allow 6000:6007/tcp
 $ sudo ufw allow 6000:6007/udp
 ```
 
 #### Permitir IP especifica
 
-```
+```bash
 $ sudo ufw allow from 15.15.15.51
 ```
 
 #### Permitir IP especifica y asignarle un puerto
 
-```
+```bash
 $ sudo ufw allow from 15.15.15.51 to any port 22
 ```
 
 #### Permitir sub-redes
 Si se requiere permitir las direcciones que van desde 15.15.15.15 a 15.15.15.254
 
-```
+```bash
 $ sudo ufw allow from 15.15.15.0/24
 ```
 
 #### Asignarle a la subred que se conecte por el puerto 22
 
-```
+```bash
 sudo ufw allow from 15.15.15.0/24 to any port 22
 ```
 
 #### Si desea crear una regla de firewall que solo se aplique a una interfaz de red específica,
-puede hacer especificando "**allow in on**" seguido del nombre de la interfaz de red.  
+Puede hacer especificando `allow in on` seguido del nombre de la **interfaz de red**.  
 Es posible que desee buscar sus interfaces de red antes de continuar.  
 
-```
+```bash
 ip addr
 ```
 
 Output Excerpt:
-```
+```bash
 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state
 
 3: eth1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default
@@ -1281,7 +1281,7 @@ Output Excerpt:
 Se tiene que identificar la red la interfas de la red publica, y despues se podria habilitar el servicio HTTP
 (puerto 80)
 
-```
+```bash
 $ sudo ufw allow in on eth0 to any port 80
 ```
 
@@ -1290,7 +1290,7 @@ Haciendo esto, se le permite a la interfas de red recibir peticiones HTTP de usu
 #### Si se requiere permitir a MySQL que tiene el puerto 3306, que escuche peticiones de una red privada en la interfaz eth1, se podria hacer
 Esto permitiría que otros servidores en su red privada se conectaran a su base de datos MySQL
 
-```
+```bash
 sudo ufw allow in on eth1 to any port 3306
 ```
 
@@ -1300,13 +1300,13 @@ Para denegar, se pueden ocupar las reglas antes mencionadas, solo lo que se nece
 
 #### Denegar conexiones HTTP
 
-```
+```bash
 sudo ufw deny http
 ```
 
 #### Denegar conexiones de 15.15.15.15
 
-```
+```bash
 sudo ufw deny from 15.15.15.51
 ```
 
@@ -1316,14 +1316,13 @@ Se pueden eliminar por "**el numero de la regla**" o por "**la regla actual**"
 
 #### EL NUMERO DE LA REGLA
 
-Para saber cual es el numero de la regla
-
-```
+Para saber cual es el numero de la regla.
+```bash
 sudo ufw status numbered
 ```
 
-```
-salida
+salida...
+```bash
 Status: active
 
   To Action From
@@ -1334,19 +1333,19 @@ Status: active
 
 Si se requiere eliminar la regla dos
 
-```
+```bash
 sudo ufw delete 2
 ```
 
 #### LA REGLA ACTUAL
 Si se requiere eliminar la regla "allow http" y se aliminará IPv4 y IPv6
 
-```
+```bash
 sudo ufw delete allow http
 ```
 
 #### REINICIAR EL SERVICIO ufw
 Si ya tiene las reglas de UFW configuradas pero decide que desea comenzar de nuevo, puede usar el comando de reinicio
-```
+```bash
 sudo ufw reset
 ```
