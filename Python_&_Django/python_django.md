@@ -58,6 +58,14 @@ $ sudo apt-get install  python-setuptools build-essential python-dev
 ```bash
 $ sudo easy_install pip
 ```
+### Para instalar pip3 para Python 3.5+
+```bash
+$ sudo apt-get install python3-pip
+```
+Para verificar la instalación
+```bash
+$ pip3 -V
+```
 
 ## 3. Instalar pip en debian & ubuntu
 ```bash
@@ -191,9 +199,57 @@ workon: list or change working virtualenvs
 
 ## 6 Crear un ambiente virtual con Python 3
 ### Crear un ambiente virtual
+Se recomienda crear una carpeta en donde se encuentren todos los entornos virtuales de Python3 __(oculta)__
+```bash
+$ mkdir .[CARPETA-OCULTA]
+```
+```bash
+# DENTRO DE LA CARPETA OCULTA
+python3 -m venv [NOMBRE-DEL-ENTORNO-VIRTUAL]
+```
+Para activar el entorno virtual
+```bash
+$ source .[CARPETA-OCULTA]/[NOMBRE-DEL-ENTORNO-VIRTUAL]/bin/activate
+```
+Para desactivar el entorno virtual
+```bash
+([NOMBRE-DEL-ENTORNO-VIRTUAL])$ deactivate
+```
 
+- :link: [Using Different Versions of Python - pyenv](https://github.com/pyenv/pyenv)
 
+- :link: [venv — Creation of virtual environments](https://docs.python.org/3/library/venv.html)
+```bash
+$ python -m venv -h
 
+usage: venv [-h] [--system-site-packages] [--symlinks | --copies] [--clear]
+            [--upgrade] [--without-pip]
+            ENV_DIR [ENV_DIR ...]
+
+Creates virtual Python environments in one or more target directories.
+
+positional arguments:
+  ENV_DIR               A directory to create the environment in.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --system-site-packages
+                        Give the virtual environment access to the system
+                        site-packages dir.
+  --symlinks            Try to use symlinks rather than copies, when symlinks
+                        are not the default for the platform.
+  --copies              Try to use copies rather than symlinks, even when
+                        symlinks are the default for the platform.
+  --clear               Delete the contents of the environment directory if it
+                        already exists, before environment creation.
+  --upgrade             Upgrade the environment directory to use this version
+                        of Python, assuming Python has been upgraded in-place.
+  --without-pip         Skips installing or upgrading pip in the virtual
+                        environment (pip is bootstrapped by default)
+
+Once an environment has been created, you may wish to activate it, e.g. by
+sourcing an activate script in its bin directory.
+```
 
 ## Estructura de django para crear proyectos
 
