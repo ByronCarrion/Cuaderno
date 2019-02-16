@@ -454,14 +454,12 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 ## Cache con REDIS
 
 ### Instalar REDIS
-Para instalar redis en debian 9 se siguen los pasos del :link: https://redis.io/topics/quickstart
-**NOTA**: Se tiene que leer con detenimiento
+
+:link: :house: https://redis.io/topics/quickstart
+:link: (How To Install and Secure Redis on Debian 9)[https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-debian-9#step-1-%E2%80%94-installing-and-configuring-redis]
+
 ```bash
-$ wget http://download.redis.io/redis-stable.tar.gz
-$ tar xvzf redis-stable.tar.gz
-$ cd redis-stable
-$ make
-$ sudo make install
+
 ```
 
 ### Configurar redis en debian para que funcione de manera correcta en localhost y en producción en debian y ubuntu
