@@ -456,7 +456,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 ### Instalar REDIS
 
 - :link: :house: https://redis.io/topics/quickstart
-- :link: [How To Install and Secure Redis on Debian 9 DigitalOcean][https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-debian-9#step-1-%E2%80%94-installing-and-configuring-redis]
+- :link: [How To Install and Secure Redis on Debian 9 DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-debian-9#step-1-%E2%80%94-installing-and-configuring-redis)
 
 ```bash
 
