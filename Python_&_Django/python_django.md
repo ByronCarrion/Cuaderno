@@ -455,28 +455,21 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
 ### Instalar REDIS
 
-- :link: :house: https://redis.io/topics/quickstart
+- :link: :house: [Quickstart] (https://redis.io/topics/quickstart)
+- :link: [Redis Security](https://redis.io/topics/security)
 - :link: [How To Install and Secure Redis on Debian 9 DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-debian-9#step-1-%E2%80%94-installing-and-configuring-redis)
-
-```bash
-
-```
 
 ### Configurar redis en debian para que funcione de manera correcta en localhost y en producción en debian y ubuntu
 
-Seguir los pasos del :link: -> https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-redis-on-ubuntu-16-04
-
-#### 1. Para empezar se necesita crear la carpeta de coonfiguración. Se usa la rura de la carpeta  `/etc/redis`
 ```bash
-# mkdir /etc/redis
+sudo apt update
+sudo apt install redis-server
 ```
 
-#### 2. Se copia el archivo `redis.conf` que se cuentra en el archivo que se descargo para instalar redis -> `redis-stable.tar.gz`
+#### 1.- Se edita el archivo "redis.conf"
 ```bash
-# cp /tmp/redis-stable/redis.conf /etc/redis
+$ sudo vim /etc/redis/redis.conf
 ```
-
-#### 3.- Se edita el archivo "redis.conf"
 En el archivo, encuentre la directiva supervised. Actualmente, esto está establecido en **no**. Como estamos ejecutando un sistema operativo que usa el sistema de sistema **init(systemd)**, podemos cambiar esto a **systemd**
 ```bash
 # "/etc/redis/redis.conf"
@@ -491,23 +484,70 @@ En el archivo, encuentre la directiva supervised. Actualmente, esto está establ
 # They do not enable continuous liveness pings back to your supervisor.
 supervised systemd
 ```
-
-En la opción donde se espeficica que direcorio va a ocupar para trabajar se define con la opcion -> `/lab/lib/redis`
-eje
-
+Para que los cambios tengan efecto se reincia el servicio
 ```bash
-# The working directory.
-#
-# The DB will be written inside this directory, with the filename specified
-# above using the 'dbfilename' configuration directive.
-#
-# The Append Only File will also be created inside this directory.
-#
-# Note that you must specify a directory here, not a file name.
-dir /var/lib/redis
+$ sudo systemctl restart redis
+```
+#### 1.- Comprobando REDIS
+```bash
+$ sudo systemctl status redis
+
+# SALIDA...
+● redis-server.service - Advanced key-value store
+   Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
+   Active: active (running) since Sat 2019-02-16 13:35:18 CST; 1h 16min ago
+     Docs: http://redis.io/documentation,
+           man:redis-server(1)
+  Process: 652 ExecStartPost=/bin/run-parts --verbose /etc/redis/redis-server.post-up.d (code=exited, status=0/SUCCESS)
+  Process: 603 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
+  Process: 522 ExecStartPre=/bin/run-parts --verbose /etc/redis/redis-server.pre-up.d (code=exited, status=0/SUCCESS)
+ Main PID: 651 (redis-server)
+    Tasks: 3 (limit: 4915)
+   Memory: 756.0K
+      CPU: 7.460s
+   CGroup: /system.slice/redis-server.service
+           └─651 /usr/bin/redis-server 127.0.0.1:6379
+
+Feb 16 13:35:17 mack systemd[1]: Starting Advanced key-value store...
+Feb 16 13:35:17 mack run-parts[522]: run-parts: executing /etc/redis/redis-server.pre-up.d/00_example
+Feb 16 13:35:18 mack run-parts[652]: run-parts: executing /etc/redis/redis-server.post-up.d/00_example
+Feb 16 13:35:18 mack systemd[1]: Started Advanced key-value store.
 ```
 
-Despues se tiene que guardar y cerrar.
+#### 2.- Comprobando su funcionamiento
+
+```bash
+$ redis-cli
+$ 127.0.0.1:6379> ping
+$ 127.0.0.1:6379> PONG
+$ 127.0.0.1:6379> set test "It's working!"
+$ 127.0.0.1:6379> OK
+$ 127.0.0.1:6379> "It's working!"
+$ 127.0.0.1:6379> exit
+$ 
+$ 
+```
+#### 3.- Redis Security
+
+Abrir el el archivo `redis.conf` para solo permitir conecciones de `localhost`
+```bash
+$ sudo vim /etc/redis/redis.conf
+```
+Localizar la linea y quitar `#`si se encuentra
+```bash
+bind 127.0.0.1
+```
+Guardar. cerrar y re-iniciar el servicio Redis
+```bash
+$ sudo systemctl restart redis
+```
+Para comprobar que se realizaron los cambios se tiene que revisar con el siguiente comando `netstat`
+```bash
+$ sudo netstat -lnp | grep redis
+#salida...
+
+tcp        0      0 127.0.0.1:6379          0.0.0.0:*               LISTEN      10959/redis-server
+```
 
 ### 3.1 (**SEGURIDAD**) Configurar contraseña para acceder a redis
 Buscar en el archivo /etc/redis/redis.conf
@@ -520,7 +560,23 @@ Descomentarlo y cambiarlo por:
 requirepass [CONTRASEÑA]
 ```
 
-**NOTA**:
+**NOTA-1**
+Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
+```bash
+$ openssl rand 60 | openssl base64 -A
+zi7pLVue2GpIS8ffGU1z/99+uEdVWm/5rAZ7Vl4K3NzFYDtZhjNzSV91BWWVs2BXfMzWgmUm+eru9h5P
+```
+Para que quede de la siguiente manera
+```bash
+/etc/redis/redis.conf
+requirepass zi7pLVue2GpIS8ffGU1z/99+uEdVWm/5rAZ7Vl4K3NzFYDtZhjNzSV91BWWVs2BXfMzWgmUm+eru9h5P
+```
+Guardar. cerrar y re-iniciar el servicio Redis
+```bash
+$ sudo systemctl restart redis
+```
+
+**NOTA-2**:
 Para poder hacer una contraseña en la linea de comandos se puede hacer de la siguiente manera:
 ```bash
 $ echo "cualquer-texto" | sha512sum
