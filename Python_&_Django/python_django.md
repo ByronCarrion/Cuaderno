@@ -524,8 +524,6 @@ $ 127.0.0.1:6379> set test "It's working!"
 $ 127.0.0.1:6379> OK
 $ 127.0.0.1:6379> "It's working!"
 $ 127.0.0.1:6379> exit
-$ 
-$ 
 ```
 #### 3.- Redis Security
 
