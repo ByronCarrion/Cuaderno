@@ -6,7 +6,7 @@
 [![Python & Django](img/python_django.png "Python & Django")](https://github.com/macknilan/Cuaderno/blob/master/Python_%26_Django/python_django.md)
 [![JavaScript](img/js_logo.png "JavaScript")](https://github.com/macknilan/Cuaderno/blob/master/JavaScript/javascript.md)
 [![PostgreSql](img/postgresql.png "PostgreSql")](https://github.com/macknilan/Cuaderno/blob/master/PostgreSQL/PostgreSQL.md)
-[![MariaDb](img/mariadb.png "MariaDb")](https://github.com/macknilan/Cuaderno/blob/master/Mysql/MySQL.md)
+[![MariaDb](img/Mysql.png "MariaDb")](https://github.com/macknilan/Cuaderno/blob/master/Mysql/MySQL.md)
 [![jQuery to Javascript](img/jquery_to_javascript.png "jQuery to Javascript")](https://github.com/macknilan/Cuaderno/blob/master/jQuery_to_Javascript/c_jquery_2_javascript_2018.md)
 [![Python](img/python-powered-h-70x91.png "Python")](https://github.com/macknilan/Cuaderno/blob/master/Python/README.md)
 [![Linux](img/tux.png "Linux")](https://github.com/macknilan/Cuaderno/blob/master/Linux/Linux.md)
