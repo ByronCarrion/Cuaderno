@@ -263,11 +263,11 @@ pip install django
 ```
 2.1. Para instalar una actualización **ESPECIFICA** en el ambiente virtual con pip 
 ```bash
-$ pip install --upgrade django==1.6.5
+pip install --upgrade django==1.6.5
 ```
 2.2. Para instalar la **ULTIMA** actualizacón en el ambiente virtual con pip
 ```bash
-$ pip install -U Django
+pip install -U Django
 ```
 
 3. Crear un proyecto en django
