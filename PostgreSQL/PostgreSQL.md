@@ -2,7 +2,7 @@
 #PostgreSQL
 ## Instalar PostgreSQL Debian 11.1
 
-Añadir en el archivo /etc/apt/sources.list
+- Añadir en el archivo /etc/apt/sources.list
 ```bash
 # PostgreSQL
 # deb http://apt.postgresql.org/pub/repos/apt/ YOUR_DEBIAN_VERSION_HERE-pgdg main
@@ -10,12 +10,12 @@ deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
 # wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 ```
 
-Importar la key
+- Importar la key
 ```bash
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 sudo apt-get update
 ```
-Instalamos los paquetes de postgresql
+- Instalamos los paquetes de postgresql
 ```bash
 apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
 ```
@@ -24,11 +24,10 @@ apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
 ```bash
 createuser [connection-option...] [option...] [username]
 ```
-Entrar con el usuario *PostgreSQL* e entrar directo a la terminal interactiva de *PostgreSQL*
+- Entrar con el usuario *PostgreSQL* e entrar directo a la terminal interactiva de *PostgreSQL*
 ```bash
 $ sudo -u postgres psql
 ```
-
 ```bash
 username #Specifies the name of the PostgreSQL user to be created. This name must be different from all existing roles in this PostgreSQL installation.
 -c number--connection-limit=number #Set a maximum number of connections for the new user. The default is to set no limit.
@@ -58,48 +57,56 @@ username #Specifies the name of the PostgreSQL user to be created. This name mus
 -W--password #Force createuser to prompt for a password (for connecting to the server, not for the password of the new user). This option is never essential, since createuser will automatically prompt for a password if the server demands password authentication. However, createuser will waste a connection attempt finding out that the server wants a password. In some cases it is worth typing -W to avoid the extra connection attempt.
 ```
 
-
-Para entrar a modo consola de PostgreSQL
+- Para entrar a modo consola de PostgreSQL
 ```bash
 $ psql
 ```
-Entrar con usuario a una BD previamente ya creados, estando posicionados en el usuario postgres
+- Entrar con usuario a una BD previamente ya creados, estando posicionados en el usuario postgres
 ```bash
 $ psql -h localhost -U [USUARIO] [NOMBRE_DE_BASE_DE_DATOS]
 ```
-Para crear un usuario por default
+- Para crear un usuario por default
 ```bash
 $ createuser -> ES CREAR USUARIO SIN NINGUN ATRIBUTO
 ```
-Para crear un usuario de forma interactiva
+- Para crear un usuario de forma interactiva
 ```bash
 $ createuser --interactive mack
 Shall the new role be a superuser? (y/n) n
 Shall the new role be allowed to create databases? (y/n) n
 Shall the new role be allowed to create more new roles? (y/n) n
 ```
-Crear  usuario *mack* usando el localhost *lamaquina* por el puerto 5000, con atributos especificados
+- Crear  usuario __mack__ usando el localhost __lamaquina__ por el puerto __5000__, con atributos especificados
 ```bash
 $ createuser -h lamaquina -p 5000 -S -D -R -e mack
 CREATE ROLE mack NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 ```
-
-
-Eliminar un usuario
-postgres=# DROP USER [NOMBRE_DE_BASE_DE_DATOS];
-
-Para crear una BD
-postgres=# createdb [NOMBRE_DE_BASE_DE_DATOS];
-
-Crear usuario con contraseña encriptada.
-
+- Crear usuario __mack__ como __super usuario__ y asignarle una contraseña
+```bash
+$ createuser -P -s -e mack
+Enter password for new role: xyzzy
+Enter it again: xyzzy
+CREATE ROLE joe PASSWORD 'md5b5f5ba1a423792b526f799ae4eb3d59e' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+```
+- Crear usuario con contraseña encriptada.
+```bash
 postgres=# CREATE ROLE nombre_de_usuario LOGIN ENCRYPTED PASSWORD 'mypguserpass';
-
-Crear BD y un usuario/role para esa base de datos dentro de shell de postgresql
-
+```
+- Eliminar un usuario
+```bash
+postgres=# DROP USER <NOMBRE_DE_BASE_DE_DATOS>;
+```
+- Para crear una BD
+```bash
+postgres=# createdb <NOMBRE_DE_BASE_DE_DATOS>;
+```
+- Crear BD y un __usuario/role__ para esa base de datos dentro de __shell__ de postgresql
+```bash
 postgres=# CREATE DATABASE mypgdatabase OWNER mypguser;
+```
 
-NOTA: Por recomendación django se realizan los siguientes pasos para que se realisen de forma segura y mas efeiciente Optimizando la configuración de POstgreSQL
+__NOTA__: Por recomendación django se realizan los siguientes pasos para que se realisen de forma segura y mas efeiciente Optimizando la configuración de POstgreSQL :link: [Optimizing PostgreSQL’s configuration](https://docs.djangoproject.com/en/1.11/ref/databases/#optimizing-postgresql-s-configuration "Optimizing PostgreSQL’s configuration")
+
 Esto acelerará las operaciones de base de datos de modo que los valores correctos no tengan que ser consultados y configurados cada vez que se establezca una conexión.
 
 Se tiene que establecer la codificación por defecto a UTF-8, que es la que Django espera. También tienes que establecer el régimen de aislamiento de las transacciones de read committed, el cual bloquea la lectura de transacciones no confirmadas. Por último, se tendrá que establecer la zona horaria.
@@ -116,8 +123,8 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE [NOMBRE_BD/ROLE] TO [USUARIO]; # ASI
 
 Crear BD y un usuario para esa bade de datos fuera del shell de PostgreSQL y dentro del usuario postgres(default)
 
-# createuser mypguser #from regular shell
-# createdb -O mypguser mypgdatabase
+ createuser mypguser #from regular shell
+ createdb -O mypguser mypgdatabase
 
 El manejo de roles en PostgreSQL permite diferentes configuraciones, entre ellas estan:
 SUPERUSER/NOSUPERUSER. Super usuario, privilegios para crear bases de datos y usuarios.
@@ -139,8 +146,8 @@ postgres=# ALTER ROLE [USUARIO] WITH PASSWORD '[CONTRASENA]';
 
 
 
----___---
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+__
+--------------------------------------------------------------------------------------------------------------------------
 
 Command Functionality
 $ sudo /etc/init.d/postgresql start Start server (Ubuntu)
