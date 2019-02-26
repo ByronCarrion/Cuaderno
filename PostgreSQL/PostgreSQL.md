@@ -1,317 +1,325 @@
 
-# MariaDB - PostgreSQL en Linux
+#PostgreSQL
+## Instalar PostgreSQL Debian 11.1
 
-## Instalar MariaDB debian
-
-
-*  :link: [MariaDB Downloads](https://downloads.mariadb.org/mariadb/repositories/#mirror=globotech)
-*  :link: [MariaDB tutorials](https://mariadb.com/kb/en/library/training-tutorials/)
-
-Crear en `source.list`
-
-```
-# MariaDB 10.2 repository list - created 2018-04-30 01:28 UTC
-# http://downloads.mariadb.org/mariadb/repositories/
-deb [arch=amd64,i386,ppc64el] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.2/debian stretch main
-deb-src http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.2/debian stretch main
-
-```
-Despues
-
-```
-sudo apt-get install software-properties-common dirmngr
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xF1656F24C74CD1D8
-sudo apt-get update
-sudo apt-get install mariadb-server
-```
-
-Para añadir password y configurar las opciones de MariaDB:
-```
-# mysql_secure_installation
-```
-
-## Instalar PostgreSql :link: https://www.postgresql.org/
-
-En debian 9
-
-Añadir en el archivo `/etc/apt/sources.list`
-```
+Añadir en el archivo /etc/apt/sources.list
+```bash
+# PostgreSQL
+# deb http://apt.postgresql.org/pub/repos/apt/ YOUR_DEBIAN_VERSION_HERE-pgdg main
 deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
+# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 ```
 
 Importar la key
+```bash
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+sudo apt-get update
 ```
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-```
-
-Para que quede de la siguiente mandera:
-```
-# PostgreSQL
-deb http://apt.postgresql.org/pub/repos/apt/ stretch-pgdg main
-# wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-# apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
+Instalamos los paquetes de postgresql
+```bash
+apt-get install postgresql postgresql-client postgresql-contrib libpq-dev
 ```
 
-### Database Backups
-
-Store mysql root password in `/root/.cnf` Como __root__ se puede acceder. chmod 600
-
+## Entrar a PostgreSql y crear usuario y base de tados
+```bash
+createuser [connection-option...] [option...] [username]
 ```
-[client]
-user=root
-password=<CONTRASEÑA>
-```
-
-### Back Up una DB
-
-```
-mysqldump --add-drop-table --database nombredelabasededatos > /home/nombredeusuario/backups/db/$(bin/date '+\%Y-\%m-\%d').sql.bk
+Entrar con el usuario *PostgreSQL* e entrar directo a la terminal interactiva de *PostgreSQL*
+```bash
+$ sudo -u postgres psql
 ```
 
-### Back Up todas las DB
-```
-mysqldump --all-databases --all-routines > /path/to/fulldump.sql
-```
-
-### Restaurar a DB de un Back Up
-```
-mysql -u root -p [nombredelabasededatos] < archivoDeBackup.sql
-```
-
-### Para restaurar dotas las DB
-Primero necesitan existir o el archivo debe de contener __CREATE TABLE__
-```
-mysql -u root -p < archivoDeTodasLasDB.sql
-```
-
-### Login MySQL
-```
-mysql -u root -p -h localhost
-```
-
-### Howto's MySql
-
-Mostrar lista de todos usuarios de MySql
-```
-mysql> SELECT user,host FROM mysql.user;
-```
-
-### Mostrar variables MySql/mariadb
-```
-SHOW VARIABLES LIKE "%version%";
+```bash
+username #Specifies the name of the PostgreSQL user to be created. This name must be different from all existing roles in this PostgreSQL installation.
+-c number--connection-limit=number #Set a maximum number of connections for the new user. The default is to set no limit.
+-d--createdb #The new user will be allowed to create databases.
+-D--no-createdb #The new user will not be allowed to create databases. This is the default.
+-e--echo #Echo the commands that createuser generates and sends to the server.
+-E--encrypted #This option is obsolete but still accepted for backward compatibility.
+-g role--role=role #Indicates role to which this role will be added immediately as a new member. Multiple roles to which this role will be added as a member can be specified by writing multiple -g switches.
+-i--inherit #The new role will automatically inherit privileges of roles it is a member of. This is the default.
+-I--no-inherit #The new role will not automatically inherit privileges of roles it is a member of.
+--interactive #Prompt for the user name if none is specified on the command line, and also prompt for whichever of the options -d/-D, -r/-R, -s/-S is not specified on the command line. (This was the default behavior up to PostgreSQL 9.1.)
+-l--login #The new user will be allowed to log in (that is, the user name can be used as the initial session user identifier). This is the default.
+-L--no-login #The new user will not be allowed to log in. (A role without login privilege is still useful as a means of managing database permissions.)
+-P--pwprompt #If given, createuser will issue a prompt for the password of the new user. This is not necessary if you do not plan on using password authentication.
+-r--createrole #The new user will be allowed to create new roles (that is, this user will have CREATEROLE privilege).
+-R--no-createrole #The new user will not be allowed to create new roles. This is the default.
+-s--superuser #The new user will be a superuser.
+-S--no-superuser #The new user will not be a superuser. This is the default.
+-V--version #Print the createuser version and exit.
+--replication #The new user will have the REPLICATION privilege, which is described more fully in the documentation for CREATE ROLE.
+--no-replication #The new user will not have the REPLICATION privilege, which is described more fully in the documentation for CREATE ROLE.
+-?--help #Show help about createuser command line arguments, and exit. createuser also accepts the following command-line arguments for connection parameters:
+-h host--host=host #Specifies the host name of the machine on which the server is running. If the value begins with a slash, it is used as the directory for the Unix domain socket.
+-p port--port=port #Specifies the TCP port or local Unix domain socket file extension on which the server is listening for connections.
+-U username--username=username #User name to connect as (not the user name to create).
+-w--no-password #Never issue a password prompt. If the server requires password authentication and a password is not available by other means such as a .pgpass file, the connection attempt will fail. This option can be useful in batch jobs and scripts where no user is present to enter a password.
+-W--password #Force createuser to prompt for a password (for connecting to the server, not for the password of the new user). This option is never essential, since createuser will automatically prompt for a password if the server demands password authentication. However, createuser will waste a connection attempt finding out that the server wants a password. In some cases it is worth typing -W to avoid the extra connection attempt.
 ```
 
-### Cambiar contraseña de _root_
 
-1. `mysql -u root -p`
-2. `use mysql;`
-3. `update user set password=PASSWORD('your_new_password') where User='root';`
-4. `flush privileges;`
-5. `quit`
-
-#### Mostrar privilegios concedidos de un usuario
-1. `mysql> show grants for 'root'@'%';`
-2. `SHOW GRANTS FOR 'root'@'localhost';`
-
-
-#### Muestra las BD
+Para entrar a modo consola de PostgreSQL
+```bash
+$ psql
 ```
-mysql> show DATABASES;
+Entrar con usuario a una BD previamente ya creados, estando posicionados en el usuario postgres
+```bash
+$ psql -h localhost -U [USUARIO] [NOMBRE_DE_BASE_DE_DATOS]
 ```
-
-#### Crea una BD
+Para crear un usuario por default
+```bash
+$ createuser -> ES CREAR USUARIO SIN NINGUN ATRIBUTO
 ```
-mysql> CREATE DATABASE nombredelabasededatos;
+Para crear un usuario de forma interactiva
+```bash
+$ createuser --interactive mack
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) n
+Shall the new role be allowed to create more new roles? (y/n) n
 ```
-
-#### Borrar una BD
-1. `mysql> DROP DATABASE nombredelabasededatos;`
-2. `DROP DATABASE IF EXISTS tutorial_database;`
-
-#### Para usar una BD
-```
-mysql> USE nombredelabasededatos;
+Crear  usuario *mack* usando el localhost *lamaquina* por el puerto 5000, con atributos especificados
+```bash
+$ createuser -h lamaquina -p 5000 -S -D -R -e mack
+CREATE ROLE mack NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 ```
 
-#### Crear usuario
-```
-mysql> CREATE USER 'mi_usuario'@'localhost' IDENTIFIED BY 'mi_contraseña';
-```
 
-### Dar permisos a una DB a un usuario.
-1. `GRANT permission ON database.table TO 'user'@'localhost';`
-    - ALL – Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
-    - CREATE – Allow a user to create databases and tables.
-    - DELETE – Allow a user to delete rows from a table.
-    - DROP – Allow a user to drop databases and tables.
-    - EXECUTE – Allow a user to execute stored routines.
-    - GRANT OPTION – Allow a user to grant or remove another user’s privileges.
-    - INSERT – Allow a user to insert rows from a table.
-    - SELECT – Allow a user to select data from a database.
-    - SHOW DATABASES- Allow a user to view a list of all databases.
-    - UPDATE – Allow a user to update rows in a table.
-2. _Dar permisos a todas las DB_ para un suario -> `GRANT CREATE ON *.* TO 'testuser'@'localhost';`
-3. Dar permiso de _borrar_ una DB a un usuario -> `GRANT DROP ON tutorial_database.* TO 'testuser'@'localhost';`
-4. Cuando termine de hacer los cambios de permiso, _es una buena práctica volver a cargar todos los privilegios con el comando de descarga_ -> `FLUSH PRIVILEGES;`
-5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'testuser'@'localhost';`
+Eliminar un usuario
+postgres=# DROP USER [NOMBRE_DE_BASE_DE_DATOS];
 
-### Quitar/revocar permisos de una DB a un usuario.
-1. `REVOKE permission ON database.table FROM 'user'@'localhost';`
-    - ALL – Allow complete access to a specific database. If a database is not specified, then allow complete access to the entirety of MySQL.
-    - CREATE – Allow a user to create databases and tables.
-    - DELETE – Allow a user to delete rows from a table.
-    - DROP – Allow a user to drop databases and tables.
-    - EXECUTE – Allow a user to execute stored routines.
-    - GRANT OPTION – Allow a user to grant or remove another user’s privileges.
-    - INSERT – Allow a user to insert rows from a table.
-    - SELECT – Allow a user to select data from a database.
-    - SHOW DATABASES- Allow a user to view a list of all databases.
-    - UPDATE – Allow a user to update rows in a table.
-2. _Quitar permisos para todas las DB_ a un usuario -> `REVOKE CREATE ON *.* FROM 'testuser'@'localhost';`
-3. _Quitar el permiso de eliminar una DB_ -> `REVOKE DROP ON tutorial_database.* FROM 'testuser'@'localhost';`
-4. Cuando termine de hacer los cambios de permiso, _es una buena práctica volver a cargar todos los privilegios con el comando de descarga_ -> `FLUSH PRIVILEGES;`
-5. Mostrar permisos otorgados para un usuario -> `SHOW GRANTS FOR 'testuser'@'localhost';`
+Para crear una BD
+postgres=# createdb [NOMBRE_DE_BASE_DE_DATOS];
 
-#### Para borrar un usuario.
-```
-mysql> DROP USER 'usuario';
-```
+Crear usuario con contraseña encriptada.
 
-#### Para mostrar las tablas:
-```
-mysql> SHOW TABLES;
-```
+postgres=# CREATE ROLE nombre_de_usuario LOGIN ENCRYPTED PASSWORD 'mypguserpass';
 
-#### Para dar permisos desde la consola sobre todas las tablas de una base de datos
-```
-mysql> GRANT ALL PRIVILEGES ON nombredelabasededatos.* TO 'landani'@'localhost';
-```
+Crear BD y un usuario/role para esa base de datos dentro de shell de postgresql
 
-#### Después de dar o quitar permisos, siempre tendremos que ejecutar el siguiente comando para aplicarlos.
-```
-mysql> FLUSH PRIVILEGES;
-```
+postgres=# CREATE DATABASE mypgdatabase OWNER mypguser;
 
-#### Para dar permisos desde la consola sobre una tabla concreta de la base de datos
-```
-mysql> GRANT SELECT,INSERT,UPDATE,DELETE ON database_name.concrete_table TO 'landani'@'%';
-```
+NOTA: Por recomendación django se realizan los siguientes pasos para que se realisen de forma segura y mas efeiciente Optimizando la configuración de POstgreSQL
+Esto acelerará las operaciones de base de datos de modo que los valores correctos no tengan que ser consultados y configurados cada vez que se establezca una conexión.
 
-#### Para quitar permisos desde la consola de mysql, ejecutaremos el siguiente comando. Si queremos afectar a una base de datos, tabla concreta, etc. lo haremos igual que para dar permisos. En este ejemplo afectamos a todas las bases de datos *(*.*)* y quitaremos todos los permisos (`ALL PRIVILEGES`)
-```
-mysql> REVOKE ALL PRIVILEGES ON *.* FROM 'landani'@'localhost';
-```
+Se tiene que establecer la codificación por defecto a UTF-8, que es la que Django espera. También tienes que establecer el régimen de aislamiento de las transacciones de read committed, el cual bloquea la lectura de transacciones no confirmadas. Por último, se tendrá que establecer la zona horaria.
 
-#### Para saber que BD estoy usando.
-```
-mysql> SELECT DATABASE(); ------- \s
-```
+postgres=# ALTER ROLE [NOMBRE_BD/ROLE] SET default_transaction_isolation TO 'read committed';
 
-#### Para saber que usuario estoy parado.
-```
-mysql> SELECT USER(); ------- \s
-mysql> SELECT CURRENT_USER;
-```
+postgres=# ALTER ROLE [NOMBRE_BD/ROLE] SET client_encoding TO 'utf8';
 
-#### Para saber los privilegios de un usuario.
-```
-mysql> SHOW GRANTS FOR 'root'@'localhost';
-```
+postgres=# ALTER ROLE [NOMBRE_BD/ROLE] SET timezone TO 'UTC';
 
-#### Para ver los privilegios consedidos a una cuenta que se esta que se esta usuando conectada al server
-```
-SHOW GRANTS;
-SHOW GRANTS FOR CURRENT_USER;
-SHOW GRANTS FOR CURRENT_USER();
-```
+Cambiar/Asignar acceso y permisos al usuario para administrar la BD
 
-#### How to check MySQL Server is running?
-```
-# mysqladmin -u root -p ping
+postgres=# GRANT ALL PRIVILEGES ON DATABASE [NOMBRE_BD/ROLE] TO [USUARIO]; # ASIGNAR UNA B.D. A UN USUARIO
 
-    Enter password:
-    mysqld is alive
-```
+Crear BD y un usuario para esa bade de datos fuera del shell de PostgreSQL y dentro del usuario postgres(default)
 
-#### How to Check which MySQL version I am running?
-```
-# mysqladmin -u root -p version
-```
+# createuser mypguser #from regular shell
+# createdb -O mypguser mypgdatabase
 
-#### How to Find out current Status of MySQL server?
-```
-# mysqladmin -u root -ptmppassword status
-```
+El manejo de roles en PostgreSQL permite diferentes configuraciones, entre ellas estan:
+SUPERUSER/NOSUPERUSER. Super usuario, privilegios para crear bases de datos y usuarios.
+CREATEDB/NOCREATEDB. Permite crear bases de datos.
+CREATEROLE/NOCREATEROLE. Permite crear roles.
+CREATEUSER/NOCREATEUSER. Permite crear usuarios.
+LOGIN/NOLOGIN. Este atributo hace la diferencia entre un rol y usuario. Ya que el usuario tiene permisos para acceder a la base de datos a traves de un cliente.
+PASSWORD. Permite alterar la contraseña.
+VALID UNTIL. Expiración de usuarios.
+eje-
+ALTER ROLE <nombre del rol> WITH <opciones>
 
-#### How to check status of all MySQL Server Variable’s and value’s?
-```
-# mysqladmin -u root -p extended-status   
-```
+Cambiar/asignar la contraseña del usuario creado, dentro de la consola de postgresql(PREFERENTEMENTE)
+postgres=# ALTER USER [USUARIO] WITH LOGIN ENCRYPTED PASSWORD '[CONTRASENA]';
+ó
+postgres=# ALTER ROLE [USUARIO] WITH LOGIN ENCRYPTED PASSWORD '[CONTRASENA]';
 
-#### How to see all MySQL server Variables and Values?
-```
-# mysqladmin  -u root -p variables
-```
+postgres=# ALTER ROLE [USUARIO] WITH PASSWORD '[CONTRASENA]';
 
-#### How to check all the running Process of MySQL server?
-```
-# mysqladmin -u root -p processlist
-```
 
-#### How to reload/refresh MySQL Privileges?
-```
-# mysqladmin -u root -p reload;
-# mysqladmin -u root -p refresh
-```
 
-#### Como apagar el servidor de MySql dse forma segura
-```
-# mysqladmin -u root -p shutdown
-    Ó
-# /etc/init.d/mysqld stop
-# /etc/init.d/mysqld start
-```
+---___---
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Some useful MySQL Flush commands - Following are some useful flush commands with their description.
-```
-flush-hosts: Flush all host information from host cache.
-flush-tables: Flush all tables.
-flush-threads: Flush all threads cache.
-flush-logs: Flush all information logs.
-flush-privileges: Reload the grant tables (same as reload).
-flush-status: Clear status variables.
+Command Functionality
+$ sudo /etc/init.d/postgresql start Start server (Ubuntu)
+$ psql -U postgres  Connect
+postgres=# \l   Show databases
+postgres=# \h   Help
+postgres=# CREATE DATABASE jerry;   Create database
+postgres=# DROP DATABASE jerry; Delete database
+postgres=# SET search_path TO schema;above
+Use schema
+$ psql -U postgres -d   Use database
+postgres=# \c test  Change database
+postgres=# \du  List users
+postgres=# \d   List tables
+postgres=# CREATE SCHEMA sausalito; Create schema
+postgres=# \dn  List schema
+postgres=# DROP SCHEMA sausalito;   Drop schema
+postgres=# SELECT * FROM sausalito.employees;   Select rows
+postgres=# CREATE TABLE sausalito.employees (id INT);   Create table
+postgres=# INSERT INTO sausalito.employees VALUES (1);  Insert record
+postgres=# UPDATE sausalito.employees SET id = 4 WHERE id = 2;  Update table record
+postgres=# DELETE FROM sausalito.employees WHERE id = 3;    Delete record
+postgres=# DROP TABLE sausalito.employees;  Drop table
+postgres=# \q   Quit from session
 
-# mysqladmin -u root -p flush-hosts
-# mysqladmin -u root -p flush-tables
-# mysqladmin -u root -p flush-threads
-# mysqladmin -u root -p flush-logs
-# mysqladmin -u root -p flush-privileges
-# mysqladmin -u root -p flush-status
-```
 
-#### How to kill Sleeping MySQL Client Process? - Use the following command to identify sleeping MySQL client process.
-```
-# mysqladmin -u root -p processlist
-```
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Despues con el siguiente comando se mata el proceso, es el "Id"
-```
-# mysqladmin -u root -p kill 5
-```
+Para verificar el usuario creado
+$ psql
+$ \du -> LISTAR LOS USUARIOS
+$ \l -> LISTAR LAS BASES DE DATOS CREADAS
+$ \dl -> DESPLEGAR LAS TABLAS DE LA BD CONECTADA
+$ \q -> Salir de la consola de postgresql
 
-#### How to Connect remote mysql server - To connect remote MySQL server, use the -h (host)  with IP Address of remote machine.
-```
-# mysqladmin  -h 172.16.25.126 -u root -p
-```
+          Si se muestra el mensaje createuser: creation of new role failed: ERROR:  role "postgres" already exists Y esto en ubuntu seguir con el paso seguiente.
 
-#### How to start/stop MySQL replication on a slave server? - To start/stop MySQL replication on salve server, use the following commands.
-```
-# mysqladmin  -u root -p start-slave
-# mysqladmin  -u root -p stop-slave
-```
+            Let's start off our configuration by working with PostgreSQL. With PostgreSQL we need to create a database, create a user, and grant the user we created access to the database we created. Start off by running the following command:
+            The default database name and database user are called postgres.
+             $ sudo su - postgres -> PARA CAMBIAR EL USUARIO postgresql PARA PODER HACER LA CONFIGURACIONES
+            Your terminal prompt should now say "postgres@yourserver". If this is the case, then run this command to create your database:
+             $ createdb mydb -> BORRAR BASE DE DATOS: $ dropdb dbname 
+            Your database has now been created and is named "mydb" if you didn't change the command. You can name your database whatever you would like. Now create your database user with the following command:
+             $ createuser  -> ES CREAR USUARIO SIN NINGUN ATRIBUTO
+       Crear usuario con contraseña encriptada  
 
-#### How to store MySQL server Debug Information to logs? - It tells the server to write debug information about locks in use, used memory and query usage to the MySQL log file including information about event scheduler.
-```
-# mysqladmin  -u root -p debug
-```
-asd
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+General - \? for help with psql commands
+
+
+\copyright  show PostgreSQL usage and distribution terms
+\g [FILE] or ;  execute query (and send results to file or |pipe)
+\gset [PREFIX]  execute query and store results in psql variables
+\h [NAME]   help on syntax of SQL commands, * for all commands
+\q  quit psql
+\watch [SEC]    execute query every SEC seconds
+
+
+Query Buffer    
+\e [FILE] [LINE]    edit the query buffer (or file) with external editor
+\ef [FUNCNAME [LINE]]   edit function definition with external editor
+\p  show the contents of the query buffer
+\r  reset (clear) the query buffer
+\s [FILE]   display history or save it to file
+\w FILE write query buffer to file
+
+
+Input/Output    
+\copy ...   perform SQL COPY with data stream to the client host
+\echo [STRING]  write string to standard output
+\i FILE execute commands from file
+\ir FILE    as \i, but relative to location of current script
+\o [FILE]   send all query results to file or |pipe
+\qecho [STRING] write string to query output stream (see \o)
+
+
+Informational   
+(options: S = show system objects, + = additional detail)   
+\d[S+]  list tables, views, and sequences
+\d[S+] NAME describe table, view, sequence, or index
+\da[S] [PATTERN]    list aggregates
+\db[+] [PATTERN]    list tablespaces
+\dc[S+] [PATTERN]   list conversions
+\dC[+] [PATTERN]    list casts
+\dd[S] [PATTERN]    show object descriptions not displayed elsewhere
+\ddp [PATTERN]  list default privileges
+\dD[S+] [PATTERN]   list domains
+\det[+] [PATTERN]   list foreign tables
+\des[+] [PATTERN]   list foreign servers
+\deu[+] [PATTERN]   list user mappings
+\dew[+] [PATTERN]   list foreign-data wrappers
+\df[antw][S+] [PATRN]   list [only agg/normal/trigger/window] functions
+\dF[+] [PATTERN]    list text search configurations
+\dFd[+] [PATTERN]   list text search dictionaries
+\dFp[+] [PATTERN]   list text search parsers
+\dFt[+] [PATTERN]   list text search templates
+\dg[+] [PATTERN]    list roles
+\di[S+] [PATTERN]   list indexes
+\dl list large objects, same as \lo_list
+\dL[S+] [PATTERN]   list procedural languages
+\dm[S+] [PATTERN]   list materialized views
+\dn[S+] [PATTERN]   list schemas
+\do[S] [PATTERN]    list operators
+\dO[S+] [PATTERN]   list collations
+\dp [PATTERN]   list table, view, and sequence access privileges
+\drds [PATRN1 [PATRN2]] list per-database role settings
+\ds[S+] [PATTERN]   list sequences
+\dt[S+] [PATTERN]   list tables
+\dT[S+] [PATTERN]   list data types
+\du[+] [PATTERN]    list roles
+\dv[S+] [PATTERN]   list views
+\dE[S+] [PATTERN]   list foreign tables
+\dx[+] [PATTERN]    list extensions
+\dy [PATTERN]   list event triggers
+\l[+] [PATTERN] list databases
+\sf[+] FUNCNAME show a function's definition
+\z [PATTERN]    same as \dp
+
+
+Formatting  
+\a  toggle between unaligned and aligned output mode
+\C [STRING] set table title, or unset if none
+\f [STRING] show or set field separator for unaligned query output
+\H  toggle HTML output mode (currently off)
+\pset [NAME [VALUE]]    set table output option
+
+(NAME := {format|border|expanded|fieldsep|fieldsep_zero|footer|null|
+
+numericlocale|recordsep|recordsep_zero|tuples_only|title|tableattr|pager})
+\t [on|off] show only rows (currently off)
+\T [STRING] set HTML <table> tag attributes, or unset if none
+\x [on|off|auto]    toggle expanded output (currently off)
+
+
+Connection  
+\c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo} 
+
+connect to new database (currently "postgres")
+\encoding [ENCODING]    show or set client encoding
+\password [USERNAME]    securely change the password for a user
+\conninfo   display information about current connection
+
+
+Operating System    
+\setenv NAME [VALUE]    set or unset environment variable
+\timing [on|off]    toggle timing of commands (currently off)
+\! [COMMAND]    execute command in shell or start interactive shell
+
+
+Large Objects   
+\lo_export LOBOID FILE  
+\lo_import FILE [COMMENT]   
+\lo_list    
+\lo_unlink LOBOID large object operations   
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+su postgres y luego psql para acceder a la base de datos.
+
+comando \h; obtengo ayuda sobre el comando.
+
+\l lista las base de datos con su nombre, dueño y la codificación.
+
+\du lista los usuarios de postgres y sus propiedades.
+
+createuser -P -s -d -r -e zabbix crea el usuario zabbix con privilegios de root
+
+psql -h localhost -U zabbix zabbix entramos en Postgres, con el usuario zabbix a la base de datos zabbix
+
+create database zabbix with owner=zabbix encoding='LATIN1'; crea una base de datos con el nombre nombredelaDB cuyo dueño de la base de datos es zabbix y la codificación de la base de datos es LAINT1
+
+alter database zabbix owner to zabbix; el nuevo dueño de la base de datos zabbix es el usuario zabbix
+
+alter user zabbix with SUPERUSER; le doy al usuario zabbix permisos de root
+
+drop database zabbix; borra una base de datos zabbix
+
+
+alter user zabbix with connection limit 20000; aumento el limite de conexiones a 20000
+
+-
