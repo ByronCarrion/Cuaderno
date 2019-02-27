@@ -81,12 +81,26 @@ Shall the new role be allowed to create more new roles? (y/n) n
 $ createuser -h lamaquina -p 5000 -S -D -R -e mack
 CREATE ROLE mack NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 ```
+
+- El manejo de roles en PostgreSQL permite diferentes configuraciones, entre ellas estan:
+`SUPERUSER/NOSUPERUSER`. Super usuario, privilegios para crear bases de datos y usuarios.
+`CREATEDB/NOCREATEDB`. Permite crear bases de datos.
+`CREATEROLE/NOCREATEROLE`. Permite crear roles.
+`CREATEUSER/NOCREATEUSER`. Permite crear usuarios.
+`LOGIN/NOLOGIN`. Este atributo hace la diferencia entre un rol y usuario. Ya que el usuario tiene permisos para acceder a la base de datos a traves de un cliente.
+PASSWORD. Permite alterar la contraseña.
+`VALID UNTIL`. Expiración de usuarios.
+eje-
+```bash
+ALTER ROLE <nombre del rol> WITH <opciones>
+```
+
 - Crear usuario __mack__ como __super usuario__ y asignarle una contraseña
 ```bash
 $ createuser -P -s -e mack
 Enter password for new role: xyzzy
 Enter it again: xyzzy
-CREATE ROLE joe PASSWORD 'md5b5f5ba1a423792b526f799ae4eb3d59e' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+CREATE ROLE mack PASSWORD 'md5b5f5ba1a423792b526f799ae4eb3d59e' SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
 ```
 - Crear usuario con contraseña encriptada.
 ```bash
@@ -110,201 +124,177 @@ __NOTA__: Por recomendación django se realizan los siguientes pasos para que se
 Esto acelerará las operaciones de base de datos de modo que los valores correctos no tengan que ser consultados y configurados cada vez que se establezca una conexión.
 
 Se tiene que establecer la codificación por defecto a UTF-8, que es la que Django espera. También tienes que establecer el régimen de aislamiento de las transacciones de read committed, el cual bloquea la lectura de transacciones no confirmadas. Por último, se tendrá que establecer la zona horaria.
-
+```bash
 postgres=# ALTER ROLE [NOMBRE_BD/ROLE] SET default_transaction_isolation TO 'read committed';
-
 postgres=# ALTER ROLE [NOMBRE_BD/ROLE] SET client_encoding TO 'utf8';
-
 postgres=# ALTER ROLE [NOMBRE_BD/ROLE] SET timezone TO 'UTC';
+```
 
-Cambiar/Asignar acceso y permisos al usuario para administrar la BD
-
+- Cambiar/Asignar acceso y permisos al usuario para administrar la BD
+```bash
 postgres=# GRANT ALL PRIVILEGES ON DATABASE [NOMBRE_BD/ROLE] TO [USUARIO]; # ASIGNAR UNA B.D. A UN USUARIO
+```
 
-Crear BD y un usuario para esa bade de datos fuera del shell de PostgreSQL y dentro del usuario postgres(default)
-
+- Crear BD y un usuario para esa base de datos fuera del shell de PostgreSQL y dentro del usuario postgres(default)
+```bash
  createuser mypguser #from regular shell
  createdb -O mypguser mypgdatabase
+```
 
-El manejo de roles en PostgreSQL permite diferentes configuraciones, entre ellas estan:
-SUPERUSER/NOSUPERUSER. Super usuario, privilegios para crear bases de datos y usuarios.
-CREATEDB/NOCREATEDB. Permite crear bases de datos.
-CREATEROLE/NOCREATEROLE. Permite crear roles.
-CREATEUSER/NOCREATEUSER. Permite crear usuarios.
-LOGIN/NOLOGIN. Este atributo hace la diferencia entre un rol y usuario. Ya que el usuario tiene permisos para acceder a la base de datos a traves de un cliente.
-PASSWORD. Permite alterar la contraseña.
-VALID UNTIL. Expiración de usuarios.
-eje-
-ALTER ROLE <nombre del rol> WITH <opciones>
+- Cambiar/asignar la contraseña del usuario creado, dentro de la consola de postgresql(PREFERENTEMENTE)
+    - `postgres=# ALTER USER [USUARIO] WITH LOGIN ENCRYPTED PASSWORD '[CONTRASENA]';`
+    - `postgres=# ALTER ROLE [USUARIO] WITH PASSWORD '[CONTRASENA]';`
 
-Cambiar/asignar la contraseña del usuario creado, dentro de la consola de postgresql(PREFERENTEMENTE)
-postgres=# ALTER USER [USUARIO] WITH LOGIN ENCRYPTED PASSWORD '[CONTRASENA]';
-ó
-postgres=# ALTER ROLE [USUARIO] WITH LOGIN ENCRYPTED PASSWORD '[CONTRASENA]';
-
-postgres=# ALTER ROLE [USUARIO] WITH PASSWORD '[CONTRASENA]';
-
-
-
-__
---------------------------------------------------------------------------------------------------------------------------
-
-Command Functionality
+### Command Functionality
+```bash
 $ sudo /etc/init.d/postgresql start Start server (Ubuntu)
 $ psql -U postgres  Connect
 postgres=# \l   Show databases
 postgres=# \h   Help
-postgres=# CREATE DATABASE jerry;   Create database
-postgres=# DROP DATABASE jerry; Delete database
-postgres=# SET search_path TO schema;above
+postgres=# CREATE DATABASE jerry; # Create database
+postgres=# DROP DATABASE jerry; # Delete database
+postgres=# SET search_path TO schema; # above
 Use schema
-$ psql -U postgres -d   Use database
-postgres=# \c test  Change database
-postgres=# \du  List users
-postgres=# \d   List tables
-postgres=# CREATE SCHEMA sausalito; Create schema
-postgres=# \dn  List schema
-postgres=# DROP SCHEMA sausalito;   Drop schema
-postgres=# SELECT * FROM sausalito.employees;   Select rows
-postgres=# CREATE TABLE sausalito.employees (id INT);   Create table
-postgres=# INSERT INTO sausalito.employees VALUES (1);  Insert record
-postgres=# UPDATE sausalito.employees SET id = 4 WHERE id = 2;  Update table record
-postgres=# DELETE FROM sausalito.employees WHERE id = 3;    Delete record
-postgres=# DROP TABLE sausalito.employees;  Drop table
-postgres=# \q   Quit from session
+$ psql -U postgres -d # Use database
+postgres=# \c test # Change database
+postgres=# \du  # List users
+postgres=# \d  # List tables
+postgres=# CREATE SCHEMA sausalito; # Create schema
+postgres=# \dn  # List schema
+postgres=# DROP SCHEMA sausalito; # Drop schema
+postgres=# SELECT * FROM sausalito.employees;  # Select rows
+postgres=# CREATE TABLE sausalito.employees (id INT); # Create table
+postgres=# INSERT INTO sausalito.employees VALUES (1);  # Insert record
+postgres=# UPDATE sausalito.employees SET id = 4 WHERE id = 2;  # Update table record
+postgres=# DELETE FROM sausalito.employees WHERE id = 3;  # Delete record
+postgres=# DROP TABLE sausalito.employees;  # Drop table
+postgres=# \q  # Quit from session
+```
 
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-Para verificar el usuario creado
+### Para verificar el usuario creado
+```bash
 $ psql
-$ \du -> LISTAR LOS USUARIOS
-$ \l -> LISTAR LAS BASES DE DATOS CREADAS
-$ \dl -> DESPLEGAR LAS TABLAS DE LA BD CONECTADA
-$ \q -> Salir de la consola de postgresql
+$ \du # LISTAR LOS USUARIOS
+$ \l # LISTAR LAS BASES DE DATOS CREADAS
+$ \dl # DESPLEGAR LAS TABLAS DE LA BD CONECTADA
+$ \q # Salir de la consola de postgresql
+```
 
-          Si se muestra el mensaje createuser: creation of new role failed: ERROR:  role "postgres" already exists Y esto en ubuntu seguir con el paso seguiente.
+Si se muestra el mensaje `createuser: creation of new role failed: ERROR:  role "postgres" already exists` Y esto en ubuntu seguir con el paso seguiente.
 
-            Let's start off our configuration by working with PostgreSQL. With PostgreSQL we need to create a database, create a user, and grant the user we created access to the database we created. Start off by running the following command:
-            The default database name and database user are called postgres.
-             $ sudo su - postgres -> PARA CAMBIAR EL USUARIO postgresql PARA PODER HACER LA CONFIGURACIONES
-            Your terminal prompt should now say "postgres@yourserver". If this is the case, then run this command to create your database:
-             $ createdb mydb -> BORRAR BASE DE DATOS: $ dropdb dbname 
-            Your database has now been created and is named "mydb" if you didn't change the command. You can name your database whatever you would like. Now create your database user with the following command:
-             $ createuser  -> ES CREAR USUARIO SIN NINGUN ATRIBUTO
-       Crear usuario con contraseña encriptada  
+_Let's start off our configuration by working with PostgreSQL. With PostgreSQL we need to create a database, create a user, and grant the user we created access to the database we created. Start off by running the following command:_
 
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+_The default database name and database user are called postgres._
 
-General - \? for help with psql commands
+`$ sudo su - postgres` *PARA CAMBIAR EL USUARIO postgresql PARA PODER HACER LA CONFIGURACIONES*
 
+_Your terminal prompt should now say_ `postgres@yourserver`. _If this is the case, then run this command to create your database:_
+`$ createdb mydb` _BORRAR BASE DE DATOS_: `$ dropdb dbname`
 
-\copyright  show PostgreSQL usage and distribution terms
-\g [FILE] or ;  execute query (and send results to file or |pipe)
-\gset [PREFIX]  execute query and store results in psql variables
-\h [NAME]   help on syntax of SQL commands, * for all commands
+_Your database has now been created and is named_ `mydb` _if you didn't change the command. You can name your database whatever you would like. Now create your database user with the following command:_
+`$ createuser` _ES CREAR USUARIO SIN NINGUN ATRIBUTO_
+
+```bash
+General - \? # for help with psql commands
+\copyright  # show PostgreSQL usage and distribution terms
+\g [FILE] or ;  # execute query (and send results to file or |pipe)
+\gset [PREFIX]  # execute query and store results in psql variables
+\h [NAME]  # help on syntax of SQL commands, * for all commands
 \q  quit psql
-\watch [SEC]    execute query every SEC seconds
+\watch [SEC]  # execute query every SEC seconds
+
+# Query Buffer
+\e [FILE] [LINE]  # edit the query buffer (or file) with external editor
+\ef [FUNCNAME [LINE]]  # edit function definition with external editor
+\p  # show the contents of the query buffer
+\r  # reset (clear) the query buffer
+\s [FILE]  # display history or save it to file
+\w FILE # write query buffer to file
+
+# Input/Output
+\copy ...  # perform SQL COPY with data stream to the client host
+\echo [STRING]  # write string to standard output
+\i FILE  # execute commands from file
+\ir FILE  # as \i, but relative to location of current script
+\o [FILE]  # send all query results to file or |pipe
+\qecho # [STRING] write string to query output stream (see \o)
 
 
-Query Buffer    
-\e [FILE] [LINE]    edit the query buffer (or file) with external editor
-\ef [FUNCNAME [LINE]]   edit function definition with external editor
-\p  show the contents of the query buffer
-\r  reset (clear) the query buffer
-\s [FILE]   display history or save it to file
-\w FILE write query buffer to file
-
-
-Input/Output    
-\copy ...   perform SQL COPY with data stream to the client host
-\echo [STRING]  write string to standard output
-\i FILE execute commands from file
-\ir FILE    as \i, but relative to location of current script
-\o [FILE]   send all query results to file or |pipe
-\qecho [STRING] write string to query output stream (see \o)
-
-
-Informational   
-(options: S = show system objects, + = additional detail)   
-\d[S+]  list tables, views, and sequences
-\d[S+] NAME describe table, view, sequence, or index
-\da[S] [PATTERN]    list aggregates
-\db[+] [PATTERN]    list tablespaces
+# Informational
+(options: S = show system objects, + = additional detail)
+\d[S+]  # list tables, views, and sequences
+\d[S+] NAME  # describe table, view, sequence, or index
+\da[S] [PATTERN]   # list aggregates
+\db[+] [PATTERN]   # list tablespaces
 \dc[S+] [PATTERN]   list conversions
-\dC[+] [PATTERN]    list casts
-\dd[S] [PATTERN]    show object descriptions not displayed elsewhere
-\ddp [PATTERN]  list default privileges
-\dD[S+] [PATTERN]   list domains
-\det[+] [PATTERN]   list foreign tables
-\des[+] [PATTERN]   list foreign servers
-\deu[+] [PATTERN]   list user mappings
-\dew[+] [PATTERN]   list foreign-data wrappers
-\df[antw][S+] [PATRN]   list [only agg/normal/trigger/window] functions
-\dF[+] [PATTERN]    list text search configurations
-\dFd[+] [PATTERN]   list text search dictionaries
-\dFp[+] [PATTERN]   list text search parsers
-\dFt[+] [PATTERN]   list text search templates
-\dg[+] [PATTERN]    list roles
-\di[S+] [PATTERN]   list indexes
-\dl list large objects, same as \lo_list
-\dL[S+] [PATTERN]   list procedural languages
-\dm[S+] [PATTERN]   list materialized views
-\dn[S+] [PATTERN]   list schemas
-\do[S] [PATTERN]    list operators
-\dO[S+] [PATTERN]   list collations
-\dp [PATTERN]   list table, view, and sequence access privileges
-\drds [PATRN1 [PATRN2]] list per-database role settings
-\ds[S+] [PATTERN]   list sequences
-\dt[S+] [PATTERN]   list tables
-\dT[S+] [PATTERN]   list data types
-\du[+] [PATTERN]    list roles
-\dv[S+] [PATTERN]   list views
-\dE[S+] [PATTERN]   list foreign tables
-\dx[+] [PATTERN]    list extensions
-\dy [PATTERN]   list event triggers
-\l[+] [PATTERN] list databases
-\sf[+] FUNCNAME show a function's definition
-\z [PATTERN]    same as \dp
+\dC[+] [PATTERN]   # list casts
+\dd[S] [PATTERN]   # show object descriptions not displayed elsewhere
+\ddp [PATTERN]  # list default privileges
+\dD[S+] [PATTERN]  # list domains
+\det[+] [PATTERN]  # list foreign tables
+\des[+] [PATTERN]  # list foreign servers
+\deu[+] [PATTERN]  # list user mappings
+\dew[+] [PATTERN]  # list foreign-data wrappers
+\df[antw][S+] [PATRN]  # list [only agg/normal/trigger/window] functions
+\dF[+] [PATTERN]  # list text search configurations
+\dFd[+] [PATTERN]  # list text search dictionaries
+\dFp[+] [PATTERN]  # list text search parsers
+\dFt[+] [PATTERN]  # list text search templates
+\dg[+] [PATTERN]  # list roles
+\di[S+] [PATTERN]  # list indexes
+\dl  # list large objects, same as \lo_list
+\dL[S+] [PATTERN]  # list procedural languages
+\dm[S+] [PATTERN]  # list materialized views
+\dn[S+] [PATTERN]  # list schemas
+\do[S] [PATTERN]  # list operators
+\dO[S+] [PATTERN]  # list collations
+\dp [PATTERN]  # list table, view, and sequence access privileges
+\drds [PATRN1 [PATRN2]]  # list per-database role settings
+\ds[S+] [PATTERN]  # list sequences
+\dt[S+] [PATTERN]  # list tables
+\dT[S+] [PATTERN]  # list data types
+\du[+] [PATTERN]  # list roles
+\dv[S+] [PATTERN]  # list views
+\dE[S+] [PATTERN]  # list foreign tables
+\dx[+] [PATTERN]  # list extensions
+\dy [PATTERN]  # list event triggers
+\l[+] [PATTERN]  # list databases
+\sf[+]  # FUNCNAME show a function's definition
+\z [PATTERN]  # same as \dp
 
-
-Formatting  
-\a  toggle between unaligned and aligned output mode
-\C [STRING] set table title, or unset if none
-\f [STRING] show or set field separator for unaligned query output
-\H  toggle HTML output mode (currently off)
-\pset [NAME [VALUE]]    set table output option
+# Formatting
+\a  # toggle between unaligned and aligned output mode
+\C  [STRING] # set table title, or unset if none
+\f  [STRING] # show or set field separator for unaligned query output
+\H  # toggle HTML output mode (currently off)
+\pset [NAME [VALUE]]  # set table output option
 
 (NAME := {format|border|expanded|fieldsep|fieldsep_zero|footer|null|
 
-numericlocale|recordsep|recordsep_zero|tuples_only|title|tableattr|pager})
-\t [on|off] show only rows (currently off)
-\T [STRING] set HTML <table> tag attributes, or unset if none
-\x [on|off|auto]    toggle expanded output (currently off)
+# numericlocale|recordsep|recordsep_zero|tuples_only|title|tableattr|pager})
+\t [on|off]  # show only rows (currently off)
+\T [STRING]  # set HTML <table> tag attributes, or unset if none
+\x [on|off|auto]  # toggle expanded output (currently off)
 
-
-Connection  
+# Connection
 \c[onnect] {[DBNAME|- USER|- HOST|- PORT|-] | conninfo} 
 
-connect to new database (currently "postgres")
-\encoding [ENCODING]    show or set client encoding
-\password [USERNAME]    securely change the password for a user
-\conninfo   display information about current connection
+# connect to new database (currently "postgres")
+\encoding [ENCODING]  # show or set client encoding
+\password [USERNAME]  # securely change the password for a user
+\conninfo  # display information about current connection
 
+#Operating System
+\setenv NAME [VALUE]  # set or unset environment variable
+\timing [on|off]  # toggle timing of commands (currently off)
+\! [COMMAND]  # execute command in shell or start interactive shell
 
-Operating System    
-\setenv NAME [VALUE]    set or unset environment variable
-\timing [on|off]    toggle timing of commands (currently off)
-\! [COMMAND]    execute command in shell or start interactive shell
-
-
-Large Objects   
-\lo_export LOBOID FILE  
-\lo_import FILE [COMMENT]   
-\lo_list    
-\lo_unlink LOBOID large object operations   
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Large Objects
+\lo_export LOBOID FILE
+\lo_import FILE [COMMENT]
+\lo_list
+\lo_unlink LOBOID large object operations
+```
 
 su postgres y luego psql para acceder a la base de datos.
 
