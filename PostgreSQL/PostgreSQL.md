@@ -81,7 +81,6 @@ Shall the new role be allowed to create more new roles? (y/n) n
 $ createuser -h lamaquina -p 5000 -S -D -R -e mack
 CREATE ROLE mack NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
 ```
-
 - El manejo de roles en PostgreSQL permite diferentes configuraciones, entre ellas estan:
 `SUPERUSER/NOSUPERUSER`. Super usuario, privilegios para crear bases de datos y usuarios.
 `CREATEDB/NOCREATEDB`. Permite crear bases de datos.
@@ -93,6 +92,10 @@ PASSWORD. Permite alterar la contraseña.
 eje-
 ```bash
 ALTER ROLE <nombre del rol> WITH <opciones>
+```
+- Crear usuario __sin privilegios__ _para crear BD, no crear BD, no crear roles y no es super usuario_
+```bash
+postgres=# CREATE ROLE <usr_db> NOSUPERUSER NOCREATEDB NOCREATEROLE LOGIN ENCRYPTED PASSWORD '<pwd_usr_db>';
 ```
 
 - Crear usuario __mack__ como __super usuario__ y asignarle una contraseña
